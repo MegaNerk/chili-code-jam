@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://cj7fg3iyi7kow"]
+
+[ext_resource type="Texture2D" uid="uid://c0rvare4c155p" path="res://Assets/Affinity Work/Kaiju Token Pin.png" id="1_2xsjq"]
+[ext_resource type="Texture2D" uid="uid://t3qu1v2g4h1j" path="res://Assets/Affinity Work/Ok.PNG" id="1_i4ccb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_22w8i"]
+corner_radius_top_left = 200
+corner_radius_top_right = 200
+corner_radius_bottom_right = 200
+corner_radius_bottom_left = 200
+
+[node name="KaijuToken" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 350.0
+offset_bottom = 500.0
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+clip_children = 2
+clip_contents = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.143
+anchor_top = 0.104
+anchor_right = 0.857
+anchor_bottom = 0.602
+offset_left = -0.0500031
+offset_right = 0.0499878
+offset_bottom = -3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_22w8i")
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer"]
+layout_mode = 2
+texture = ExtResource("1_i4ccb")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_2xsjq")
+expand_mode = 1

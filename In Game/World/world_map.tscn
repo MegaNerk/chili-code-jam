@@ -3,12 +3,14 @@
 [ext_resource type="Texture2D" uid="uid://0bkoot20pflb" path="res://Assets/World/World Map.jpg" id="1_ch8i4"]
 
 [node name="WorldMap" type="Control"]
+custom_minimum_size = Vector2(1600, 853.35)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1

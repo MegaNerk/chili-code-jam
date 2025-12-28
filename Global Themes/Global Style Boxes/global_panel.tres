@@ -7,5 +7,3 @@ border_width_top = 10
 border_width_right = 10
 border_width_bottom = 10
 border_blend = true
-corner_radius_top_left = 80
-corner_radius_top_right = 80

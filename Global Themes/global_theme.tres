@@ -1,6 +1,13 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://clkbrsie48nvs"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://clkbrsie48nvs"]
 
 [ext_resource type="StyleBox" uid="uid://b4pke1bu5iid1" path="res://Global Themes/Global Style Boxes/global_panel.tres" id="1_634u8"]
+[ext_resource type="FontFile" uid="uid://81glmmvrnx64" path="res://Assets/Fonts/Arena-rvwaK.ttf" id="2_k3kbp"]
 
 [resource]
+default_font = ExtResource("2_k3kbp")
+default_font_size = 32
+MarginContainer/constants/margin_bottom = 15
+MarginContainer/constants/margin_left = 15
+MarginContainer/constants/margin_right = 15
+MarginContainer/constants/margin_top = 15
 Panel/styles/panel = ExtResource("1_634u8")

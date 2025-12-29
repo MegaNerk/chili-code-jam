@@ -50,7 +50,7 @@ text = "Newsbar text Newsbar text Newsbar text Newsbar text Newsbar text Newsbar
 scroll_following = true
 horizontal_alignment = 3
 vertical_alignment = 1
-visible_characters = 70
+visible_characters = 69
 visible_ratio = 0.603448
 
 [node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer"]

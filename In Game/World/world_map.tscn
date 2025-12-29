@@ -1,7 +1,7 @@
 [gd_scene load_steps=478 format=3 uid="uid://pk4o0kx5sjqu"]
 
 [ext_resource type="Texture2D" uid="uid://0bkoot20pflb" path="res://Assets/World/World Map.jpg" id="1_ch8i4"]
-[ext_resource type="Script" uid="uid://68iw1s0ap148" path="res://In Game/World/thin_world.gd" id="2_gl22q"]
+[ext_resource type="Script" path="res://In Game/World/thin_world.gd" id="2_gl22q"]
 [ext_resource type="Script" uid="uid://de3jpss66xjfh" path="res://addons/curved_lines_2d/scalable_vector_shape_2d.gd" id="2_y5wkp"]
 [ext_resource type="Script" uid="uid://dlbv4pit17dnu" path="res://addons/curved_lines_2d/scalable_arc.gd" id="3_gl22q"]
 [ext_resource type="Script" uid="uid://dl1t88tthmwts" path="res://addons/curved_lines_2d/scalable_arc_list.gd" id="4_yto30"]

@@ -2,23 +2,23 @@ extends Control
 class_name Scrolling_Label
 
 @export var my_label : Label
-var scroll_speed_cycle_time : float = 100.0
+@export var base_text : String
+@export var scroll_speed_cycle_time : float = 100.0
+@export var loop_enabled : bool = true
 
-var loop_enabled : bool = true
 var cur_loop_index : int = 0
-var queued_texts : Array[String] = ["Scrolling text goes here"]
+var queued_texts : Array[String] = []
 
-var my_text : String = "Scrolling text goes here":
+var my_text : String:
 	set(value):
 		my_text = value
 		text_changed()
 
 func _ready():
-	queue_text("This is the first queued text")
-	queue_text("And this is number two")
+	queue_text(base_text)
 
 func _process(delta):
-	if my_label.size.x == 0:
+	if my_label == null or my_label.size.x == 0:
 		return
 	my_label.position.x -= scroll_speed_cycle_time * delta
 	if (my_label.position.x + my_label.size.x) < 0:

@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://c8eek86ob1fl8"]
+[gd_scene load_steps=3 format=3 uid="uid://c8eek86ob1fl8"]
 
+[ext_resource type="PackedScene" uid="uid://28y2qjjidciy" path="res://UI/Scrolling Label/scrolling_label.tscn" id="1_7rmum"]
 [ext_resource type="PackedScene" uid="uid://pk4o0kx5sjqu" path="res://In Game/World/world_map.tscn" id="1_gbjh3"]
 
 [node name="InGameMenu" type="Control"]
@@ -43,15 +44,10 @@ layout_mode = 2
 layout_mode = 2
 text = "  Settings  "
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer"]
+[node name="ScrollingLabel" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer" instance=ExtResource("1_7rmum")]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Newsbar text Newsbar text Newsbar text Newsbar text Newsbar text Newsbar text Newsbar text Newsbar text Newsbar text"
-scroll_active = false
-horizontal_alignment = 3
-vertical_alignment = 1
-visible_characters = 69
-visible_ratio = 0.603448
+base_text = "Scrolling text goes here lorem ipsum or something I don't know"
 
 [node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(500, 0)

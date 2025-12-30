@@ -252,6 +252,7 @@ var country_codes = {
 
 var all_shapes : Array[ScalableVectorShape2D] = []
 var all_countries : Dictionary = {}
+
 func _ready():
 	all_shapes = get_child_SBS2D()
 	for shape in all_shapes:
@@ -281,7 +282,6 @@ func get_country_name(country_reference : ScalableVectorShape2D):
 	var country_name = country_codes[iso_code]
 	return country_name
 	
-
 
 func _on_area_2d_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed:

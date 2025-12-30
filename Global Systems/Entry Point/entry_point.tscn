@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bel8o68xj7t1t"]
 
-[ext_resource type="Script" uid="uid://d4ifbvrbf8loc" path="res://Out of Game/entry_point.gd" id="1_sapc5"]
+[ext_resource type="Script" uid="uid://d4ifbvrbf8loc" path="res://Global Systems/Entry Point/entry_point.gd" id="1_sapc5"]
 
 [node name="EntryPoint" type="Control"]
 layout_mode = 3

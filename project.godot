@@ -17,7 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-STATE="*res://Global Systems/Autoloads/state_manager.gd"
+STATE="*res://Global Systems/Entry Point/state_manager.gd"
+SETTINGS="*res://Global Systems/Settings/settings.gd"
 
 [display]
 

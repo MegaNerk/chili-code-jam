@@ -1,0 +1,122 @@
+[gd_scene load_steps=2 format=3 uid="uid://51cgdw2s30q5"]
+
+[ext_resource type="Script" uid="uid://ngch2m0ijye0" path="res://Global Systems/Settings/Settings Menu/settings_menu.gd" id="1_xjyc4"]
+
+[node name="SettingsMenu" type="Control" node_paths=PackedStringArray("master_vol_slider", "music_vol_slider", "sfx_vol_slider", "save_close_button", "cancel_close_button")]
+custom_minimum_size = Vector2(600, 325)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xjyc4")
+master_vol_slider = NodePath("Panel/MarginContainer/VBoxContainer/VBoxContainer/MasterVolumeHbox/HSlider")
+music_vol_slider = NodePath("Panel/MarginContainer/VBoxContainer/VBoxContainer/MusicVolumeHbox/HSlider")
+sfx_vol_slider = NodePath("Panel/MarginContainer/VBoxContainer/VBoxContainer/SFXVolumeHbox/HSlider")
+save_close_button = NodePath("Panel/MarginContainer/VBoxContainer/HBoxContainer2/SaveCloseButton")
+cancel_close_button = NodePath("Panel/MarginContainer/VBoxContainer/HBoxContainer2/CancelCloseButton")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Settings Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="MasterVolumeHbox" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer/MasterVolumeHbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Master Volume"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="HSlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer/MasterVolumeHbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 50.0
+tick_count = 3
+
+[node name="MusicVolumeHbox" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer/MusicVolumeHbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Music Volume"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="HSlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer/MusicVolumeHbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 50.0
+tick_count = 3
+
+[node name="SFXVolumeHbox" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer/SFXVolumeHbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SFX Volume"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="HSlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer/SFXVolumeHbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 50.0
+tick_count = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="SaveCloseButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "Save & Close"
+
+[node name="CancelCloseButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "Cancel & Close"
+
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/HBoxContainer2/SaveCloseButton" to="." method="save_close_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/HBoxContainer2/CancelCloseButton" to="." method="cancel_close_pressed"]

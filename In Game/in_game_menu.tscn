@@ -144,4 +144,5 @@ layout_mode = 2
 layout_mode = 2
 text = "Return to Menu"
 
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/Button" to="." method="settings_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer3/Panel/MarginContainer/HBoxContainer/Button" to="." method="return_to_main_menu"]

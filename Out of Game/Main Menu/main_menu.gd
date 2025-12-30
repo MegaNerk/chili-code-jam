@@ -8,5 +8,8 @@ extends Control
 func new_game():
 	STATE.go_to_state(STATE.GAME_STATE.IN_GAME)
 
+func settings_pressed():
+	SETTINGS.open_settings()
+
 func quit_game():
 	get_tree().quit()

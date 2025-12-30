@@ -209,6 +209,7 @@ var country_codes = {
 	'ES' : 'Spain',
 	'LK' : 'Sri Lanka',
 	'SD' : 'Sudan',
+	'SS' : 'South Sudan',
 	'SR' : 'Suriname',
 	'SJ' : 'Svalbard And Jan Mayen',
 	'SZ' : 'Swaziland',
@@ -249,24 +250,41 @@ var country_codes = {
 	'ZW' : 'Zimbabwe',
 }
 
-var my_children
-var my_countries : Array[ScalableVectorShape2D] = []
+var all_shapes : Array[ScalableVectorShape2D] = []
+var all_countries : Dictionary = {}
+
 func _ready():
-	my_children = get_children()
-	for child in my_children:
-		var country : ScalableVectorShape2D
-		if child is ScalableVectorShape2D:
-			my_countries.append(child)
-			country = child
+	all_shapes = get_child_SBS2D()
+	for shape in all_shapes:
+		var name = get_country_name(shape)
+		if all_countries.has(name) == false:
+			all_countries[name] = [shape]
 		else:
-			break
-		print(get_country_name(country))
-		country.polygon.color = Color(randf_range(0.25,0.75),randf_range(0.25,0.75),randf_range(0.25,0.75))
-		country.stroke_color = Color.BLACK
-		country.stroke_width = 15
+			all_countries[name].append(shape)
+	
+	for country in all_countries.values():
+		var rand_color = Color(randf_range(0.65,0.75),randf_range(0.65,0.75),randf_range(0.45,0.55))
+		for region in country:
+			region.polygon.color = rand_color
+		print(get_country_name(country[0])," ",country.size())
+			
+	#print(all_countries)
+
+func get_child_SBS2D(target = self) -> Array[ScalableVectorShape2D]:
+	var valid_shapes : Array[ScalableVectorShape2D] = []
+	for ele in target.get_children():
+		if ele is ScalableVectorShape2D:
+			valid_shapes.append(ele)
+	return valid_shapes
 
 func get_country_name(country_reference : ScalableVectorShape2D):
 	var iso_code = country_reference.name.substr(0,2).to_upper()
 	var country_name = country_codes[iso_code]
 	return country_name
 	
+
+func _on_area_2d_input_event(viewport, event, shape_idx):
+	if event is InputEventMouseButton and event.pressed:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			print("AMERICA")
+	pass # Replace with function body.

@@ -1,0 +1,19 @@
+[gd_scene load_steps=6 format=3 uid="uid://bp5tgcngnym5c"]
+
+[ext_resource type="Script" uid="uid://de3jpss66xjfh" path="res://addons/curved_lines_2d/scalable_vector_shape_2d.gd" id="1_mwk2d"]
+[ext_resource type="Script" uid="uid://dlbv4pit17dnu" path="res://addons/curved_lines_2d/scalable_arc.gd" id="2_214fy"]
+[ext_resource type="Script" uid="uid://dl1t88tthmwts" path="res://addons/curved_lines_2d/scalable_arc_list.gd" id="3_obk11"]
+
+[sub_resource type="Curve2D" id="Curve2D_8qq2y"]
+
+[sub_resource type="Resource" id="Resource_4676x"]
+script = ExtResource("3_obk11")
+arcs = Array[ExtResource("2_214fy")]([])
+
+[node name="MapNode" type="Node2D"]
+script = ExtResource("1_mwk2d")
+curve = SubResource("Curve2D_8qq2y")
+arc_list = SubResource("Resource_4676x")
+metadata/_custom_type_script = "uid://de3jpss66xjfh"
+metadata/_hover_closest_point_on_curve_ = Object(Object,"script":Resource("res://addons/curved_lines_2d/closest_point_on_curve_meta.gd"),"before_segment":1,"point_position":Vector2(-271.952, -238.068),"local_point_position":Vector2(-271.952, -238.068))
+

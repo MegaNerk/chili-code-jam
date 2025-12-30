@@ -286,12 +286,21 @@ func get_country_name(country_reference : ScalableVectorShape2D):
 	var country_name = country_codes[iso_code]
 	return country_name
 
+#TODO: Make this work via a shader
 func _update_selected_country(entering : bool, region_col, country):
 	if entering:
 		print(country, " - " , region_col)
 		hovered_region_changed.emit(region_col, country)
+		for region in all_countries[country]:
+			region.polygon.color = Color.WHITE
 	else:
 		hovered_region_changed.emit(null, null)
+		var rand_color = Color(randf_range(0.65,0.75),randf_range(0.65,0.75),randf_range(0.45,0.55))
+		for region in all_countries[country]:
+			region.polygon.color = rand_color
+		
+	
+		pass
 
 
 func _on_static_body_2d_input_event(viewport, event : InputEvent, shape_idx):

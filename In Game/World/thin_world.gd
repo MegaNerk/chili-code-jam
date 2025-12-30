@@ -250,6 +250,7 @@ var country_codes = {
 	'ZW' : 'Zimbabwe',
 }
 
+signal input_event_for_country()
 var active_country
 var all_shapes : Array[ScalableVectorShape2D] = []
 var all_countries : Dictionary = {}
@@ -267,7 +268,9 @@ func _ready():
 		var rand_color = Color(randf_range(0.65,0.75),randf_range(0.65,0.75),randf_range(0.45,0.55))
 		for region : ScalableVectorShape2D in country:
 			region.collision_object.input_pickable = true
-			region.collision_object.mouse_entered.connect(test)
+			region.collision_object.input_event.connect(_on_static_body_2d_input_event)
+			region.collision_object.mouse_entered.connect(_update_selected_country.bind(true, region, get_country_name(country[0])))
+			region.collision_object.mouse_exited.connect(_update_selected_country.bind(false, region, get_country_name(country[0])))
 			region.polygon.color = rand_color
 		print(get_country_name(country[0])," ",country.size())
 			
@@ -285,10 +288,13 @@ func get_country_name(country_reference : ScalableVectorShape2D):
 	var iso_code = country_reference.name.substr(0,2).to_upper()
 	var country_name = country_codes[iso_code]
 	return country_name
-	
-func test():
-	print("TEST ")
 
-func _on_static_body_2d_mouse_entered():
-	print("SOMETHING")
+func _update_selected_country(entering : bool, region_col, country):
+	if entering:
+		print(country, " - " , region_col)
+	pass
+
+func _on_static_body_2d_input_event(viewport, event : InputEvent, shape_idx):
+	#print(event.global_position)
+	var test = event
 	pass # Replace with function body.

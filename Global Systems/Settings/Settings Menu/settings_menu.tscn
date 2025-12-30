@@ -64,7 +64,9 @@ vertical_alignment = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-value = 50.0
+max_value = 1.0
+step = 0.1
+value = 0.5
 tick_count = 3
 
 [node name="MusicVolumeHbox" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer"]
@@ -81,7 +83,9 @@ vertical_alignment = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-value = 50.0
+max_value = 1.0
+step = 0.1
+value = 0.5
 tick_count = 3
 
 [node name="SFXVolumeHbox" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer"]
@@ -98,7 +102,9 @@ vertical_alignment = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-value = 50.0
+max_value = 1.0
+step = 0.1
+value = 0.5
 tick_count = 3
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
@@ -118,5 +124,8 @@ size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 32
 text = "Cancel & Close"
 
+[connection signal="value_changed" from="Panel/MarginContainer/VBoxContainer/VBoxContainer/MasterVolumeHbox/HSlider" to="." method="on_master_volume_slider_changed"]
+[connection signal="value_changed" from="Panel/MarginContainer/VBoxContainer/VBoxContainer/MusicVolumeHbox/HSlider" to="." method="on_music_volume_slider_changed"]
+[connection signal="value_changed" from="Panel/MarginContainer/VBoxContainer/VBoxContainer/SFXVolumeHbox/HSlider" to="." method="on_sfx_volume_slider_changed"]
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/HBoxContainer2/SaveCloseButton" to="." method="save_close_pressed"]
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/HBoxContainer2/CancelCloseButton" to="." method="cancel_close_pressed"]

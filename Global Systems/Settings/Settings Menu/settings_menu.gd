@@ -3,6 +3,8 @@ extends Control
 signal save_settings
 signal close_settings
 
+signal volume_slider_changed(type, new_value)
+
 @export var master_vol_slider : HSlider
 @export var music_vol_slider : HSlider
 @export var sfx_vol_slider : HSlider
@@ -32,3 +34,12 @@ func save_close_pressed():
 
 func cancel_close_pressed():
 	emit_signal("close_settings")
+
+func on_master_volume_slider_changed(new_value):
+	emit_signal("volume_slider_changed", "master", new_value)
+
+func on_music_volume_slider_changed(new_value):
+	emit_signal("volume_slider_changed", "music", new_value)
+
+func on_sfx_volume_slider_changed(new_value):
+	emit_signal("volume_slider_changed", "sfx", new_value)

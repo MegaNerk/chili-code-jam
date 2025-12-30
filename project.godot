@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 STATE="*res://Global Systems/Entry Point/state_manager.gd"
 SETTINGS="*res://Global Systems/Settings/settings.gd"
+AUDIO="*res://Global Systems/Audio/audio.tscn"
 
 [display]
 

@@ -1,0 +1,41 @@
+[gd_scene load_steps=11 format=3 uid="uid://bex6r2dxkgwsu"]
+
+[ext_resource type="Script" uid="uid://civtlvobe7et8" path="res://Global Systems/Audio/audio.gd" id="1_eprsc"]
+[ext_resource type="AudioStream" uid="uid://c77ce65nt45j3" path="res://Assets/Audio/Nihilore/Drifting.mp3" id="2_m5u4h"]
+[ext_resource type="AudioStream" uid="uid://xr5bed3f4m8y" path="res://Assets/Audio/Nihilore/Cathedral.mp3" id="3_fbewe"]
+[ext_resource type="AudioStream" uid="uid://5qttvsg08bgc" path="res://Assets/Audio/Nihilore/Who+Are+You+At+War+With+Now.mp3" id="4_fbewe"]
+[ext_resource type="AudioStream" uid="uid://uy8cdthslk2p" path="res://Assets/Audio/Nihilore/Anti-Nostalgia.mp3" id="5_tvyb5"]
+[ext_resource type="AudioStream" uid="uid://csjuheq8giyv4" path="res://Assets/Audio/Nihilore/B1-66ER.mp3" id="6_rj2ce"]
+[ext_resource type="AudioStream" uid="uid://drqo7enmauvye" path="res://Assets/Audio/Nihilore/We+Are+Already+Dead+(instrumental).mp3" id="7_76v72"]
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_u7ebp"]
+shuffle = true
+stream_count = 3
+stream_0 = ExtResource("2_m5u4h")
+stream_1 = ExtResource("3_fbewe")
+stream_2 = ExtResource("4_fbewe")
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_xsp5t"]
+shuffle = true
+stream_count = 3
+stream_0 = ExtResource("5_tvyb5")
+stream_1 = ExtResource("6_rj2ce")
+stream_2 = ExtResource("7_76v72")
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_mjfky"]
+shuffle = true
+stream_count = 3
+stream_0 = ExtResource("2_m5u4h")
+stream_1 = ExtResource("3_fbewe")
+stream_2 = ExtResource("4_fbewe")
+
+[node name="Audio" type="Node" node_paths=PackedStringArray("music_player")]
+script = ExtResource("1_eprsc")
+menu_music_tracks = SubResource("AudioStreamPlaylist_u7ebp")
+in_game_music_tracks = SubResource("AudioStreamPlaylist_xsp5t")
+music_player = NodePath("MusicPlayer")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamPlaylist_mjfky")
+autoplay = true
+bus = &"Music"

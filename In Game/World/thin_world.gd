@@ -75,6 +75,7 @@ var country_codes = {
 	'FJ' : 'Fiji',
 	'FI' : 'Finland',
 	'FR' : 'France',
+	'FG' : 'French Guiana',
 	'GF' : 'French Guiana',
 	'PF' : 'French Polynesia',
 	'TF' : 'French Southern Territories',
@@ -298,9 +299,6 @@ func _update_selected_country(entering : bool, region_col, country):
 		var rand_color = Color(randf_range(0.65,0.75),randf_range(0.65,0.75),randf_range(0.45,0.55))
 		for region in all_countries[country]:
 			region.polygon.color = rand_color
-		
-	
-		pass
 
 
 func _on_static_body_2d_input_event(viewport, event : InputEvent, shape_idx):

@@ -10,6 +10,8 @@ func _ready():
 	
 func change_hovered_country_name(region, country_name : String):
 	$VBoxContainer/HBoxContainer2/WorldMap/HoveredContryBox/HoveredContry.text = country_name
+	AUDIO.play_sfx_once(AUDIO.sfx_library.country_hover)
+	
 
 func settings_pressed():
 	SETTINGS.open_settings()

@@ -3849,7 +3849,7 @@ arc_list = SubResource("Resource_wxx0i")
 lock_assigned_shapes = false
 
 [node name="Fill" type="Polygon2D" parent="WorldMap/us6"]
-color = Color(0.537255, 0.67451, 0.301961, 1)
+color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(-47.1275, -40.809, -47.9475, -37.516, -50.8065, -39.368, -52.2315, -39.368, -53.0515, -35.869, -63.0535, -13.454, -60.3995, 6.07402, -57.1305, 7.72002, -56.5165, 13.07, -49.7825, 13.07, -43.2545, 18.002, -30.4005, 19.238, -28.9745, 25.817, -26.9355, 27.259, -24.0765, 24.384, -21.8305, 25.407, -19.7915, 34.861, -16.3265, 37.122, -13.4675, 31.772, -4.69353, 25.397, 1.01547, 28.067, 5.91447, 28.477, 6.11847, 25.397, 16.3185, 25.603, 18.3575, 27.865, 18.7675, 33.002, 17.5465, 35.878, 18.9715, 40.809, 22.0355, 40.809, 25.0985, 36.082, 23.8775, 33.821, 22.6565, 28.889, 24.4915, 23.335, 32.8555, 16.142, 39.1805, 14.291, 38.3615, 8.32698, 47.1355, -1.13503, 55.9095, -2.57602, 54.4845, -7.49802, 63.0535, -12.43, 63.0535, -19.008, 62.2335, -19.418, 59.1705, -18.393, 58.7605, -14.363, 48.5775, -14.241, 40.5985, -8.93904, 28.0725, -4.84305, 26.0735, -7.29405, 31.7585, -15.8961, 28.9485, -18.5741, 27.0395, -22.2121, 23.0825, -25.3911, 18.7815, -25.7511, 10.6555, -31.2961)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="WorldMap/us6"]
@@ -5720,7 +5720,7 @@ polygon = PackedVector2Array(2.095, -11.7175, 0.285004, -11.2745, -3.33398, -7.3
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WorldMap/fr6/StaticBody2D"]
 polygon = PackedVector2Array(2.095, -11.7175, 0.285004, -11.2745, -3.33398, -7.3345, -4.42398, -7.2605, -5.87399, -8.2845, -6.814, -8.06351, -7.53799, -5.80251, -12.83, -5.6555, -12.682, -4.4855, -9.06198, -2.0755, -4.85797, 1.2825, -4.93198, 5.2975, -7.17499, 9.2365, -2.31598, 11.5715, 2.61502, 11.7175, 4.13602, 9.9635, 7.25101, 10.0375, 8.11902, 10.8405, 11.232, 10.6205, 12.83, 8.5715, 10.798, 6.1635, 10.65, 4.6315, 11.085, 2.95351, 10.069, 1.49551, 8.33301, 2.00252, 8.11301, 0.690521, 11.956, -3.54448, 11.956, -6.09947, 9.73099, -6.82747, 8.37299, -7.76347)
 
-[node name="fr5" type="Node2D" parent="WorldMap" node_paths=PackedStringArray("polygon", "collision_object")]
+[node name="fg" type="Node2D" parent="WorldMap" node_paths=PackedStringArray("polygon", "collision_object")]
 position = Vector2(248.016, 278.495)
 script = ExtResource("2_y5wkp")
 polygon = NodePath("Fill")
@@ -5730,13 +5730,13 @@ update_curve_at_runtime = true
 arc_list = SubResource("Resource_tjv4d")
 lock_assigned_shapes = false
 
-[node name="Fill" type="Polygon2D" parent="WorldMap/fr5"]
+[node name="Fill" type="Polygon2D" parent="WorldMap/fg"]
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(-1.75351, -4.5575, 3.03949, -1.56848, 0.532486, 3.41153, -0.376511, 4.55753, -3.03951, 3.02652, -2.96451, -2.33948)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="WorldMap/fr5"]
+[node name="StaticBody2D" type="StaticBody2D" parent="WorldMap/fg"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WorldMap/fr5/StaticBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WorldMap/fg/StaticBody2D"]
 polygon = PackedVector2Array(-1.75351, -4.5575, 3.03949, -1.56848, 0.532486, 3.41153, -0.376511, 4.55753, -3.03951, 3.02652, -2.96451, -2.33948)
 
 [node name="fr4" type="Node2D" parent="WorldMap" node_paths=PackedStringArray("polygon", "collision_object")]

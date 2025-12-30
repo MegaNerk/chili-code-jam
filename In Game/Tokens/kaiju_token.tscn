@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cj7fg3iyi7kow"]
 
 [ext_resource type="Texture2D" uid="uid://c0rvare4c155p" path="res://Assets/Affinity Work/Kaiju Token Pin.png" id="1_2xsjq"]
-[ext_resource type="Texture2D" uid="uid://t3qu1v2g4h1j" path="res://Assets/Affinity Work/Ok.PNG" id="1_i4ccb"]
+[ext_resource type="Texture2D" uid="uid://buotobdhyrrc3" path="res://Assets/Art/Kaiju/octopusseye.png" id="1_i4ccb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_22w8i"]
 corner_radius_top_left = 200

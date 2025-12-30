@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://c8eek86ob1fl8"]
 
 [ext_resource type="PackedScene" uid="uid://28y2qjjidciy" path="res://UI/Scrolling Label/scrolling_label.tscn" id="1_7rmum"]
-[ext_resource type="Script" uid="uid://dxqyi75pkbmuv" path="res://In Game/in_game_menu.gd" id="1_8xadi"]
+[ext_resource type="Script" uid="uid://dxqyi75pkbmuv" path="res://In Game/in_game_ui.gd" id="1_8xadi"]
 [ext_resource type="PackedScene" uid="uid://pk4o0kx5sjqu" path="res://In Game/World/world_map.tscn" id="1_gbjh3"]
 [ext_resource type="PackedScene" uid="uid://cj7fg3iyi7kow" path="res://In Game/Tokens/kaiju_token.tscn" id="4_vtst0"]
 
-[node name="InGameMenu" type="Control" node_paths=PackedStringArray("_world_map")]
+[node name="InGameUI" type="Control" node_paths=PackedStringArray("_world_map")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -103,7 +103,6 @@ offset_left = 335.0
 offset_top = 2.17496
 offset_right = 685.0
 offset_bottom = 502.175
-scale = Vector2(0.25, 0.25)
 
 [node name="HoveredContryBox" type="Panel" parent="VBoxContainer/HBoxContainer2/WorldMap"]
 layout_mode = 0

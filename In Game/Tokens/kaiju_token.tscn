@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cj7fg3iyi7kow"]
+[gd_scene load_steps=7 format=3 uid="uid://cj7fg3iyi7kow"]
 
 [ext_resource type="Texture2D" uid="uid://c0rvare4c155p" path="res://Assets/Affinity Work/Kaiju Token Pin.png" id="1_2xsjq"]
 [ext_resource type="Script" uid="uid://c7bwuhns0858i" path="res://In Game/Tokens/kaiju_token.gd" id="1_22w8i"]
 [ext_resource type="Texture2D" uid="uid://buotobdhyrrc3" path="res://Assets/Art/Kaiju/octopusseye.png" id="1_i4ccb"]
 [ext_resource type="Texture2D" uid="uid://b8dvomlfy1klo" path="res://Assets/Affinity Work/Kaiju Token Pin Click Mask.png" id="4_0plto"]
+[ext_resource type="PackedScene" uid="uid://c0nx0vn58cnbw" path="res://In Game/Tokens/Pathing Line/pathing_line.tscn" id="5_0plto"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_22w8i"]
 corner_radius_top_left = 200
@@ -11,7 +12,7 @@ corner_radius_top_right = 200
 corner_radius_bottom_right = 200
 corner_radius_bottom_left = 200
 
-[node name="KaijuToken" type="Control"]
+[node name="KaijuToken" type="Control" node_paths=PackedStringArray("pathing_line")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 350.0
@@ -20,6 +21,11 @@ scale = Vector2(0.25, 0.25)
 pivot_offset = Vector2(175, 417)
 script = ExtResource("1_22w8i")
 pin_click_mask = ExtResource("4_0plto")
+pathing_line = NodePath("PathingLine")
+
+[node name="PathingLine" parent="." instance=ExtResource("5_0plto")]
+visible = false
+points = PackedVector2Array(175, 417, 175, 417)
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 clip_children = 2

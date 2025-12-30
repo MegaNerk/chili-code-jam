@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cj7fg3iyi7kow"]
+[gd_scene load_steps=6 format=3 uid="uid://cj7fg3iyi7kow"]
 
 [ext_resource type="Texture2D" uid="uid://c0rvare4c155p" path="res://Assets/Affinity Work/Kaiju Token Pin.png" id="1_2xsjq"]
+[ext_resource type="Script" uid="uid://c7bwuhns0858i" path="res://In Game/Tokens/kaiju_token.gd" id="1_22w8i"]
 [ext_resource type="Texture2D" uid="uid://buotobdhyrrc3" path="res://Assets/Art/Kaiju/octopusseye.png" id="1_i4ccb"]
+[ext_resource type="Texture2D" uid="uid://b8dvomlfy1klo" path="res://Assets/Affinity Work/Kaiju Token Pin Click Mask.png" id="4_0plto"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_22w8i"]
 corner_radius_top_left = 200
@@ -14,7 +16,10 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 350.0
 offset_bottom = 500.0
+scale = Vector2(0.25, 0.25)
 pivot_offset = Vector2(175, 417)
+script = ExtResource("1_22w8i")
+pin_click_mask = ExtResource("4_0plto")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 clip_children = 2
@@ -30,10 +35,12 @@ offset_right = 0.0499878
 offset_bottom = -3.05176e-05
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_22w8i")
 
 [node name="TextureRect" type="TextureRect" parent="PanelContainer"]
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("1_i4ccb")
 expand_mode = 1
 
@@ -44,5 +51,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("1_2xsjq")
 expand_mode = 1
+
+[connection signal="mouse_entered" from="." to="." method="on_hovered"]
+[connection signal="mouse_exited" from="." to="." method="on_stop_hovered"]

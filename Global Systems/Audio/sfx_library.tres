@@ -1,11 +1,9 @@
-[gd_resource type="Resource" script_class="SFX_Library" load_steps=4 format=3 uid="uid://bkutlas74x1li"]
+[gd_resource type="Resource" script_class="SFX_Library" load_steps=3 format=3 uid="uid://bkutlas74x1li"]
 
 [ext_resource type="Script" uid="uid://lbq3lxmi4ic5" path="res://Global Systems/Audio/sfx_library.gd" id="1_eajn4"]
 [ext_resource type="AudioStream" uid="uid://tn4co5ckjhgj" path="res://Assets/Audio/Kenny/Button_press.ogg" id="1_wcw4o"]
-[ext_resource type="AudioStream" uid="uid://ckirhtd7nhmsw" path="res://Assets/Audio/Kenny/bong_001.ogg" id="2_qn5c5"]
 
 [resource]
 script = ExtResource("1_eajn4")
 button_click = ExtResource("1_wcw4o")
-country_hover = ExtResource("2_qn5c5")
 metadata/_custom_type_script = "uid://lbq3lxmi4ic5"

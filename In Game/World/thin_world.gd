@@ -250,6 +250,7 @@ var country_codes = {
 	'ZW' : 'Zimbabwe',
 }
 
+var active_country
 var all_shapes : Array[ScalableVectorShape2D] = []
 var all_countries : Dictionary = {}
 
@@ -264,9 +265,12 @@ func _ready():
 	
 	for country in all_countries.values():
 		var rand_color = Color(randf_range(0.65,0.75),randf_range(0.65,0.75),randf_range(0.45,0.55))
-		for region in country:
+		for region : ScalableVectorShape2D in country:
+			region.collision_object.input_pickable = true
+			region.collision_object.mouse_entered.connect(test)
 			region.polygon.color = rand_color
 		print(get_country_name(country[0])," ",country.size())
+			
 			
 	#print(all_countries)
 
@@ -282,9 +286,9 @@ func get_country_name(country_reference : ScalableVectorShape2D):
 	var country_name = country_codes[iso_code]
 	return country_name
 	
+func test():
+	print("TEST ")
 
-func _on_area_2d_input_event(viewport, event, shape_idx):
-	if event is InputEventMouseButton and event.pressed:
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			print("AMERICA")
+func _on_static_body_2d_mouse_entered():
+	print("SOMETHING")
 	pass # Replace with function body.

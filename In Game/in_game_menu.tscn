@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://pk4o0kx5sjqu" path="res://In Game/World/world_map.tscn" id="1_gbjh3"]
 [ext_resource type="PackedScene" uid="uid://cj7fg3iyi7kow" path="res://In Game/Tokens/kaiju_token.tscn" id="4_vtst0"]
 
-[node name="InGameMenu" type="Control"]
+[node name="InGameMenu" type="Control" node_paths=PackedStringArray("_world_map")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,6 +14,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_8xadi")
+_world_map = NodePath("VBoxContainer/HBoxContainer2/WorldMap")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -103,6 +104,20 @@ offset_top = 2.17496
 offset_right = 685.0
 offset_bottom = 502.175
 scale = Vector2(0.4, 0.4)
+
+[node name="HoveredContryBox" type="Panel" parent="VBoxContainer/HBoxContainer2/WorldMap"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 806.175
+offset_right = 400.0
+offset_bottom = 846.175
+
+[node name="HoveredContry" type="Label" parent="VBoxContainer/HBoxContainer2/WorldMap/HoveredContryBox"]
+layout_mode = 0
+offset_right = 188.0
+offset_bottom = 42.0
+text = "United States of America"
+vertical_alignment = 1
 
 [node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer2"]
 layout_mode = 2

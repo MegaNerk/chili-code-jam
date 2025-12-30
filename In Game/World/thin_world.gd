@@ -1,5 +1,5 @@
 extends Node2D
-
+class_name WorldMap
 var country_codes = {
 	'AF' : 'Afghanistan',
 	'AX' : 'Aland Islands',
@@ -250,7 +250,7 @@ var country_codes = {
 	'ZW' : 'Zimbabwe',
 }
 
-signal input_event_for_country()
+signal hovered_region_changed(region, country_name : String)
 var active_country
 var all_shapes : Array[ScalableVectorShape2D] = []
 var all_countries : Dictionary = {}
@@ -273,9 +273,6 @@ func _ready():
 			region.collision_object.mouse_exited.connect(_update_selected_country.bind(false, region, get_country_name(country[0])))
 			region.polygon.color = rand_color
 		print(get_country_name(country[0])," ",country.size())
-			
-			
-	#print(all_countries)
 
 func get_child_SBS2D(target = self) -> Array[ScalableVectorShape2D]:
 	var valid_shapes : Array[ScalableVectorShape2D] = []
@@ -292,7 +289,10 @@ func get_country_name(country_reference : ScalableVectorShape2D):
 func _update_selected_country(entering : bool, region_col, country):
 	if entering:
 		print(country, " - " , region_col)
-	pass
+		hovered_region_changed.emit(region_col, country)
+	else:
+		hovered_region_changed.emit(null, null)
+
 
 func _on_static_body_2d_input_event(viewport, event : InputEvent, shape_idx):
 	#print(event.global_position)

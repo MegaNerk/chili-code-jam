@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bex6r2dxkgwsu"]
+[gd_scene load_steps=12 format=3 uid="uid://bex6r2dxkgwsu"]
 
 [ext_resource type="Script" uid="uid://civtlvobe7et8" path="res://Global Systems/Audio/audio.gd" id="1_eprsc"]
 [ext_resource type="AudioStream" uid="uid://c77ce65nt45j3" path="res://Assets/Audio/Nihilore/Drifting.mp3" id="2_m5u4h"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://uy8cdthslk2p" path="res://Assets/Audio/Nihilore/Anti-Nostalgia.mp3" id="5_tvyb5"]
 [ext_resource type="AudioStream" uid="uid://csjuheq8giyv4" path="res://Assets/Audio/Nihilore/B1-66ER.mp3" id="6_rj2ce"]
 [ext_resource type="AudioStream" uid="uid://drqo7enmauvye" path="res://Assets/Audio/Nihilore/We+Are+Already+Dead+(instrumental).mp3" id="7_76v72"]
+[ext_resource type="Resource" uid="uid://bkutlas74x1li" path="res://Global Systems/Audio/sfx_library.tres" id="8_rj2ce"]
 
 [sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_u7ebp"]
 shuffle = true
@@ -29,13 +30,19 @@ stream_0 = ExtResource("2_m5u4h")
 stream_1 = ExtResource("3_fbewe")
 stream_2 = ExtResource("4_fbewe")
 
-[node name="Audio" type="Node" node_paths=PackedStringArray("music_player")]
+[node name="Audio" type="Node" node_paths=PackedStringArray("music_player", "sfx_player")]
 script = ExtResource("1_eprsc")
 menu_music_tracks = SubResource("AudioStreamPlaylist_u7ebp")
 in_game_music_tracks = SubResource("AudioStreamPlaylist_xsp5t")
+sfx_library = ExtResource("8_rj2ce")
 music_player = NodePath("MusicPlayer")
+sfx_player = NodePath("SFXPlayer")
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamPlaylist_mjfky")
 autoplay = true
+bus = &"Music"
+
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="."]
+max_polyphony = 99
 bus = &"Music"

@@ -14,9 +14,9 @@ func _ready():
 	sync_volumes()
 
 func sync_volumes():
-	master_vol_slider.value = SETTINGS.master_volume
-	music_vol_slider.value = SETTINGS.music_volume
-	sfx_vol_slider.value = SETTINGS.sfx_volume
+	master_vol_slider.value = SETTINGS.settings_data["audio"]["master_volume"]
+	music_vol_slider.value = SETTINGS.settings_data["audio"]["music_volume"]
+	sfx_vol_slider.value = SETTINGS.settings_data["audio"]["sfx_volume"]
 
 func get_volumes() -> Dictionary:
 	var vol_dict = {

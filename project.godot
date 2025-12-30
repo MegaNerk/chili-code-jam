@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Chili Code jam #4"
-run/main_scene="uid://c8eek86ob1fl8"
+run/main_scene="uid://bel8o68xj7t1t"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+STATE="*res://Global Systems/Autoloads/state_manager.gd"
 
 [display]
 

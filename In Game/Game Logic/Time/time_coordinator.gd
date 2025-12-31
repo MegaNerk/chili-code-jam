@@ -9,7 +9,8 @@ var current_speed : int = 0
 var speed_settings : Dictionary = { #Dict of speed settings, value is days per second
 	0 : 0,
 	1 : 2,
-	2 : 5
+	2 : 5,
+	3 : 12
 }
 
 enum MONTHS {Jan = 1, Feb, Mar, Apr, May, Jun, Jul, Aug,Sep, Oct, Nov, Dec}

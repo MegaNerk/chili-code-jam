@@ -57,7 +57,7 @@ size_flags_horizontal = 3
 base_text = "Scrolling text goes here lorem ipsum or something I don't know"
 
 [node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(500, 0)
+custom_minimum_size = Vector2(650, 0)
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/Panel"]
@@ -67,30 +67,30 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_right = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/Panel/MarginContainer"]
 layout_mode = 2
-alignment = 1
 
 [node name="DateDisplay" type="Label" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer"]
 layout_mode = 2
 text = "01/01/2026"
 
-[node name="Spacer" type="ColorRect" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer"]
-visible = false
+[node name="Spacer" type="Control" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(5, 0)
 layout_mode = 2
-color = Color(0.617455, 0.617455, 0.617455, 1)
+size_flags_horizontal = 3
 
 [node name="SpeedToggle" type="TabBar" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(414, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 current_tab = 0
 tab_alignment = 1
-tab_count = 3
+tab_count = 4
 tab_0/title = "Pause"
 tab_1/title = "Slow"
 tab_2/title = "Fast"
+tab_3/title = "Fastest"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://mav5vr5mxya7"]
+[gd_scene load_steps=4 format=3 uid="uid://mav5vr5mxya7"]
 
-[ext_resource type="PackedScene" uid="uid://bqw1k7ion22yk" path="res://In Game/in_game_ui.tscn" id="1_6gr50"]
-[ext_resource type="Script" path="res://In Game/Game Logic/game.gd" id="1_dji84"]
+[ext_resource type="PackedScene" uid="uid://c8eek86ob1fl8" path="res://In Game/in_game_ui.tscn" id="1_6gr50"]
+[ext_resource type="Script" uid="uid://bdeqd6lha3yn8" path="res://In Game/Game Logic/game.gd" id="1_dji84"]
+[ext_resource type="PackedScene" uid="uid://cifgpieydxhmj" path="res://In Game/Game Logic/Events/Event Director/event_director.tscn" id="3_7teoi"]
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -14,4 +15,7 @@ mouse_filter = 1
 script = ExtResource("1_dji84")
 
 [node name="InGameUI" parent="." instance=ExtResource("1_6gr50")]
+layout_mode = 1
+
+[node name="EventDirector" parent="." instance=ExtResource("3_7teoi")]
 layout_mode = 1

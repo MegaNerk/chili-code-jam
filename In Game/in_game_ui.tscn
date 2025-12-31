@@ -1,11 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqw1k7ion22yk"]
+[gd_scene load_steps=4 format=3 uid="uid://c8eek86ob1fl8"]
 
 [ext_resource type="PackedScene" uid="uid://28y2qjjidciy" path="res://UI/Scrolling Label/scrolling_label.tscn" id="1_7rmum"]
-[ext_resource type="Script" path="res://In Game/in_game_ui.gd" id="1_8xadi"]
-[ext_resource type="PackedScene" uid="uid://pk4o0kx5sjqu" path="res://In Game/World/world_map.tscn" id="1_gbjh3"]
-[ext_resource type="PackedScene" uid="uid://cj7fg3iyi7kow" path="res://In Game/Tokens/kaiju_token.tscn" id="4_vtst0"]
+[ext_resource type="Script" uid="uid://dxqyi75pkbmuv" path="res://In Game/in_game_ui.gd" id="1_8xadi"]
+[ext_resource type="PackedScene" uid="uid://xaiun7kdu0rx" path="res://In Game/Play Space/play_space.tscn" id="3_gonuj"]
 
-[node name="InGameUI" type="Control" node_paths=PackedStringArray("_world_map")]
+[node name="InGameUI" type="Control" node_paths=PackedStringArray("playspace", "hovered_country_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,7 +13,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_8xadi")
-_world_map = NodePath("VBoxContainer/HBoxContainer2/WorldMap")
+playspace = NodePath("VBoxContainer/HBoxContainer2/PlaySpace")
+hovered_country_label = NodePath("VBoxContainer/HBoxContainer2/PlaySpace/Panel/MarginContainer/HoveredCountry")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -94,28 +94,40 @@ tab_2/title = "Fast"
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="WorldMap" parent="VBoxContainer/HBoxContainer2" instance=ExtResource("1_gbjh3")]
+[node name="PlaySpace" parent="VBoxContainer/HBoxContainer2" instance=ExtResource("3_gonuj")]
 layout_mode = 2
-size_flags_horizontal = 1
 
-[node name="KaijuToken" parent="VBoxContainer/HBoxContainer2/WorldMap" instance=ExtResource("4_vtst0")]
-offset_left = 335.0
-offset_top = 2.17496
-offset_right = 685.0
-offset_bottom = 502.175
+[node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer2/PlaySpace"]
+custom_minimum_size = Vector2(350, 50)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = -85.0
+offset_right = 390.0
+offset_bottom = -15.0
+grow_vertical = 0
 
-[node name="HoveredContryBox" type="Panel" parent="VBoxContainer/HBoxContainer2/WorldMap"]
-layout_mode = 0
-offset_left = 13.0
-offset_top = 806.175
-offset_right = 400.0
-offset_bottom = 846.175
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer2/PlaySpace/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -11.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
 
-[node name="HoveredContry" type="Label" parent="VBoxContainer/HBoxContainer2/WorldMap/HoveredContryBox"]
-layout_mode = 0
-offset_right = 188.0
-offset_bottom = 42.0
-text = "United States of America"
+[node name="HoveredCountry" type="Label" parent="VBoxContainer/HBoxContainer2/PlaySpace/Panel/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Country"
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer2"]

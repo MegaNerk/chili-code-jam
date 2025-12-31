@@ -1,15 +1,13 @@
 extends Control
 
-@export var _world_map : Control
-var world_map
+@export var playspace : Control
+@export var hovered_country_label : Label
 
 func _ready():
-	#I know this is disgusting and will fix later - psy
-	world_map = _world_map.find_child("WorldMap") as WorldMap
-	world_map.hovered_region_changed.connect(change_hovered_country_name)
+	playspace.hovered_country.connect(change_hovered_country_name)
 	
-func change_hovered_country_name(region, country_name : String):
-	$VBoxContainer/HBoxContainer2/WorldMap/HoveredContryBox/HoveredContry.text = country_name
+func change_hovered_country_name(country_name : String):
+	hovered_country_label.text = country_name
 	AUDIO.play_sfx_once(AUDIO.sfx_library.country_hover)
 	
 func settings_pressed():

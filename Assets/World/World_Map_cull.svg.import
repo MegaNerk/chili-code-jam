@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cicanju0o5min"
-path="res://.godot/imported/world_ocean.svg-82ff0a1f781a3974d3606714b4380a9a.ctex"
+uid="uid://cjau4vf38miwt"
+path="res://.godot/imported/World_Map_cull.svg-c4c41da502c3f785fc2f512fe18e5596.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/World/world_ocean.svg"
-dest_files=["res://.godot/imported/world_ocean.svg-82ff0a1f781a3974d3606714b4380a9a.ctex"]
+source_file="res://Assets/World/World_Map_cull.svg"
+dest_files=["res://.godot/imported/World_Map_cull.svg-c4c41da502c3f785fc2f512fe18e5596.ctex"]
 
 [params]
 

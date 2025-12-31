@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdf2lxywh6b8o"]
+
+[ext_resource type="Script" uid="uid://kkgdtrgr7jqb" path="res://In Game/Game Logic/Time/time_coordinator.gd" id="1_nukih"]
+
+[node name="TimeCoordinator" type="Node"]
+script = ExtResource("1_nukih")

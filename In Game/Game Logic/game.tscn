@@ -1,11 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://mav5vr5mxya7"]
+[gd_scene load_steps=6 format=3 uid="uid://mav5vr5mxya7"]
 
 [ext_resource type="PackedScene" uid="uid://c8eek86ob1fl8" path="res://In Game/in_game_ui.tscn" id="1_6gr50"]
 [ext_resource type="Script" uid="uid://bdeqd6lha3yn8" path="res://In Game/Game Logic/game.gd" id="1_dji84"]
 [ext_resource type="PackedScene" uid="uid://cifgpieydxhmj" path="res://In Game/Game Logic/Events/Event Director/event_director.tscn" id="3_7teoi"]
 [ext_resource type="PackedScene" uid="uid://bl4r6wfexlbo3" path="res://In Game/Game Logic/Cities/City Director/city_director.tscn" id="4_61akc"]
+[ext_resource type="PackedScene" uid="uid://cdf2lxywh6b8o" path="res://In Game/Game Logic/Time/time_coordinator.tscn" id="5_yyf0g"]
 
-[node name="Game" type="Control" node_paths=PackedStringArray("event_director")]
+[node name="Game" type="Control" node_paths=PackedStringArray("event_director", "city_director", "time_coordinator")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,6 +16,8 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_dji84")
 event_director = NodePath("EventDirector")
+city_director = NodePath("CityDirector")
+time_coordinator = NodePath("TimeCoordinator")
 
 [node name="InGameUI" parent="." instance=ExtResource("1_6gr50")]
 layout_mode = 1
@@ -22,3 +25,5 @@ layout_mode = 1
 [node name="EventDirector" parent="." instance=ExtResource("3_7teoi")]
 
 [node name="CityDirector" parent="." instance=ExtResource("4_61akc")]
+
+[node name="TimeCoordinator" parent="." instance=ExtResource("5_yyf0g")]

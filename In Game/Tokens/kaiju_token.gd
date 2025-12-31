@@ -33,15 +33,14 @@ func get_selected():
 
 func get_unselected():
 	currently_selected = false
+	on_stop_hovered()
 	emit_signal("unselected")
 
 func _gui_input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			get_selected()
 			emit_signal("left_clicked")
 		elif event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
-			get_unselected()
 			emit_signal("right_clicked")
 
 func _has_point(point):

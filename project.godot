@@ -36,3 +36,8 @@ enabled=PackedStringArray("res://addons/curved_lines_2d/plugin.cfg")
 
 theme/custom="uid://clkbrsie48nvs"
 theme/custom_font="uid://81glmmvrnx64"
+
+[layer_names]
+
+2d_navigation/layer_1="Water"
+2d_navigation/layer_2="Land"

@@ -256,9 +256,11 @@ signal hovered_region_changed(region, country_name : String)
 var active_country
 var all_shapes : Array[ScalableVectorShape2D] = []
 var all_countries : Dictionary = {}
-@export var navigation_mesh : NavigationRegion2D 
+@export var navigation_mesh : NavigationRegion2D
 
 func _ready():
+	var level_navigation_map = get_world_2d().get_navigation_map()
+	NavigationServer2D.map_set_edge_connection_margin(level_navigation_map, 5)
 	all_shapes = get_child_SBS2D()
 	for shape in all_shapes:
 		var name = get_country_name(shape)
@@ -276,6 +278,8 @@ func _ready():
 			region.collision_object.mouse_exited.connect(_update_selected_country.bind(false, region, get_country_name(country[0])))
 			region.polygon.color = rand_color
 		print(get_country_name(country[0])," ",country.size())
+	
+		
 
 func get_child_SBS2D(target = self) -> Array[ScalableVectorShape2D]:
 	var valid_shapes : Array[ScalableVectorShape2D] = []
@@ -332,6 +336,7 @@ func generate_navigation_mesh():
 			
 			var new_nav_region2d = NavigationRegion2D.new()
 			new_nav_region2d.navigation_polygon = new_nav_mesh
+			new_nav_region2d.navigation_layers = 2
 			new_nav_region2d.bake_navigation_polygon()
 			region.add_child(new_nav_region2d)
 			

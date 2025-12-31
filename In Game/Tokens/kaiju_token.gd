@@ -1,41 +1,37 @@
 extends Control
+class_name KaijuToken
 
 signal hovered
 signal hover_stopped
 signal left_clicked
 signal right_clicked
+signal selected
+signal unselected
 
 @export var pin_click_mask : Texture2D
 var pin_click_mask_image : Image
 
-@export var pathing_line : PathingLine
-var selected : bool = false
+var currently_selected : bool = false
 
 func _ready():
 	pin_click_mask_image = pin_click_mask.get_image()
-
-func _process(delta):
-	if selected:
-		pathing_line.source = Vector2(175.0,417.0)
-		pathing_line.target = get_local_mouse_position()
 
 func on_hovered():
 	self.scale = Vector2(0.35,0.35)
 	emit_signal("hovered")
 
 func on_stop_hovered():
-	if selected == false:
+	if currently_selected == false:
 		self.scale = Vector2(0.25,0.25)
 	emit_signal("hover_stopped")
 
 func get_selected():
-	selected = true
-	pathing_line.visible = true
+	currently_selected = true
+	emit_signal("selected")
 
 func get_unselected():
-	pathing_line.visible = false
-	selected = false
-
+	currently_selected = false
+	emit_signal("unselected")
 
 func _gui_input(event):
 	if event is InputEventMouseButton:

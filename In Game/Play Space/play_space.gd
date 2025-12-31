@@ -1,5 +1,7 @@
 extends Control
 
+@export var pathing_line_scene : PackedScene
+
 @export var world_map : Control
 var region_map : WorldMap
 

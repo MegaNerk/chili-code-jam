@@ -2,7 +2,5 @@
 
 [ext_resource type="Script" uid="uid://c0d42msux4pbw" path="res://In Game/Game Logic/Events/Event Director/event_director.gd" id="1_13vmq"]
 
-[node name="EventDirector" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[node name="EventDirector" type="Node"]
 script = ExtResource("1_13vmq")

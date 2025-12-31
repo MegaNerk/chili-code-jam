@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bl4r6wfexlbo3"]
+
+[ext_resource type="Script" uid="uid://24mfyv4gk5hu" path="res://In Game/Game Logic/Cities/City Director/city_director.gd" id="1_d6mif"]
+
+[node name="CityDirector" type="Node"]
+script = ExtResource("1_d6mif")

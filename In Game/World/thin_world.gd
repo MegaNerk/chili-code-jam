@@ -326,6 +326,7 @@ func destroy_navigation_mesh():
 func generate_navigation_mesh():
 	print("Attempting Generation")
 	for region in get_child_SBS2D(self):
+		region.set_process_internal(true)
 		print(region)
 		if region.navigation_region == null:
 			print("Generating Mesh for ", region)
@@ -339,4 +340,3 @@ func generate_navigation_mesh():
 			new_nav_region2d.navigation_layers = 2
 			new_nav_region2d.bake_navigation_polygon()
 			region.add_child(new_nav_region2d)
-			

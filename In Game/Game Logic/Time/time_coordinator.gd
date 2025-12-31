@@ -6,7 +6,7 @@ signal new_date_calculated(date_string : String)
 
 @export var ticks_per_day : int = 8
 
-var current_date_string : String = "01/01/2026"
+var current_date_string : String
 
 var current_speed : int = 0
 var speed_settings : Dictionary = { #Dict of speed settings, value is days per second
@@ -45,6 +45,11 @@ var elapsed_days : int = 0
 
 var elapsed_real_seconds : float
 var elapsed_ticks : int
+
+func _ready():
+	update_text()
+	SETTINGS.settings_updated.connect(update_text)
+
 func _process(delta):
 	if current_speed == 0:
 		return
@@ -96,5 +101,11 @@ func update_text():
 		day_string = "0" + day_string
 	if len(month_string) == 1:
 		month_string = "0" + month_string
-	current_date_string = day_string+"/"+month_string+"/"+year_string
+	match SETTINGS.settings_data["region"]["date_format"]:
+		SETTINGS.DATE_FORMATS.US:
+			current_date_string = month_string+"/"+day_string+"/"+year_string
+		SETTINGS.DATE_FORMATS.EU:
+			current_date_string = day_string+"/"+month_string+"/"+year_string
+		SETTINGS.DATE_FORMATS.IS:
+			current_date_string = year_string+"/"+month_string+"/"+day_string
 	emit_signal("new_date_calculated", current_date_string)

@@ -22,4 +22,3 @@ func date_changed(new_date_string):
 
 func on_tick_passed():
 	ticks_elapsed += 1
-	print(str(ticks_elapsed))

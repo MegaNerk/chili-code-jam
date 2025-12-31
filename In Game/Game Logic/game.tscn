@@ -35,3 +35,4 @@ layout_mode = 1
 
 [connection signal="speed_toggled" from="InGameUI" to="." method="change_speed"]
 [connection signal="new_date_calculated" from="TimeCoordinator" to="." method="date_changed"]
+[connection signal="tick_passed" from="TimeCoordinator" to="." method="on_tick_passed"]

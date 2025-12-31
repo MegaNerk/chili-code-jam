@@ -1,7 +1,10 @@
 extends Node
 class_name TimeCoordinator
 
+signal tick_passed
 signal new_date_calculated(date_string : String)
+
+@export var ticks_per_day : int = 8
 
 var current_date_string : String = "01/01/2026"
 
@@ -41,15 +44,22 @@ var elapsed_months : int = 0
 var elapsed_days : int = 0
 
 var elapsed_real_seconds : float
+var elapsed_ticks : int
 func _process(delta):
 	if current_speed == 0:
 		return
 	elapsed_real_seconds += delta
-	var tick_time : float = 1.0/speed_settings.get(current_speed,1)
+	var tick_time : float = 1.0/(speed_settings.get(current_speed,1)*ticks_per_day)
 	var safety_check : int = 1
 	while elapsed_real_seconds > tick_time:
-		tick_up_day()
+		elapsed_ticks += 1
+		emit_signal("tick_passed")
 		elapsed_real_seconds -= tick_time
+		assert(safety_check < 10000, "Tick calculation far exceeded expected value. Did you make an infinite loop?")
+		safety_check += 1
+	while elapsed_ticks >= ticks_per_day:
+		tick_up_day()
+		elapsed_ticks -= ticks_per_day
 		assert(safety_check < 10000, "Tick calculation far exceeded expected value. Did you make an infinite loop?")
 		safety_check += 1
 	update_text()

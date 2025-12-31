@@ -6,6 +6,8 @@ extends Control
 @export var time_coordinator : TimeCoordinator
 @export var news_reporter : NewsReporter
 
+var ticks_elapsed : int
+
 var active_kaiju : Array[Kaiju]
 var active_buildings : Array[Building]
 
@@ -17,3 +19,7 @@ func change_speed(new_speed):
 
 func date_changed(new_date_string):
 	game_ui.update_date_display(new_date_string)
+
+func on_tick_passed():
+	ticks_elapsed += 1
+	print(str(ticks_elapsed))

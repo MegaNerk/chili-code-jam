@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dp3feowf0ysof"]
+
+[ext_resource type="Script" uid="uid://dq8wltpr0j8jt" path="res://In Game/Game Logic/News/News Reporter/news_reporter.gd" id="1_6dybj"]
+
+[node name="NewsReporter" type="Node"]
+script = ExtResource("1_6dybj")

@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dxqyi75pkbmuv" path="res://In Game/in_game_ui.gd" id="1_8xadi"]
 [ext_resource type="PackedScene" uid="uid://xaiun7kdu0rx" path="res://In Game/Play Space/play_space.tscn" id="3_gonuj"]
 
-[node name="InGameUI" type="Control" node_paths=PackedStringArray("playspace", "hovered_country_label")]
+[node name="InGameUI" type="Control" node_paths=PackedStringArray("speed_toggle", "playspace", "hovered_country_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,6 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_8xadi")
+speed_toggle = NodePath("VBoxContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/SpeedToggle")
 playspace = NodePath("VBoxContainer/HBoxContainer2/PlaySpace")
 hovered_country_label = NodePath("VBoxContainer/HBoxContainer2/PlaySpace/Panel/MarginContainer/HoveredCountry")
 
@@ -80,7 +81,7 @@ custom_minimum_size = Vector2(5, 0)
 layout_mode = 2
 color = Color(0.617455, 0.617455, 0.617455, 1)
 
-[node name="TabBar" type="TabBar" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer"]
+[node name="SpeedToggle" type="TabBar" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 current_tab = 0
@@ -180,4 +181,5 @@ layout_mode = 2
 text = "Return to Menu"
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/Button" to="." method="settings_pressed"]
+[connection signal="tab_changed" from="VBoxContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/SpeedToggle" to="." method="on_speed_toggled"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer3/Panel/MarginContainer/HBoxContainer/Button" to="." method="return_to_main_menu"]

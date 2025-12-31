@@ -12,8 +12,8 @@ var active_buildings : Array[Building]
 var food : int
 var fear : int
 
-func _ready():
-	game_ui.speed_toggled.connect(change_speed)
-
 func change_speed(new_speed):
-	print(str(new_speed))
+	time_coordinator.current_speed = new_speed
+
+func date_changed(new_date_string):
+	game_ui.update_date_display(new_date_string)

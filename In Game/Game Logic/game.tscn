@@ -32,3 +32,6 @@ layout_mode = 1
 [node name="TimeCoordinator" parent="." instance=ExtResource("5_yyf0g")]
 
 [node name="NewsReporter" parent="." instance=ExtResource("6_m33vx")]
+
+[connection signal="speed_toggled" from="InGameUI" to="." method="change_speed"]
+[connection signal="new_date_calculated" from="TimeCoordinator" to="." method="date_changed"]

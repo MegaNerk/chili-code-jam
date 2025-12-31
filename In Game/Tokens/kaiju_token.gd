@@ -13,6 +13,8 @@ var pin_click_mask_image : Image
 
 var currently_selected : bool = false
 
+var my_kaiju : Kaiju
+
 func _ready():
 	pin_click_mask_image = pin_click_mask.get_image()
 

@@ -7,6 +7,7 @@ signal speed_toggled(new_speed)
 
 @export var playspace : Control
 @export var hovered_country_label : Label
+@export var date_display : Label
 
 func _ready():
 	playspace.hovered_country.connect(change_hovered_country_name)
@@ -23,3 +24,6 @@ func settings_pressed():
 
 func return_to_main_menu():
 	STATE.go_to_state(STATE.GAME_STATE.MAIN_MENU)
+
+func update_date_display(new_date : String):
+	date_display.text = new_date

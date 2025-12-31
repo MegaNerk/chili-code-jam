@@ -86,7 +86,7 @@ fill_to = Vector2(0.892115, 0.96797)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1vgfy"]
 size = Vector2(53, 18)
 
-[node name="Game" type="Node2D"]
+[node name="Game2" type="Node2D"]
 script = ExtResource("1_eow3j")
 
 [node name="Rectangle" type="Node2D" parent="." node_paths=PackedStringArray("polygon", "collision_object", "clip_paths")]

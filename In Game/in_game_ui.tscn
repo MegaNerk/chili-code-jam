@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8eek86ob1fl8"]
+[gd_scene load_steps=5 format=3 uid="uid://bqw1k7ion22yk"]
 
 [ext_resource type="PackedScene" uid="uid://28y2qjjidciy" path="res://UI/Scrolling Label/scrolling_label.tscn" id="1_7rmum"]
-[ext_resource type="Script" uid="uid://dxqyi75pkbmuv" path="res://In Game/in_game_ui.gd" id="1_8xadi"]
+[ext_resource type="Script" path="res://In Game/in_game_ui.gd" id="1_8xadi"]
 [ext_resource type="PackedScene" uid="uid://pk4o0kx5sjqu" path="res://In Game/World/world_map.tscn" id="1_gbjh3"]
 [ext_resource type="PackedScene" uid="uid://cj7fg3iyi7kow" path="res://In Game/Tokens/kaiju_token.tscn" id="4_vtst0"]
 

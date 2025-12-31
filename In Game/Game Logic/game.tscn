@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://mav5vr5mxya7"]
 
-[ext_resource type="PackedScene" uid="uid://c8eek86ob1fl8" path="res://In Game/in_game_ui.tscn" id="1_6gr50"]
-[ext_resource type="Script" uid="uid://bdeqd6lha3yn8" path="res://In Game/Game Logic/game.gd" id="1_dji84"]
+[ext_resource type="PackedScene" uid="uid://bqw1k7ion22yk" path="res://In Game/in_game_ui.tscn" id="1_6gr50"]
+[ext_resource type="Script" path="res://In Game/Game Logic/game.gd" id="1_dji84"]
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -10,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_dji84")
 
 [node name="InGameUI" parent="." instance=ExtResource("1_6gr50")]

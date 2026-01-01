@@ -21,18 +21,20 @@ var my_kaiju : Kaiju
 
 func _ready():
 	pin_click_mask_image = pin_click_mask.get_image()
+	nav_agent.link_reached.connect(_traveled_water_way)
+	
+func _traveled_water_way():
+	print("A KAIJU JUST USED A FRICKEN WATER WAY")
 
 func _physics_process(delta):
-	if nav_agent.is_target_reachable():
+	if nav_agent.is_target_reachable() and not nav_agent.is_navigation_finished():
 		print("Moving")
 		var next_point = nav_agent.get_next_path_position()
 		var direction = char_body.global_position.direction_to(next_point)
 		char_body.velocity = direction * speed
 	else:
 		char_body.velocity = Vector2.ZERO
-		#velocity = Vector2.ZERO # Stop if no path
-
-	#move_and_slide()
+	char_body.move_and_slide()
 
 func on_hovered():
 	self.scale = Vector2(1.1,1.1)

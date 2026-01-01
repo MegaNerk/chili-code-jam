@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8eek86ob1fl8"]
+[gd_scene load_steps=5 format=3 uid="uid://c8eek86ob1fl8"]
 
 [ext_resource type="PackedScene" uid="uid://28y2qjjidciy" path="res://UI/Scrolling Label/scrolling_label.tscn" id="1_7rmum"]
 [ext_resource type="Script" uid="uid://dxqyi75pkbmuv" path="res://In Game/in_game_ui.gd" id="1_8xadi"]
 [ext_resource type="PackedScene" uid="uid://xaiun7kdu0rx" path="res://In Game/Play Space/play_space.tscn" id="3_gonuj"]
+[ext_resource type="PackedScene" uid="uid://dq7cs4vswni1s" path="res://In Game/UI/Compendium Button/compendium_button.tscn" id="4_uv7ro"]
 
 [node name="InGameUI" type="Control" node_paths=PackedStringArray("speed_toggle", "playspace", "hovered_country_label", "date_display")]
 layout_mode = 3
@@ -156,6 +157,19 @@ text = "Kaiju"
 [node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer2/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Buildings"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer2/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/HBoxContainer2/Panel/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 2
+
+[node name="CompendiumButton" parent="VBoxContainer/HBoxContainer2/Panel/MarginContainer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("4_uv7ro")]
+layout_mode = 2
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2

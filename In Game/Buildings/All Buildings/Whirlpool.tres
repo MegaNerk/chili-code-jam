@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Building_Res" load_steps=3 format=3 uid="uid://1o3c70oik55a"]
+
+[ext_resource type="Script" uid="uid://cpt68otvwpoo7" path="res://In Game/Buildings/building_res.gd" id="1_04rsx"]
+[ext_resource type="Texture2D" uid="uid://dp11gv5mtfkg8" path="res://Assets/Art/Buildings/WaterBuilding.png" id="1_khxk3"]
+
+[resource]
+script = ExtResource("1_04rsx")
+name = "Whirlpool"
+art = ExtResource("1_khxk3")
+metadata/_custom_type_script = "uid://cpt68otvwpoo7"

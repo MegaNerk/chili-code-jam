@@ -33,7 +33,7 @@ func _gui_input(event):
 				print(selected_kaiju.global_position)
 				print(get_global_mouse_position())
 				selected_kaiju.nav_agent.target_position = get_global_mouse_position()
-
+				
 func hovered_region(region, country_name):
 	emit_signal("hovered_country", country_name)
 

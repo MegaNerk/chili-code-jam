@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Kaiju
 
-@export var kaiju_resource : Kaiju_Res = preload("res://In Game/Kaiju/All Kaiju/Octeyepuss.tres")
+@export var kaiju_resource : Kaiju_Res
 
 @onready var token : KaijuToken = $KaijuToken
 @onready var nav_agent : NavigationAgent2D = $NavigationAgent2D

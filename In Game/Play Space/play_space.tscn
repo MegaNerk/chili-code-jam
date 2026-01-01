@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://cqnn0f1h71bbh" path="res://In Game/Play Space/play_space.gd" id="1_htetc"]
 [ext_resource type="PackedScene" uid="uid://yd4fl14r3igm" path="res://In Game/World/world_map.tscn" id="2_6qrn4"]
 [ext_resource type="PackedScene" uid="uid://c0nx0vn58cnbw" path="res://In Game/Tokens/Pathing Line/pathing_line.tscn" id="2_ii5wf"]
-
 [ext_resource type="PackedScene" uid="uid://bor4p5ssgy1t8" path="res://In Game/Kaiju/Kaiju_Unit.tscn" id="4_5te80"]
 [ext_resource type="Script" uid="uid://ci4fteskttb2v" path="res://In Game/Play Space/water_way.gd" id="5_xi8vn"]
 [ext_resource type="Resource" uid="uid://dvtet6bx1o47f" path="res://In Game/Kaiju/All Kaiju/Dillo.tres" id="6_5te80"]

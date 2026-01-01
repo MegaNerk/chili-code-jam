@@ -3031,7 +3031,6 @@ curve = SubResource("Curve2D_cpgkq")
 update_curve_at_runtime = true
 arc_list = SubResource("Resource_u5oun")
 lock_assigned_shapes = false
-metadata/_select_hint_ = true
 
 [node name="Fill" type="Polygon2D" parent="br"]
 color = Color(0.746956, 0.734516, 0.527936, 1)
@@ -3132,6 +3131,7 @@ curve = SubResource("Curve2D_82cd0")
 update_curve_at_runtime = true
 arc_list = SubResource("Resource_37b4q")
 lock_assigned_shapes = false
+metadata/_select_hint_ = true
 
 [node name="Fill" type="Polygon2D" parent="ca21"]
 color = Color(0.720226, 0.671868, 0.545764, 1)
@@ -6732,6 +6732,7 @@ curve = SubResource("Curve2D_6erqc")
 update_curve_at_runtime = true
 arc_list = SubResource("Resource_4c8fj")
 lock_assigned_shapes = false
+metadata/_select_hint_ = true
 
 [node name="Fill" type="Polygon2D" parent="us_1_"]
 color = Color(0.730809, 0.747088, 0.46448, 1)

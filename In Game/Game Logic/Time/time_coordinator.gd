@@ -58,7 +58,7 @@ func _process(delta):
 	var safety_check : int = 1
 	while elapsed_real_seconds > tick_time:
 		elapsed_ticks += 1
-		tick_passed.emit(delta,current_speed)
+		tick_passed.emit()
 		elapsed_real_seconds -= tick_time
 		assert(safety_check < 10000, "Tick calculation far exceeded expected value. Did you make an infinite loop?")
 		safety_check += 1

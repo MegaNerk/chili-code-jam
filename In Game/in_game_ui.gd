@@ -39,6 +39,10 @@ func on_kaiju_button_pressed():
 func on_buildings_button_pressed():
 	building_compendium.visible = !building_compendium.visible
 
-func on_compendium_entry_selected(selected_entry : Unit_Res):
+func on_compendium_entry_selected(selected_entry):
 	mouse_hover_image.visible = true
 	mouse_hover_image.texture = selected_entry.art
+
+func prep_compendiums(kaiju_resources : Array[Kaiju_Res], building_resources : Array[Building_Res]):
+	kaiju_compendium.load_multiple_entries(kaiju_resources)
+	building_compendium.load_multiple_entries(building_resources)

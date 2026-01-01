@@ -8,7 +8,7 @@ signal entry_selected(entry_ref : Unit_Res)
 
 var my_compendium_buttons : Array[CompendiumButton]
 
-func load_multiple_entries(new_entries : Array[Unit_Res]):
+func load_multiple_entries(new_entries : Array):
 	for entry in new_entries:
 		load_new_entry(entry)
 

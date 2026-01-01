@@ -11,8 +11,9 @@ signal entry_selected(entry_ref : Unit_Res)
 			$Label.text = this_entry.name
 
 func _ready():
-	$TextureRect.texture = this_entry.art
-	$Label.text = this_entry.name
+	if this_entry:
+		$TextureRect.texture = this_entry.art
+		$Label.text = this_entry.name
 
 func on_clicked():
 	emit_signal("entry_selected", this_entry)

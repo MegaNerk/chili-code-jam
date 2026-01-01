@@ -293,7 +293,7 @@ func _ready():
 			new_nav_region2d.navigation_polygon = new_nav_mesh
 			new_nav_region2d.navigation_layers = 2
 			new_nav_region2d.enter_cost = 10
-			new_nav_region2d.travel_cost = 2
+			new_nav_region2d.travel_cost = 4
 			new_nav_region2d.bake_navigation_polygon()
 			region.add_child(new_nav_region2d)
 	map_setup_complete.emit()

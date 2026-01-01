@@ -1,4 +1,5 @@
 extends Control
+class_name Game
 
 var kaiju_res_path : String = "res://In Game/Kaiju/All Kaiju/"
 var buildings_res_path : String = "res://In Game/Buildings/All Buildings/"

@@ -22,7 +22,7 @@ func _update_playspace(delta, speed):
 	
 func _update_kaiju_locations(delta, speed):
 	for kaiju in kaiju_tokens:
-		kaiju._update_location()
+		kaiju._update_speed()
 
 
 func _gui_input(event):

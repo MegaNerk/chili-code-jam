@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Kaiju_Res" load_steps=3 format=3 uid="uid://dvtet6bx1o47f"]
+
+[ext_resource type="Script" uid="uid://cdlyy6cua2bwp" path="res://In Game/Kaiju/kaiju_res.gd" id="1_cneas"]
+[ext_resource type="Texture2D" uid="uid://dm5w4k7h2cxej" path="res://Assets/Art/Kaiju/Dillo.png" id="1_si5wg"]
+
+[resource]
+script = ExtResource("1_cneas")
+type = 0
+base_hp = 0
+max_hunger = 0
+base_damage = 0
+land_speed = 0.0
+water_speed = 0.0
+name = "Dillo"
+art = ExtResource("1_si5wg")
+metadata/_custom_type_script = "uid://cdlyy6cua2bwp"

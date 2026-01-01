@@ -3,9 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://28y2qjjidciy" path="res://UI/Scrolling Label/scrolling_label.tscn" id="1_7rmum"]
 [ext_resource type="Script" uid="uid://dxqyi75pkbmuv" path="res://In Game/in_game_ui.gd" id="1_8xadi"]
 [ext_resource type="PackedScene" uid="uid://xaiun7kdu0rx" path="res://In Game/Play Space/play_space.tscn" id="3_gonuj"]
-[ext_resource type="PackedScene" uid="uid://dq7cs4vswni1s" path="res://In Game/UI/Compendium Button/compendium_button.tscn" id="4_uv7ro"]
+[ext_resource type="PackedScene" uid="uid://fyrm755wgcmm" path="res://In Game/UI/Compendium/in_game_compendium.tscn" id="4_uv7ro"]
 
-[node name="InGameUI" type="Control" node_paths=PackedStringArray("speed_toggle", "playspace", "hovered_country_label", "date_display")]
+[node name="InGameUI" type="Control" node_paths=PackedStringArray("speed_toggle", "playspace", "hovered_country_label", "date_display", "kaiju_compendium", "building_compendium")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,6 +18,8 @@ speed_toggle = NodePath("VBoxContainer/HBoxContainer/Panel/MarginContainer/HBoxC
 playspace = NodePath("VBoxContainer/HBoxContainer2/PlaySpace")
 hovered_country_label = NodePath("VBoxContainer/HBoxContainer2/PlaySpace/Panel/MarginContainer/HoveredCountry")
 date_display = NodePath("VBoxContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/DateDisplay")
+kaiju_compendium = NodePath("VBoxContainer/HBoxContainer2/Panel/MarginContainer/VBoxContainer/KaijuComp")
+building_compendium = NodePath("VBoxContainer/HBoxContainer2/Panel/MarginContainer/VBoxContainer/BuildingComp")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -150,25 +152,20 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2/Panel/MarginContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer2/Panel/MarginContainer/VBoxContainer"]
+[node name="KaijuButton" type="Button" parent="VBoxContainer/HBoxContainer2/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Kaiju"
 
-[node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer2/Panel/MarginContainer/VBoxContainer"]
+[node name="KaijuComp" parent="VBoxContainer/HBoxContainer2/Panel/MarginContainer/VBoxContainer" instance=ExtResource("4_uv7ro")]
+visible = false
+layout_mode = 2
+
+[node name="BuildingsButton" type="Button" parent="VBoxContainer/HBoxContainer2/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Buildings"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer2/Panel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="GridContainer" type="GridContainer" parent="VBoxContainer/HBoxContainer2/Panel/MarginContainer/VBoxContainer/ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-columns = 2
-
-[node name="CompendiumButton" parent="VBoxContainer/HBoxContainer2/Panel/MarginContainer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("4_uv7ro")]
+[node name="BuildingComp" parent="VBoxContainer/HBoxContainer2/Panel/MarginContainer/VBoxContainer" instance=ExtResource("4_uv7ro")]
+visible = false
 layout_mode = 2
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
@@ -197,4 +194,6 @@ text = "Return to Menu"
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/Button" to="." method="settings_pressed"]
 [connection signal="tab_changed" from="VBoxContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/SpeedToggle" to="." method="on_speed_toggled"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/Panel/MarginContainer/VBoxContainer/KaijuButton" to="." method="on_kaiju_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/Panel/MarginContainer/VBoxContainer/BuildingsButton" to="." method="on_buildings_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer3/Panel/MarginContainer/HBoxContainer/Button" to="." method="return_to_main_menu"]

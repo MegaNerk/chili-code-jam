@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Kaiju_Res" load_steps=3 format=3 uid="uid://d3mynnrafvu6s"]
+
+[ext_resource type="Script" uid="uid://cdlyy6cua2bwp" path="res://In Game/Kaiju/kaiju_res.gd" id="1_bv3il"]
+[ext_resource type="Texture2D" uid="uid://o7t643alvti" path="res://Assets/Art/Kaiju/LegallyNotGodzilla.png" id="1_pk4dg"]
+
+[resource]
+script = ExtResource("1_bv3il")
+type = 0
+base_hp = 0
+max_hunger = 0
+base_damage = 0
+land_speed = 0.0
+water_speed = 0.0
+name = "Rex"
+art = ExtResource("1_pk4dg")
+metadata/_custom_type_script = "uid://cdlyy6cua2bwp"

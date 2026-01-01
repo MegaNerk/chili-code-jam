@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Building_Res" load_steps=3 format=3 uid="uid://chxhhh2t72de"]
+
+[ext_resource type="Texture2D" uid="uid://dds163upgev54" path="res://Assets/Art/Buildings/LandBuilding.png" id="1_2wvfe"]
+[ext_resource type="Script" uid="uid://cpt68otvwpoo7" path="res://In Game/Buildings/building_res.gd" id="1_v0rmr"]
+
+[resource]
+script = ExtResource("1_v0rmr")
+name = "Volcano"
+art = ExtResource("1_2wvfe")
+metadata/_custom_type_script = "uid://cpt68otvwpoo7"

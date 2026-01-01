@@ -9,6 +9,9 @@ signal speed_toggled(new_speed)
 @export var hovered_country_label : Label
 @export var date_display : Label
 
+@export var kaiju_compendium : Compendium
+@export var building_compendium : Compendium
+
 func _ready():
 	playspace.hovered_country.connect(change_hovered_country_name)
 	
@@ -27,3 +30,9 @@ func return_to_main_menu():
 
 func update_date_display(new_date : String):
 	date_display.text = new_date
+
+func on_kaiju_button_pressed():
+	kaiju_compendium.visible = !kaiju_compendium.visible
+
+func on_buildings_button_pressed():
+	building_compendium.visible = !building_compendium.visible

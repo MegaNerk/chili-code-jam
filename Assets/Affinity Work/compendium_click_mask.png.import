@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://bouf61ihlmlq1"
+path="res://.godot/imported/compendium_click_mask.png-4af5de05e7431c9f903892a05180bbb8.res"
+
+[deps]
+
+source_file="res://Assets/Affinity Work/compendium_click_mask.png"
+dest_files=["res://.godot/imported/compendium_click_mask.png-4af5de05e7431c9f903892a05180bbb8.res"]
+
+[params]
+
+create_from=0
+threshold=0.5

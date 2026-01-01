@@ -14,6 +14,9 @@ signal speed_toggled(new_speed)
 
 @export var mouse_hover_image : MouseHoverImage
 
+@export var food_stockpile : FoodStockpile
+@export var fear_stockpile : FearStockpile
+
 func _ready():
 	playspace.hovered_country.connect(change_hovered_country_name)
 	
@@ -46,3 +49,7 @@ func on_compendium_entry_selected(selected_entry):
 func prep_compendiums(kaiju_resources : Array[Kaiju_Res], building_resources : Array[Building_Res]):
 	kaiju_compendium.load_multiple_entries(kaiju_resources)
 	building_compendium.load_multiple_entries(building_resources)
+
+func update_resource_counts(food_count, fear_count):
+	food_stockpile.update_count(food_count)
+	fear_stockpile.update_score(fear_count)

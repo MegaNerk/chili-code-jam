@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3p866pbiifc5"]
+
+[ext_resource type="Script" uid="uid://bix52tjtmj70l" path="res://In Game/UI/Resource Stockpiles/Fear Bar/fear_bar.gd" id="1_0ojg4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f3clt"]
+bg_color = Color(0.603922, 0.172549, 0.188235, 1)
+
+[node name="FearBar" type="Control" node_paths=PackedStringArray("fear_count_bar", "fear_count")]
+custom_minimum_size = Vector2(300, 60)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_0ojg4")
+fear_count_bar = NodePath("HBoxContainer/FearCountBar")
+fear_count = NodePath("HBoxContainer/FearCountBar/FearCount")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Fear"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FearCountBar" type="ProgressBar" parent="HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/fill = SubResource("StyleBoxFlat_f3clt")
+rounded = true
+show_percentage = false
+
+[node name="FearCount" type="Label" parent="HBoxContainer/FearCountBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0/100"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -18,12 +18,17 @@ var active_kaiju : Array[Kaiju]
 var active_buildings : Array[Building]
 
 var food : int
-var fear : int
+var fear : int:
+	set(value):
+		fear = min(value, 100)
 
 func _ready():
 	load_all_kaiju_resources()
 	load_all_building_resources()
 	game_ui.prep_compendiums(all_kaiju_res, all_building_res)
+
+func _process(delta):
+	game_ui.update_resource_counts(food,fear)
 
 func change_speed(new_speed):
 	time_coordinator.current_speed = new_speed
@@ -33,6 +38,7 @@ func date_changed(new_date_string):
 
 func on_tick_passed():
 	ticks_elapsed += 1
+	food += 1
 
 func load_all_kaiju_resources():
 	var kaiju_dir : DirAccess = DirAccess.open(kaiju_res_path)

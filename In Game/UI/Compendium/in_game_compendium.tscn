@@ -1,15 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://fyrm755wgcmm"]
+[gd_scene load_steps=3 format=3 uid="uid://fyrm755wgcmm"]
 
 [ext_resource type="Script" uid="uid://gy76du5flbbh" path="res://In Game/UI/Compendium/in_game_compendium.gd" id="1_v80du"]
 [ext_resource type="PackedScene" uid="uid://dq7cs4vswni1s" path="res://In Game/UI/Compendium/Compendium Button/compendium_button.tscn" id="2_mgwcp"]
-[ext_resource type="Resource" uid="uid://chxhhh2t72de" path="res://In Game/Buildings/All Buildings/Volcano.tres" id="3_gxl38"]
-[ext_resource type="Resource" uid="uid://1o3c70oik55a" path="res://In Game/Buildings/All Buildings/Whirlpool.tres" id="4_leg3d"]
-[ext_resource type="Resource" uid="uid://d3mynnrafvu6s" path="res://In Game/Kaiju/All Kaiju/Rex.tres" id="5_s0pm5"]
-[ext_resource type="Resource" uid="uid://dvtet6bx1o47f" path="res://In Game/Kaiju/All Kaiju/Dillo.tres" id="6_seeio"]
-[ext_resource type="Resource" uid="uid://d14ocefsypruy" path="res://In Game/Kaiju/All Kaiju/Drillver.tres" id="7_paqq8"]
-[ext_resource type="Resource" uid="uid://c4rwe3yf2axln" path="res://In Game/Kaiju/All Kaiju/Octeyepuss.tres" id="8_grcet"]
-[ext_resource type="Resource" uid="uid://diygsy4vklm7d" path="res://In Game/Kaiju/All Kaiju/Puker.tres" id="9_cu7gx"]
-[ext_resource type="Resource" uid="uid://cycsfiqx4afuc" path="res://In Game/Kaiju/All Kaiju/Corona.tres" id="10_seeio"]
 
 [node name="ScrollContainer" type="ScrollContainer" node_paths=PackedStringArray("my_grid")]
 size_flags_vertical = 3
@@ -22,35 +14,3 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 2
-
-[node name="CompendiumButton" parent="GridContainer" instance=ExtResource("2_mgwcp")]
-layout_mode = 2
-this_entry = ExtResource("3_gxl38")
-
-[node name="CompendiumButton2" parent="GridContainer" instance=ExtResource("2_mgwcp")]
-layout_mode = 2
-this_entry = ExtResource("4_leg3d")
-
-[node name="CompendiumButton3" parent="GridContainer" instance=ExtResource("2_mgwcp")]
-layout_mode = 2
-this_entry = ExtResource("5_s0pm5")
-
-[node name="CompendiumButton4" parent="GridContainer" instance=ExtResource("2_mgwcp")]
-layout_mode = 2
-this_entry = ExtResource("6_seeio")
-
-[node name="CompendiumButton5" parent="GridContainer" instance=ExtResource("2_mgwcp")]
-layout_mode = 2
-this_entry = ExtResource("7_paqq8")
-
-[node name="CompendiumButton6" parent="GridContainer" instance=ExtResource("2_mgwcp")]
-layout_mode = 2
-this_entry = ExtResource("8_grcet")
-
-[node name="CompendiumButton7" parent="GridContainer" instance=ExtResource("2_mgwcp")]
-layout_mode = 2
-this_entry = ExtResource("9_cu7gx")
-
-[node name="CompendiumButton8" parent="GridContainer" instance=ExtResource("2_mgwcp")]
-layout_mode = 2
-this_entry = ExtResource("10_seeio")

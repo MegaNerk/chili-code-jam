@@ -12,6 +12,8 @@ signal speed_toggled(new_speed)
 @export var kaiju_compendium : Compendium
 @export var building_compendium : Compendium
 
+@export var mouse_hover_image : MouseHoverImage
+
 func _ready():
 	playspace.hovered_country.connect(change_hovered_country_name)
 	
@@ -36,3 +38,7 @@ func on_kaiju_button_pressed():
 
 func on_buildings_button_pressed():
 	building_compendium.visible = !building_compendium.visible
+
+func on_compendium_entry_selected(selected_entry : Unit_Res):
+	mouse_hover_image.visible = true
+	mouse_hover_image.texture = selected_entry.art

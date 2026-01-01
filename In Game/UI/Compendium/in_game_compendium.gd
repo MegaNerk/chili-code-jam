@@ -1,6 +1,8 @@
 extends ScrollContainer
 class_name Compendium
 
+signal entry_selected(entry_ref : Unit_Res)
+
 @export var my_grid : GridContainer
 @export var compendium_button_scene : PackedScene
 
@@ -15,3 +17,7 @@ func load_new_entry(new_entry : Unit_Res):
 	var new_button : CompendiumButton = compendium_button_scene.instantiate()
 	my_grid.add_child(new_button)
 	new_button.this_entry = new_entry
+	new_button.entry_selected.connect(on_entry_selected)
+
+func on_entry_selected(selected_entry):
+	emit_signal("entry_selected", selected_entry)

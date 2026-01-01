@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c8eek86ob1fl8"]
+[gd_scene load_steps=8 format=3 uid="uid://c8eek86ob1fl8"]
 
 [ext_resource type="PackedScene" uid="uid://28y2qjjidciy" path="res://UI/Scrolling Label/scrolling_label.tscn" id="1_7rmum"]
 [ext_resource type="Script" uid="uid://dxqyi75pkbmuv" path="res://In Game/in_game_ui.gd" id="1_8xadi"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://pkdog64fb5ml" path="res://In Game/UI/Mouse UX/mouse_hover_image.tscn" id="5_mqyot"]
 [ext_resource type="PackedScene" uid="uid://d3p866pbiifc5" path="res://In Game/UI/Resource Stockpiles/Fear Bar/fear_bar.tscn" id="5_vvcnh"]
 [ext_resource type="PackedScene" uid="uid://ixnj2edc6kfm" path="res://In Game/UI/Resource Stockpiles/Food Stockpile/food_stockpile.tscn" id="6_npoqe"]
-[ext_resource type="PackedScene" uid="uid://p0sqmvbgu5x3" path="res://In Game/Tokens/City/city_token.tscn" id="8_npoqe"]
 
 [node name="InGameUI" type="Control" node_paths=PackedStringArray("speed_toggle", "playspace", "hovered_country_label", "date_display", "kaiju_compendium", "building_compendium", "mouse_hover_image", "food_stockpile", "fear_stockpile")]
 layout_mode = 3
@@ -213,12 +212,6 @@ layout_mode = 2
 [node name="MouseHoverImage" parent="." instance=ExtResource("5_mqyot")]
 visible = false
 layout_mode = 0
-
-[node name="CityToken" parent="." instance=ExtResource("8_npoqe")]
-offset_left = 610.0
-offset_top = -136.0
-offset_right = 960.0
-offset_bottom = 364.0
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/Button" to="." method="settings_pressed"]
 [connection signal="tab_changed" from="VBoxContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/SpeedToggle" to="." method="on_speed_toggled"]

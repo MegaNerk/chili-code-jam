@@ -44,4 +44,4 @@ theme/custom_font="uid://81glmmvrnx64"
 
 [navigation]
 
-2d/default_edge_connection_margin=5.0
+2d/default_edge_connection_margin=2.0

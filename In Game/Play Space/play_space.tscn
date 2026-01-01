@@ -57,6 +57,7 @@ navigation_polygon = SubResource("NavigationPolygon_uxkgn")
 enter_cost = 10.0
 
 [node name="Ocean" type="Polygon2D" parent="NavigationRegion2D"]
+position = Vector2(0, 13.0952)
 texture = SubResource("NoiseTexture2D_ufqt3")
 texture_scale = Vector2(0.205, 0.205)
 polygon = PackedVector2Array(0, 0, 1920, 0, 1920, 1080, 0, 1080)
@@ -76,6 +77,7 @@ scale = Vector2(2.76, 2.76)
 shape = SubResource("CircleShape2D_ii5wf")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="NavigationRegion2D/CharacterBody2D2"]
+navigation_layers = 3
 avoidance_enabled = true
 radius = 45.71
 debug_enabled = true
@@ -84,3 +86,35 @@ debug_enabled = true
 scale = Vector2(1, 1)
 nav_agent = NodePath("../NavigationAgent2D")
 char_body = NodePath("..")
+
+[node name="Panama Canal" type="NavigationLink2D" parent="NavigationRegion2D"]
+position = Vector2(33.3333, 36.9048)
+start_position = Vector2(325, 445.238)
+end_position = Vector2(319.048, 471.429)
+enter_cost = 1.0
+
+[node name="Suez Canal" type="NavigationLink2D" parent="NavigationRegion2D"]
+start_position = Vector2(840.476, 414.286)
+end_position = Vector2(828.571, 386.905)
+enter_cost = 1.0
+
+[node name="Bab al-Mandab Strait" type="NavigationLink2D" parent="NavigationRegion2D"]
+start_position = Vector2(890.476, 485.714)
+end_position = Vector2(876.19, 470.238)
+enter_cost = 1.0
+
+[node name="Strait of Malcala" type="NavigationLink2D" parent="NavigationRegion2D"]
+position = Vector2(304.762, 117.857)
+start_position = Vector2(1153.57, 535.714)
+end_position = Vector2(1122.62, 513.095)
+
+[node name="English Channel" type="NavigationLink2D" parent="NavigationRegion2D"]
+position = Vector2(3.57143, -3.57143)
+start_position = Vector2(702.381, 288.095)
+end_position = Vector2(691.667, 301.19)
+
+[node name="Bosporus Strait" type="NavigationLink2D" parent="NavigationRegion2D"]
+scale = Vector2(1, 1)
+start_position = Vector2(817.857, 336.905)
+end_position = Vector2(792.857, 352.381)
+enter_cost = 1.0

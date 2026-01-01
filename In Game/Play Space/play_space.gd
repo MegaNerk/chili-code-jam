@@ -2,17 +2,15 @@ extends Control
 
 @export var pathing_line_scene : PackedScene
 
-@export var world_map : Control
+@export var world_map : WorldMap
 @export var kaiju_tokens : Array[KaijuToken]
 var selected_kaiju: KaijuToken
-
-var region_map : WorldMap
 
 signal hovered_country(country_name)
 
 func _ready():
-	region_map = world_map.find_child("WorldMap")
-	region_map.hovered_region_changed.connect(hovered_region)
+
+	world_map.hovered_region_changed.connect(hovered_region)
 	for kaiju in kaiju_tokens:
 		kaiju.left_clicked.connect(select_kaiju.bind(kaiju))
 		kaiju.right_clicked.connect(deselect_all_kaiju)
@@ -22,6 +20,9 @@ func _gui_input(event):
 		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 			if selected_kaiju:
 				print("ORDER {name} TO MOVE NOW".format({"name" : selected_kaiju.name}))
+				print(selected_kaiju.global_position)
+				print(get_global_mouse_position())
+				selected_kaiju.nav_agent.target_position = get_global_mouse_position()
 
 
 func hovered_region(region, country_name):

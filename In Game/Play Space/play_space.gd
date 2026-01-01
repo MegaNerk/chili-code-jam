@@ -21,7 +21,7 @@ func _gui_input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 			if selected_kaiju:
-				print("ORDER TO MOVE NOW")
+				print("ORDER {name} TO MOVE NOW".format({"name" : selected_kaiju.name}))
 
 
 func hovered_region(region, country_name):

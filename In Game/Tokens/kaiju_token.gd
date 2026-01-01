@@ -23,10 +23,11 @@ func _ready():
 	pin_click_mask_image = pin_click_mask.get_image()
 	nav_agent.link_reached.connect(_traveled_water_way)
 	
-func _traveled_water_way():
-	print("A KAIJU JUST USED A FRICKEN WATER WAY")
+func _traveled_water_way(details):
+	print("Kaiju {name} used the {waterway}".format({"name" : char_body.name, "waterway" : details.rid}))
 
-func _physics_process(delta):
+func _update_location():
+	print("Test")
 	if nav_agent.is_target_reachable() and not nav_agent.is_navigation_finished():
 		print("Moving")
 		var next_point = nav_agent.get_next_path_position()

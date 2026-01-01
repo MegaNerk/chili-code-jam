@@ -30,6 +30,7 @@ layout_mode = 1
 [node name="CityDirector" parent="." instance=ExtResource("4_61akc")]
 
 [node name="TimeCoordinator" parent="." instance=ExtResource("5_yyf0g")]
+ticks_per_day = 24
 
 [node name="NewsReporter" parent="." instance=ExtResource("6_m33vx")]
 

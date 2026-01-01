@@ -1,0 +1,223 @@
+[gd_scene load_steps=8 format=3 uid="uid://c8eek86ob1fl8"]
+
+[ext_resource type="PackedScene" uid="uid://28y2qjjidciy" path="res://UI/Scrolling Label/scrolling_label.tscn" id="1_7rmum"]
+[ext_resource type="Script" uid="uid://dxqyi75pkbmuv" path="res://In Game/in_game_ui.gd" id="1_8xadi"]
+[ext_resource type="PackedScene" uid="uid://xaiun7kdu0rx" path="res://In Game/Play Space/play_space.tscn" id="3_gonuj"]
+[ext_resource type="PackedScene" uid="uid://fyrm755wgcmm" path="res://In Game/UI/Compendium/in_game_compendium.tscn" id="4_uv7ro"]
+[ext_resource type="PackedScene" uid="uid://pkdog64fb5ml" path="res://In Game/UI/Mouse UX/mouse_hover_image.tscn" id="5_mqyot"]
+[ext_resource type="PackedScene" uid="uid://d3p866pbiifc5" path="res://In Game/UI/Resource Stockpiles/Fear Bar/fear_bar.tscn" id="5_vvcnh"]
+[ext_resource type="PackedScene" uid="uid://ixnj2edc6kfm" path="res://In Game/UI/Resource Stockpiles/Food Stockpile/food_stockpile.tscn" id="6_npoqe"]
+
+[node name="InGameUI" type="Control" node_paths=PackedStringArray("speed_toggle", "playspace", "hovered_country_label", "date_display", "kaiju_compendium", "building_compendium", "mouse_hover_image", "food_stockpile", "fear_stockpile")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_8xadi")
+speed_toggle = NodePath("VBoxContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/SpeedToggle")
+playspace = NodePath("VBoxContainer/HBoxContainer2/PlaySpace")
+hovered_country_label = NodePath("VBoxContainer/HBoxContainer2/PlaySpace/Panel/MarginContainer/HoveredCountry")
+date_display = NodePath("VBoxContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/DateDisplay")
+kaiju_compendium = NodePath("VBoxContainer/HBoxContainer2/Panel/MarginContainer/VBoxContainer/KaijuComp")
+building_compendium = NodePath("VBoxContainer/HBoxContainer2/Panel/MarginContainer/VBoxContainer/BuildingComp")
+mouse_hover_image = NodePath("MouseHoverImage")
+food_stockpile = NodePath("VBoxContainer/HBoxContainer3/Panel/MarginContainer/HBoxContainer/HBoxContainer/FoodStockpile")
+fear_stockpile = NodePath("VBoxContainer/HBoxContainer3/Panel/MarginContainer/HBoxContainer/HBoxContainer/FearBar")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "  Settings  "
+
+[node name="ScrollingLabel" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer" instance=ExtResource("1_7rmum")]
+layout_mode = 2
+size_flags_horizontal = 3
+base_text = "Scrolling text goes here lorem ipsum or something I don't know"
+
+[node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(650, 0)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_right = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="DateDisplay" type="Label" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "01/01/2026"
+
+[node name="Spacer" type="Control" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SpeedToggle" type="TabBar" parent="VBoxContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(414, 0)
+layout_mode = 2
+current_tab = 0
+tab_alignment = 1
+tab_count = 4
+tab_0/title = "Pause"
+tab_1/title = "Slow"
+tab_2/title = "Fast"
+tab_3/title = "Fastest"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PlaySpace" parent="VBoxContainer/HBoxContainer2" node_paths=PackedStringArray("kaiju_tokens") instance=ExtResource("3_gonuj")]
+layout_mode = 2
+kaiju_tokens = []
+
+[node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer2/PlaySpace"]
+custom_minimum_size = Vector2(350, 50)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = -85.0
+offset_right = 390.0
+offset_bottom = -15.0
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer2/PlaySpace/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -11.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="HoveredCountry" type="Label" parent="VBoxContainer/HBoxContainer2/PlaySpace/Panel/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Country"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 9.0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer2/Panel"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="KaijuButton" type="Button" parent="VBoxContainer/HBoxContainer2/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Kaiju"
+
+[node name="KaijuComp" parent="VBoxContainer/HBoxContainer2/Panel/MarginContainer/VBoxContainer" instance=ExtResource("4_uv7ro")]
+visible = false
+layout_mode = 2
+
+[node name="BuildingsButton" type="Button" parent="VBoxContainer/HBoxContainer2/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Buildings"
+
+[node name="BuildingComp" parent="VBoxContainer/HBoxContainer2/Panel/MarginContainer/VBoxContainer" instance=ExtResource("4_uv7ro")]
+visible = false
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer3/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer3/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer3/Panel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Return to Menu"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer3/Panel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="FoodStockpile" parent="VBoxContainer/HBoxContainer3/Panel/MarginContainer/HBoxContainer/HBoxContainer" instance=ExtResource("6_npoqe")]
+layout_mode = 2
+
+[node name="FearBar" parent="VBoxContainer/HBoxContainer3/Panel/MarginContainer/HBoxContainer/HBoxContainer" instance=ExtResource("5_vvcnh")]
+layout_mode = 2
+
+[node name="MouseHoverImage" parent="." instance=ExtResource("5_mqyot")]
+visible = false
+layout_mode = 0
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/Button" to="." method="settings_pressed"]
+[connection signal="tab_changed" from="VBoxContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/SpeedToggle" to="." method="on_speed_toggled"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/Panel/MarginContainer/VBoxContainer/KaijuButton" to="." method="on_kaiju_button_pressed"]
+[connection signal="entry_selected" from="VBoxContainer/HBoxContainer2/Panel/MarginContainer/VBoxContainer/KaijuComp" to="." method="on_compendium_entry_selected"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/Panel/MarginContainer/VBoxContainer/BuildingsButton" to="." method="on_buildings_button_pressed"]
+[connection signal="entry_selected" from="VBoxContainer/HBoxContainer2/Panel/MarginContainer/VBoxContainer/BuildingComp" to="." method="on_compendium_entry_selected"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer3/Panel/MarginContainer/HBoxContainer/Button" to="." method="return_to_main_menu"]

@@ -5,7 +5,7 @@ signal speed_toggled(new_speed)
 
 @export var speed_toggle : TabBar
 
-@export var playspace : Control
+@export var playspace : PlaySpace
 @export var hovered_country_label : Label
 @export var date_display : Label
 
@@ -19,6 +19,9 @@ signal speed_toggled(new_speed)
 
 func _ready():
 	playspace.hovered_country.connect(change_hovered_country_name)
+	
+func _on_game_tick(delta, speed):
+	playspace._update_playspace(delta, speed)
 	
 func change_hovered_country_name(country_name : String):
 	hovered_country_label.text = country_name

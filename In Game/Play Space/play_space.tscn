@@ -37,7 +37,7 @@ noise = SubResource("FastNoiseLite_gl22q")
 [sub_resource type="CircleShape2D" id="CircleShape2D_ii5wf"]
 radius = 4.55315
 
-[node name="PlaySpace" type="Control" node_paths=PackedStringArray("world_map", "kaiju_tokens")]
+[node name="PlaySpace" type="Control" node_paths=PackedStringArray("world_map", "kaiju_tokens", "nav_region")]
 custom_minimum_size = Vector2(1600, 853.35)
 layout_mode = 3
 anchors_preset = 15
@@ -49,7 +49,8 @@ mouse_filter = 1
 script = ExtResource("1_htetc")
 pathing_line_scene = ExtResource("2_ii5wf")
 world_map = NodePath("NavigationRegion2D/WorldMap")
-kaiju_tokens = [NodePath("NavigationRegion2D/CharacterBody2D2/KaijuToken")]
+kaiju_tokens = [NodePath("NavigationRegion2D/Kaiju_1/KaijuToken"), NodePath("NavigationRegion2D/Kaiju_2/KaijuToken")]
+nav_region = NodePath("NavigationRegion2D")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 position = Vector2(0, -2)
@@ -67,56 +68,80 @@ uv = PackedVector2Array(0, 0, 1920, 0, 1920, 1080, 0, 1080)
 [node name="WorldMap" parent="NavigationRegion2D" instance=ExtResource("2_6qrn4")]
 position = Vector2(0, -2)
 
-[node name="CharacterBody2D2" type="CharacterBody2D" parent="NavigationRegion2D"]
+[node name="Kaiju_1" type="CharacterBody2D" parent="NavigationRegion2D"]
 position = Vector2(420, 359.2)
-scale = Vector2(0.21, 0.21)
+scale = Vector2(0.25, 0.25)
 input_pickable = true
 motion_mode = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/CharacterBody2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Kaiju_1"]
 scale = Vector2(2.76, 2.76)
 shape = SubResource("CircleShape2D_ii5wf")
 disabled = true
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="NavigationRegion2D/CharacterBody2D2"]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="NavigationRegion2D/Kaiju_1"]
 target_desired_distance = 3.0
 navigation_layers = 3
 avoidance_enabled = true
 debug_enabled = true
 
-[node name="KaijuToken" parent="NavigationRegion2D/CharacterBody2D2" node_paths=PackedStringArray("nav_agent", "char_body") instance=ExtResource("3_uxkgn")]
+[node name="KaijuToken" parent="NavigationRegion2D/Kaiju_1" node_paths=PackedStringArray("nav_agent", "char_body") instance=ExtResource("3_uxkgn")]
 scale = Vector2(1, 1)
 nav_agent = NodePath("../NavigationAgent2D")
 char_body = NodePath("..")
 
-[node name="Panama Canal" type="NavigationLink2D" parent="NavigationRegion2D"]
+[node name="Kaiju_2" type="CharacterBody2D" parent="NavigationRegion2D"]
+position = Vector2(500, 430)
+scale = Vector2(0.25, 0.25)
+input_pickable = true
+motion_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Kaiju_2"]
+scale = Vector2(2.76, 2.76)
+shape = SubResource("CircleShape2D_ii5wf")
+disabled = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="NavigationRegion2D/Kaiju_2"]
+target_desired_distance = 3.0
+navigation_layers = 3
+avoidance_enabled = true
+debug_enabled = true
+
+[node name="KaijuToken" parent="NavigationRegion2D/Kaiju_2" node_paths=PackedStringArray("nav_agent", "char_body") instance=ExtResource("3_uxkgn")]
+scale = Vector2(1, 1)
+nav_agent = NodePath("../NavigationAgent2D")
+char_body = NodePath("..")
+
+[node name="Water Ways" type="Node2D" parent="NavigationRegion2D"]
+
+[node name="Panama Canal" type="NavigationLink2D" parent="NavigationRegion2D/Water Ways"]
 position = Vector2(33.3333, 36.9048)
 start_position = Vector2(325, 445.238)
 end_position = Vector2(319.048, 471.429)
 enter_cost = 1.0
 script = ExtResource("5_xi8vn")
 
-[node name="Suez Canal" type="NavigationLink2D" parent="NavigationRegion2D"]
+[node name="Suez Canal" type="NavigationLink2D" parent="NavigationRegion2D/Water Ways"]
 start_position = Vector2(840.476, 414.286)
 end_position = Vector2(828.571, 386.905)
 enter_cost = 1.0
 
-[node name="Bab al-Mandab Strait" type="NavigationLink2D" parent="NavigationRegion2D"]
+[node name="Bab al-Mandab Strait" type="NavigationLink2D" parent="NavigationRegion2D/Water Ways"]
 start_position = Vector2(890.476, 485.714)
 end_position = Vector2(876.19, 470.238)
 enter_cost = 1.0
 
-[node name="Strait of Malcala" type="NavigationLink2D" parent="NavigationRegion2D"]
+[node name="Strait of Malcala" type="NavigationLink2D" parent="NavigationRegion2D/Water Ways"]
 position = Vector2(304.762, 117.857)
 start_position = Vector2(851.191, 422.619)
 end_position = Vector2(817.857, 394.048)
 
-[node name="English Channel" type="NavigationLink2D" parent="NavigationRegion2D"]
+[node name="English Channel" type="NavigationLink2D" parent="NavigationRegion2D/Water Ways"]
 position = Vector2(3.57143, -3.57143)
 start_position = Vector2(702.381, 288.095)
 end_position = Vector2(691.667, 301.19)
 
-[node name="Bosporus Strait" type="NavigationLink2D" parent="NavigationRegion2D"]
+[node name="Bosporus Strait" type="NavigationLink2D" parent="NavigationRegion2D/Water Ways"]
 scale = Vector2(0.988911, 1.02527)
 start_position = Vector2(817.857, 336.905)
 end_position = Vector2(792.857, 352.381)

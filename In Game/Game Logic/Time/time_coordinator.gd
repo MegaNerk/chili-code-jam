@@ -1,7 +1,7 @@
 extends Node
 class_name TimeCoordinator
 
-signal tick_passed
+signal tick_passed(delta, speed)
 signal new_date_calculated(date_string : String)
 
 @export var ticks_per_day : int = 8
@@ -58,7 +58,7 @@ func _process(delta):
 	var safety_check : int = 1
 	while elapsed_real_seconds > tick_time:
 		elapsed_ticks += 1
-		emit_signal("tick_passed")
+		tick_passed.emit(delta,current_speed)
 		elapsed_real_seconds -= tick_time
 		assert(safety_check < 10000, "Tick calculation far exceeded expected value. Did you make an infinite loop?")
 		safety_check += 1

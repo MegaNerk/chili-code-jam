@@ -11,7 +11,7 @@ corner_radius_top_right = 200
 corner_radius_bottom_right = 200
 corner_radius_bottom_left = 200
 
-[node name="KaijuToken" type="Control" node_paths=PackedStringArray("nav_agent", "char_body")]
+[node name="KaijuToken" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -175.0
@@ -22,8 +22,6 @@ scale = Vector2(0.25, 0.25)
 pivot_offset = Vector2(175, 417)
 script = ExtResource("1_22w8i")
 pin_click_mask = ExtResource("4_0plto")
-nav_agent = NodePath("")
-char_body = NodePath("")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 clip_children = 2

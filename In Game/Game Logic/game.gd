@@ -26,6 +26,7 @@ func _ready():
 	load_all_kaiju_resources()
 	load_all_building_resources()
 	game_ui.prep_compendiums(all_kaiju_res, all_building_res)
+	time_coordinator.tick_passed.connect(game_ui._on_game_tick)
 
 func _process(delta):
 	game_ui.update_resource_counts(food,fear)

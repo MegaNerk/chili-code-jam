@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cj7fg3iyi7kow"]
 
 [ext_resource type="Texture2D" uid="uid://c0rvare4c155p" path="res://Assets/Affinity Work/Kaiju Token Pin.png" id="1_2xsjq"]
-[ext_resource type="Script" uid="uid://c7bwuhns0858i" path="res://In Game/Tokens/kaiju_token.gd" id="1_22w8i"]
+[ext_resource type="Script" uid="uid://c7bwuhns0858i" path="res://In Game/Tokens/Kaiju/kaiju_token.gd" id="1_22w8i"]
 [ext_resource type="Texture2D" uid="uid://buotobdhyrrc3" path="res://Assets/Art/Kaiju/octopusseye.png" id="1_i4ccb"]
 [ext_resource type="Texture2D" uid="uid://b8dvomlfy1klo" path="res://Assets/Affinity Work/Kaiju Token Pin Click Mask.png" id="4_0plto"]
 

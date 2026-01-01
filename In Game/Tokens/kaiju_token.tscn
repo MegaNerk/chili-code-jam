@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cj7fg3iyi7kow"]
+[gd_scene load_steps=7 format=3 uid="uid://cj7fg3iyi7kow"]
 
 [ext_resource type="Texture2D" uid="uid://c0rvare4c155p" path="res://Assets/Affinity Work/Kaiju Token Pin.png" id="1_2xsjq"]
 [ext_resource type="Script" uid="uid://c7bwuhns0858i" path="res://In Game/Tokens/kaiju_token.gd" id="1_22w8i"]
@@ -11,11 +11,16 @@ corner_radius_top_right = 200
 corner_radius_bottom_right = 200
 corner_radius_bottom_left = 200
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_xie6b"]
+radius = 17.6312
+
 [node name="KaijuToken" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 350.0
-offset_bottom = 500.0
+offset_left = -175.0
+offset_top = -417.0
+offset_right = 175.0
+offset_bottom = 83.0
 scale = Vector2(0.25, 0.25)
 pivot_offset = Vector2(175, 417)
 script = ExtResource("1_22w8i")
@@ -54,6 +59,17 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("1_2xsjq")
 expand_mode = 1
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(175, 417)
+input_pickable = true
+motion_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+scale = Vector2(2.76, 2.76)
+shape = SubResource("CircleShape2D_xie6b")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="CharacterBody2D"]
 
 [connection signal="mouse_entered" from="." to="." method="on_hovered"]
 [connection signal="mouse_exited" from="." to="." method="on_stop_hovered"]

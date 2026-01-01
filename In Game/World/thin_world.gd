@@ -1,4 +1,4 @@
-@tool
+#@tool
 extends Node2D
 class_name WorldMap
 var country_codes = {
@@ -277,7 +277,7 @@ func _ready():
 			region.collision_object.mouse_entered.connect(_update_selected_country.bind(true, region, get_country_name(country[0])))
 			region.collision_object.mouse_exited.connect(_update_selected_country.bind(false, region, get_country_name(country[0])))
 			region.polygon.color = rand_color
-		print(get_country_name(country[0])," ",country.size())
+		#print(get_country_name(country[0])," ",country.size())
 	
 		
 
@@ -312,31 +312,31 @@ func _on_static_body_2d_input_event(viewport, event : InputEvent, shape_idx):
 	var test = event
 	pass # Replace with function body.
 
-@export_tool_button("Destroy Navigation Meshes", "Callable") var naviagtion_mesh_button = destroy_navigation_mesh
-
-func destroy_navigation_mesh():
-	print("Attempting Destruction")
-	for region in get_child_SBS2D(self):
-		for child in region.find_children("*","NavigationRegion2D"):
-			print("Deleting - ", region)
-			child.queue_free()
-			
-@export_tool_button("Generate Navigation Meshes", "Callable") var gen_naviagtion_mesh_button = generate_navigation_mesh	
-	
-func generate_navigation_mesh():
-	print("Attempting Generation")
-	for region in get_child_SBS2D(self):
-		print(region)
-		if region.navigation_region == null:
-			print("Generating Mesh for ", region)
-			var new_nav_mesh = NavigationPolygon.new()
-			new_nav_mesh.add_outline(region.polygon.polygon)
-			new_nav_mesh.agent_radius = 1.0
-			new_nav_mesh.parsed_geometry_type = NavigationPolygon.PARSED_GEOMETRY_STATIC_COLLIDERS
-			
-			var new_nav_region2d = NavigationRegion2D.new()
-			new_nav_region2d.navigation_polygon = new_nav_mesh
-			new_nav_region2d.navigation_layers = 2
-			new_nav_region2d.bake_navigation_polygon()
-			region.add_child(new_nav_region2d)
-			
+#@export_tool_button("Destroy Navigation Meshes", "Callable") var naviagtion_mesh_button = destroy_navigation_mesh
+#
+#func destroy_navigation_mesh():
+	#print("Attempting Destruction")
+	#for region in get_child_SBS2D(self):
+		#for child in region.find_children("*","NavigationRegion2D"):
+			#print("Deleting - ", region)
+			#child.queue_free()
+			#
+#@export_tool_button("Generate Navigation Meshes", "Callable") var gen_naviagtion_mesh_button = generate_navigation_mesh	
+	#
+#func generate_navigation_mesh():
+	#print("Attempting Generation")
+	#for region in get_child_SBS2D(self):
+		#region.set_process_internal(true)
+		#print(region)
+		#if region.navigation_region == null:
+			#print("Generating Mesh for ", region)
+			#var new_nav_mesh = NavigationPolygon.new()
+			#new_nav_mesh.add_outline(region.polygon.polygon)
+			#new_nav_mesh.agent_radius = 1.0
+			#new_nav_mesh.parsed_geometry_type = NavigationPolygon.PARSED_GEOMETRY_STATIC_COLLIDERS
+			#
+			#var new_nav_region2d = NavigationRegion2D.new()
+			#new_nav_region2d.navigation_polygon = new_nav_mesh
+			#new_nav_region2d.navigation_layers = 2
+			#new_nav_region2d.bake_navigation_polygon()
+			#region.add_child(new_nav_region2d)

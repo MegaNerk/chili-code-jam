@@ -41,3 +41,7 @@ theme/custom_font="uid://81glmmvrnx64"
 
 2d_navigation/layer_1="Water"
 2d_navigation/layer_2="Land"
+
+[navigation]
+
+2d/default_edge_connection_margin=2.0

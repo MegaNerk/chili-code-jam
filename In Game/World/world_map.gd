@@ -281,7 +281,6 @@ func _ready():
 			
 	for region in get_child_SBS2D(self):
 		region.set_process_internal(true)
-		print(region)
 		if region.navigation_region == null:
 			print("Generating Mesh for ", region)
 			var new_nav_mesh = NavigationPolygon.new()
@@ -293,7 +292,7 @@ func _ready():
 			new_nav_region2d.navigation_polygon = new_nav_mesh
 			new_nav_region2d.navigation_layers = 2
 			new_nav_region2d.enter_cost = 10
-			new_nav_region2d.travel_cost = 4
+			new_nav_region2d.travel_cost = 3
 			new_nav_region2d.bake_navigation_polygon()
 			region.add_child(new_nav_region2d)
 	map_setup_complete.emit()
@@ -316,7 +315,7 @@ func get_country_name(country_reference : ScalableVectorShape2D):
 #TODO: Make this work via a shader
 func _update_selected_country(entering : bool, region_col, country):
 	if entering:
-		print(country, " - " , region_col)
+		#print(country, " - " , region_col)
 		hovered_region_changed.emit(region_col, country)
 		for region in all_countries[country]:
 			region.polygon.color = Color.WHITE

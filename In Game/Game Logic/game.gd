@@ -27,7 +27,7 @@ func _ready():
 	load_all_kaiju_resources()
 	load_all_building_resources()
 	game_ui.prep_compendiums(all_kaiju_res, all_building_res)
-	time_coordinator.tick_passed.connect(game_ui._on_game_tick)
+	active_kaiju = game_ui.playspace.kaiju_tokens
 
 func _process(delta):
 	game_ui.update_resource_counts(food,fear)
@@ -41,6 +41,11 @@ func date_changed(new_date_string):
 func on_tick_passed():
 	ticks_elapsed += 1
 	food += 1
+	for kaiju in active_kaiju:
+		kaiju._update_movement()
+		
+	for building in active_buildings:
+		pass
 
 func load_all_kaiju_resources():
 	var kaiju_dir : DirAccess = DirAccess.open(kaiju_res_path)

@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=21 format=3 uid="uid://clkbrsie48nvs"]
+[gd_resource type="Theme" load_steps=20 format=3 uid="uid://clkbrsie48nvs"]
 
 [ext_resource type="Texture2D" uid="uid://c6r10tlbpbf7m" path="res://Assets/Art/Ui Stuff/MenuButton.png" id="1_5ap3m"]
 [ext_resource type="Texture2D" uid="uid://b5250ipvyeljq" path="res://Assets/Art/Ui Stuff/MenuButtonHover.png" id="1_kohdj"]
@@ -16,8 +16,6 @@ texture = ExtResource("1_5ap3m")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kohdj"]
 texture = ExtResource("2_kohdj")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_knin6"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o77eo"]
 texture = ExtResource("4_brtdi")
@@ -64,7 +62,6 @@ MarginContainer/constants/margin_bottom = 15
 MarginContainer/constants/margin_left = 15
 MarginContainer/constants/margin_right = 15
 MarginContainer/constants/margin_top = 15
-OptionButton/styles/normal = SubResource("StyleBoxTexture_knin6")
 Panel/styles/panel = SubResource("StyleBoxTexture_o77eo")
 PopupMenu/icons/radio_checked = SubResource("CanvasTexture_knin6")
 PopupMenu/icons/radio_checked_disabled = SubResource("CanvasTexture_ec5vk")

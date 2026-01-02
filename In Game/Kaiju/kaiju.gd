@@ -53,6 +53,8 @@ func _closest_region_to_position(agent, target_position) -> NavigationRegion2D:
 	var map_rid = NavigationServer2D.agent_get_map(agent.get_rid())
 	var region_rid = NavigationServer2D.map_get_closest_point_owner(map_rid, target_position)
 	return instance_from_id(NavigationServer2D.region_get_owner_id(region_rid)) as NavigationRegion2D
+	
+
 
 func _on_link_reached(details):
 	print("Kaiju {name} used the {waterway}".format({"name" : name, "waterway" : details.rid}))

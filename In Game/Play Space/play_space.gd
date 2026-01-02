@@ -50,7 +50,8 @@ func _gui_input(event):
 func _on_left_click(_pos):
 	print("Left Click")
 	left_clicked.emit(_pos)
-	spawn_kaiju(ResourceLoader.load("res://In Game/Kaiju/All Kaiju/Dillo.tres"),_pos)
+	#spawn_kaiju(ResourceLoader.load("res://In Game/Kaiju/All Kaiju/Dillo.tres"),_pos)
+	spawn_building(ResourceLoader.load("res://In Game/Buildings/All Buildings/Volcano.tres"), _pos)
 
 func _on_right_click(_pos):
 	right_clicked.emit(_pos)
@@ -99,9 +100,9 @@ func spawn_city(city : City):
 func spawn_building(buidling : Building_Res, pos):
 	var token = ResourceLoader.load("res://In Game/Tokens/Building/building_token.tscn")
 	var new_building = token.instantiate() as BuildingPin
-	new_building.my_building = Building_Res
+	new_building.my_building = Building.new(buidling)
 	add_child(new_building)
-	new_building.position = pos
+	new_building.global_position = pos - Vector2(25,25)
 	building_created.emit(new_building, pos)
 	
 func spawn_kaiju(kaiju : Kaiju_Res, pos):

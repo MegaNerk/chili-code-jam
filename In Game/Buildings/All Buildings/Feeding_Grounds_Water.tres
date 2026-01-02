@@ -5,6 +5,9 @@
 
 [resource]
 script = ExtResource("2_w30hd")
+food_cost = 0
+fear_cost = 10
+placement_type = 1
 name = "Feeding Grounds"
 art = ExtResource("1_cgul1")
 metadata/_custom_type_script = "uid://cpt68otvwpoo7"

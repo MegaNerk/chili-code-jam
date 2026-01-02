@@ -1,9 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://d3p866pbiifc5"]
+[gd_scene load_steps=4 format=3 uid="uid://d3p866pbiifc5"]
 
 [ext_resource type="Script" uid="uid://bix52tjtmj70l" path="res://In Game/UI/Resource Stockpiles/Fear Bar/fear_bar.gd" id="1_0ojg4"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f3clt"]
-bg_color = Color(0.603922, 0.172549, 0.188235, 1)
+[ext_resource type="Texture2D" uid="uid://cbxwwwegc3wat" path="res://Assets/Art/Resource Art/FearResourceBorder.png" id="2_4dpyq"]
+[ext_resource type="Texture2D" uid="uid://bpdqvfva4thxm" path="res://Assets/Art/Resource Art/FearResourceFill.png" id="3_0ro3q"]
 
 [node name="FearBar" type="Control" node_paths=PackedStringArray("fear_count_bar", "fear_count")]
 custom_minimum_size = Vector2(300, 60)
@@ -29,13 +28,13 @@ text = "Fear"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="FearCountBar" type="ProgressBar" parent="HBoxContainer"]
+[node name="FearCountBar" type="TextureProgressBar" parent="HBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/fill = SubResource("StyleBoxFlat_f3clt")
 rounded = true
-show_percentage = false
+texture_over = ExtResource("2_4dpyq")
+texture_progress = ExtResource("3_0ro3q")
 
 [node name="FearCount" type="Label" parent="HBoxContainer/FearCountBar"]
 layout_mode = 1

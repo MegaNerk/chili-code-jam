@@ -45,6 +45,7 @@ func date_changed(new_date_string):
 func on_tick_passed():
 	ticks_elapsed += 1
 	food += 1
+	fear += 1
 	for kaiju in active_kaiju:
 		kaiju._update_movement()
 		

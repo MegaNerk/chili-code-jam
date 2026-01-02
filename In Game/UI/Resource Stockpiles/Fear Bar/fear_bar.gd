@@ -1,7 +1,7 @@
 extends Control
 class_name FearStockpile
 
-@export var fear_count_bar : ProgressBar
+@export var fear_count_bar : TextureProgressBar
 @export var fear_count : Label
 
 var fear_score : int = 0

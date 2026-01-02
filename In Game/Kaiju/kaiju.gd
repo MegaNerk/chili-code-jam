@@ -50,6 +50,8 @@ var attacking_city : City
 var attack_buffer : float = 6
 var movement_distance = 3
 
+
+
 func _ready():
 	if kaiju_resource:
 		name = kaiju_resource.name
@@ -161,7 +163,14 @@ func adjust_hunger(adjustment : float):
 
 func enter_city_radius(_city):
 	print("Entered Radius")
+	#kaiju_auto_attack.emit(self, _city)
 	_start_attack(_city)
+
+
+signal kaiju_auto_attack_city(kaiju_ref, city_ref)
+func auto_attack_city(kaiju_ref, city_ref):
+	kaiju_auto_attack_city.emit(kaiju_ref, city_ref)
+
 
 func _start_attack(_city):
 	attacking_city = _city

@@ -32,8 +32,7 @@ signal selected_city(city_ref : City)
 
 func _ready():
 	world_map.hovered_region_changed.connect(hovered_region)
-	
-	
+
 func _init_kaiju_token(kaiju: Kaiju):
 	kaiju.token.left_clicked.connect(select_kaiju.bind(kaiju))
 	kaiju.token.right_clicked.connect(deselect_all_kaiju)
@@ -93,6 +92,10 @@ static func _get_global_distance(kaiju_ref : Kaiju, city_ref : City) -> float:
 	var dist = c_pos.distance_to(k_pos)
 	return dist
 
+signal _auto_attack_kaiju(kaiju_ref, city_ref)
+func _auto_attack_bubbler(kaiju_ref, city_ref):
+	_auto_attack_kaiju.emit(kaiju_ref, city_ref)
+
 func spawn_city(city : City):
 	var token = ResourceLoader.load("res://In Game/Tokens/City/city_token.tscn")
 	var new_city = token.instantiate() as CityToken
@@ -102,6 +105,7 @@ func spawn_city(city : City):
 	new_city.my_city.my_token = new_city
 	city_created.emit(new_city, new_city.position)
 	new_city.left_clicked.connect(left_click_city.bind(city))
+
 	
 func spawn_building(building : Building, pos):
 	var token = ResourceLoader.load("res://In Game/Tokens/Building/building_token.tscn")
@@ -118,6 +122,7 @@ func spawn_kaiju(new_kaiju : Kaiju, pos):
 	kaiju_created.emit(new_kaiju)
 	select_kaiju(new_kaiju)
 	new_kaiju.died.connect(destroy_kaiju.bind(new_kaiju))
+	new_kaiju.kaiju_auto_attack_city.connect(_auto_attack_bubbler)
 	
 func destroy_kaiju(kaiju : Kaiju):
 	kaiju_to_be_destroyed.emit(kaiju)

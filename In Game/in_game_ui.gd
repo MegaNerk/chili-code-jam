@@ -43,7 +43,8 @@ var hovered_entry : Unit_Res = null:
 
 func _ready():
 	playspace.hovered_country.connect(change_hovered_country_name)
-
+	playspace._auto_attack_kaiju.connect(auto_attack_city)
+	
 func _process(delta):
 	if compendium_popup.visible:
 		compendium_popup.position = get_local_mouse_position()-Vector2(compendium_popup.size.x,0)
@@ -136,7 +137,6 @@ func _on_playspace_left_clicked(coords):
 	if building_being_placed:
 		if valid_spawning:
 			place_building(coords)
-			#AUDIO.play_sfx_once(AUDIO.sfx_library.building_placement)
 	if kaiju_being_spawned:
 		if valid_spawning:
 			spawn_kaiju(coords)
@@ -185,6 +185,9 @@ func activate_compendium_popup(entry_ref):
 
 func deactivate_compendium_popup():
 	compendium_popup.visible = false
+
+func auto_attack_city(kaiju_ref, city_ref):
+	kaiju_ref.begin_attacking_city(city_ref)
 
 func on_city_selected(city_ref):
 	var possible_attacker = playspace.selected_kaiju

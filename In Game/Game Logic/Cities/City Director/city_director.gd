@@ -34,8 +34,14 @@ func activate_cities(num_cities : int):
 
 func process_tick(tick_updates : Array[GameEffect]) -> Array[GameEffect]:
 	for city in active_cities:
-		tick_updates = city.process_tick(tick_updates)
+		if city.is_destroyed == false:
+			tick_updates = city.process_tick(tick_updates)
 	return tick_updates
 
 func get_city_with_id(id : int) -> City:
 	return active_cities[id]
+
+func check_on_cities():
+	for city in active_cities:
+		if city.devastation == 100.0:
+			city.get_destroyed()

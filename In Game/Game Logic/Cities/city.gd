@@ -2,6 +2,7 @@ extends RefCounted
 class_name City
 
 signal stats_changed
+signal destroyed
 
 var my_city_res : City_Res
 
@@ -24,6 +25,7 @@ var art : Texture2D = null
 var id : int #Unique ID given to active cities by City Director
 
 var being_attacked_by_kaiju : Array[Kaiju] = []
+var is_destroyed : bool = false
 
 func _init(city_res : City_Res):
 	if city_res:
@@ -60,3 +62,8 @@ func process_tick(tick_updates):
 		}
 		tick_updates.append(dev_effect)
 	return tick_updates
+
+func get_destroyed():
+	population = 0.0
+	is_destroyed = true
+	emit_signal("destroyed")

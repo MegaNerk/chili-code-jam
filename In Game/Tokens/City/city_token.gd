@@ -8,6 +8,8 @@ class_name CityToken
 @export var pop_label : Label
 @export var devastation_label : Label
 
+@export var art_box : TextureRect
+
 var my_city : City
 var label_size_x : float = 252.0
 
@@ -20,6 +22,7 @@ func _ready():
 		fit_text()
 		sync_city_stats()
 		my_city.stats_changed.connect(sync_city_stats)
+		my_city.destroyed.connect(on_city_destroyed)
 
 func fit_text():
 	var label_font = city_name_label.get_theme_font("font")
@@ -36,3 +39,11 @@ func sync_city_stats():
 	pop_label.text = str(my_city.population).substr(0,3)+"m"
 	devastation_bar.value = my_city.devastation
 	devastation_label.text = str(my_city.devastation).substr(0,3)+"%"
+
+func on_city_destroyed():
+	art_box.texture = my_city.my_city_res.destroyed_art
+	default_scale = Vector2(0.23,0.23)
+	default_hovered_scale = Vector2(0.23,0.23)
+	if currently_hovered:
+		scale = default_hovered_scale
+	else: scale = default_scale

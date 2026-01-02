@@ -83,6 +83,7 @@ func on_tick_passed():
 		if this_kaiju.hp == 0.0:
 			this_kaiju.die()
 			unregister_kaiju(this_kaiju)
+	city_director.check_on_cities()
 
 func load_all_kaiju_resources():
 	var kaiju_dir : DirAccess = DirAccess.open(kaiju_res_path)
@@ -162,7 +163,7 @@ func on_kaiju_cancelled(the_kaiju : Kaiju):
 func check_for_win_loss():
 	var win_state : bool = true
 	for city in city_director.active_cities:
-		if city.devastation < 100.0:
+		if city.is_destroyed == false:
 			win_state = false
 			break
 	if win_state:

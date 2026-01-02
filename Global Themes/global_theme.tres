@@ -1,11 +1,10 @@
 [gd_resource type="Theme" load_steps=21 format=3 uid="uid://clkbrsie48nvs"]
 
 [ext_resource type="Texture2D" uid="uid://c6r10tlbpbf7m" path="res://Assets/Art/Ui Stuff/MenuButton.png" id="1_5ap3m"]
-[ext_resource type="StyleBox" uid="uid://b4pke1bu5iid1" path="res://Global Themes/Global Style Boxes/global_panel.tres" id="1_634u8"]
 [ext_resource type="Texture2D" uid="uid://b5250ipvyeljq" path="res://Assets/Art/Ui Stuff/MenuButtonHover.png" id="1_kohdj"]
 [ext_resource type="FontFile" uid="uid://81glmmvrnx64" path="res://Assets/Fonts/Arena-rvwaK.ttf" id="2_k3kbp"]
 [ext_resource type="Texture2D" uid="uid://bdwyifylsv32e" path="res://Assets/Art/Ui Stuff/MenuButtonPress.png" id="2_kohdj"]
-[ext_resource type="Texture2D" uid="uid://dgv51ujru5io3" path="res://Assets/Art/Ui Stuff/DropDown.png" id="4_il266"]
+[ext_resource type="Texture2D" uid="uid://civlwkdcgsvda" path="res://Assets/Art/Ui Stuff/BoxBackground.png" id="4_brtdi"]
 [ext_resource type="Texture2D" uid="uid://cqepwq3b3cwor" path="res://Assets/Art/Ui Stuff/DropDownOptions.png" id="6_brtdi"]
 [ext_resource type="Texture2D" uid="uid://cd3al87s5652j" path="res://Assets/Art/Ui Stuff/DropDownHoverandPress.png" id="6_knin6"]
 
@@ -19,7 +18,13 @@ texture = ExtResource("1_5ap3m")
 texture = ExtResource("2_kohdj")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_knin6"]
-texture = ExtResource("4_il266")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o77eo"]
+texture = ExtResource("4_brtdi")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_knin6"]
 
@@ -60,7 +65,7 @@ MarginContainer/constants/margin_left = 15
 MarginContainer/constants/margin_right = 15
 MarginContainer/constants/margin_top = 15
 OptionButton/styles/normal = SubResource("StyleBoxTexture_knin6")
-Panel/styles/panel = ExtResource("1_634u8")
+Panel/styles/panel = SubResource("StyleBoxTexture_o77eo")
 PopupMenu/icons/radio_checked = SubResource("CanvasTexture_knin6")
 PopupMenu/icons/radio_checked_disabled = SubResource("CanvasTexture_ec5vk")
 PopupMenu/icons/radio_unchecked = SubResource("CanvasTexture_b6t7p")

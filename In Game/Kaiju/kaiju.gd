@@ -7,7 +7,7 @@ signal leveled_up
 signal died
 
 @export var kaiju_resource : Kaiju_Res
-@export var token : KaijuToken
+var token
 
 @onready var nav_agent : NavigationAgent2D = $NavigationAgent2D
 var local_speed : int = 100

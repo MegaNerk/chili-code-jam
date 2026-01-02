@@ -21,7 +21,6 @@ signal building_created(building, position)
 signal left_clicked(event_position)
 signal right_clicked(event_position)
 
-
 func _ready():
 	world_map.hovered_region_changed.connect(hovered_region)
 	for kaiju in kaiju_tokens:

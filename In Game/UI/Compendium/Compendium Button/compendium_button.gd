@@ -2,6 +2,8 @@ extends TextureButton
 class_name CompendiumButton
 
 signal entry_selected(entry_ref : Unit_Res)
+signal entry_hovered(entry_ref : Unit_Res)
+signal entry_hover_stopped(entry_ref : Unit_Res)
 
 @export var this_entry : Unit_Res:
 	set(value):
@@ -35,3 +37,9 @@ func sync_with_entry():
 		else:
 			$PanelContainer.visible = false
 			$PanelContainer2.visible = false
+
+func _on_mouse_entered():
+	emit_signal("entry_hovered", this_entry)
+
+func _on_mouse_exited():
+	emit_signal("entry_hover_stopped", this_entry)

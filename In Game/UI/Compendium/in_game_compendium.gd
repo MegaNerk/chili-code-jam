@@ -2,6 +2,8 @@ extends ScrollContainer
 class_name Compendium
 
 signal entry_selected(entry_ref : Unit_Res)
+signal entry_hovered(entry_ref : Unit_Res)
+signal entry_hover_stopped(entry_ref : Unit_Res)
 
 @export var my_grid : GridContainer
 @export var compendium_button_scene : PackedScene
@@ -18,6 +20,14 @@ func load_new_entry(new_entry : Unit_Res):
 	my_grid.add_child(new_button)
 	new_button.this_entry = new_entry
 	new_button.entry_selected.connect(on_entry_selected)
+	new_button.entry_hovered.connect(on_entry_hovered)
+	new_button.entry_hover_stopped.connect(on_entry_hover_stopped)
 
 func on_entry_selected(selected_entry):
 	emit_signal("entry_selected", selected_entry)
+
+func on_entry_hovered(entry_ref):
+	emit_signal("entry_hovered", entry_ref)
+
+func on_entry_hover_stopped(entry_ref):
+	emit_signal("entry_hover_stopped", entry_ref)

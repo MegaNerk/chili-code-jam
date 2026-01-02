@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpogq825oa3ij"]
+
+[ext_resource type="Script" uid="uid://dmhvymkstshjm" path="res://In Game/UI/Compendium/Compendium Popup/compendium_popup.gd" id="1_1ov3w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vt2ew"]
+bg_color = Color(0.239216, 0.239216, 0.239216, 0.627451)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 0.309804)
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="CompendiumPopup" type="Control"]
+custom_minimum_size = Vector2(350, 200)
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_1ov3w")
+tooltip = "t"
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vt2ew")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="Panel/MarginContainer"]
+custom_minimum_size = Vector2(330, 180)
+layout_mode = 2
+size_flags_vertical = 1
+text = "Text goes here"
+autowrap_mode = 2
+justification_flags = 161

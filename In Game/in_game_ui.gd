@@ -18,6 +18,7 @@ signal kaiju_spawning_cancelled(kaiju_ref)
 @export var building_compendium : Compendium
 
 @export var mouse_hover_image : MouseHoverImage
+@export var compendium_popup : CompendiumPopup
 
 @export var food_stockpile : FoodStockpile
 @export var fear_stockpile : FearStockpile
@@ -26,9 +27,20 @@ signal kaiju_spawning_cancelled(kaiju_ref)
 var building_being_placed : Building = null
 var kaiju_being_spawned : Kaiju = null
 
+var hovered_entry : Unit_Res = null:
+	set(value):
+		hovered_entry = value
+		if hovered_entry:
+			activate_compendium_popup(hovered_entry)
+		else: deactivate_compendium_popup()
+
 func _ready():
 	playspace.hovered_country.connect(change_hovered_country_name)
-	
+
+func _process(delta):
+	if compendium_popup.visible:
+		compendium_popup.position = get_local_mouse_position()-Vector2(compendium_popup.size.x,0)
+
 func _on_game_tick(delta, speed):
 	playspace._update_playspace(delta, speed)
 	
@@ -117,3 +129,16 @@ func spawn_kaiju(coords):
 	playspace.spawn_kaiju(kaiju_being_spawned, coords)
 	kaiju_being_spawned = null
 	mouse_hover_image.visible = false
+
+func on_compendium_entry_hovered(entry_ref):
+	activate_compendium_popup(entry_ref)
+
+func on_compendium_entry_hover_stopped(entry_ref):
+	deactivate_compendium_popup()
+
+func activate_compendium_popup(entry_ref):
+	compendium_popup.visible = true
+	compendium_popup.tooltip = entry_ref.tooltip
+
+func deactivate_compendium_popup():
+	compendium_popup.visible = false

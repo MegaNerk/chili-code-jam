@@ -39,6 +39,12 @@ func _update_region():
 		2:
 			local_speed = kaiju_resource.land_speed
 
+func _closest_nav_position(target_position) -> Vector2:
+	var map_rid = NavigationServer2D.agent_get_map(nav_agent.get_rid())
+	var nearest_pos = NavigationServer2D.map_get_closest_point(map_rid, target_position)
+	return nearest_pos
+
+
 func _get_current_region() -> NavigationRegion2D:
 	var current_region = _closest_region_to_position(nav_agent, global_position)
 	return current_region

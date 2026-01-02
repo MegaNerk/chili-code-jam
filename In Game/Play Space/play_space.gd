@@ -37,15 +37,14 @@ func _update_kaiju_locations(delta, speed):
 
 func _gui_input(event):
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
-			#TODO: Improve Logic 
-			if selected_kaiju:
-				print("ORDER {name} TO MOVE NOW".format({"name" : selected_kaiju.name}))
-				print(selected_kaiju.global_position)
-				print(get_global_mouse_position())
-				selected_kaiju.nav_agent.target_position = get_global_mouse_position()
+		if event.pressed:
+			if event.button_index == MOUSE_BUTTON_RIGHT:
+				_on_right_click(get_global_mouse_position())
+			if event.button_index == MOUSE_BUTTON_LEFT:
+				_on_left_click(get_global_mouse_position())
 				
 func _on_left_click(_pos):
+	print("Left Click")
 	left_clicked.emit(_pos)
 	spawn_kaiju(ResourceLoader.load("res://In Game/Kaiju/All Kaiju/Dillo.tres"),_pos)
 

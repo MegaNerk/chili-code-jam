@@ -1,9 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dhl38u08c2ira"]
+[gd_scene load_steps=4 format=3 uid="uid://cj7fg3iyi7kow"]
 
 [ext_resource type="Texture2D" uid="uid://c0rvare4c155p" path="res://Assets/Affinity Work/Kaiju Token Pin.png" id="1_2xsjq"]
-[ext_resource type="Script" path="res://In Game/Tokens/kaiju_token.gd" id="1_22w8i"]
 [ext_resource type="Texture2D" uid="uid://buotobdhyrrc3" path="res://Assets/Art/Kaiju/octopusseye.png" id="1_i4ccb"]
-[ext_resource type="Texture2D" uid="uid://b8dvomlfy1klo" path="res://Assets/Affinity Work/Kaiju Token Pin Click Mask.png" id="4_0plto"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_22w8i"]
 corner_radius_top_left = 200
@@ -20,8 +18,6 @@ offset_right = 175.0
 offset_bottom = 83.0
 scale = Vector2(0.25, 0.25)
 pivot_offset = Vector2(175, 417)
-script = ExtResource("1_22w8i")
-pin_click_mask = ExtResource("4_0plto")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 clip_children = 2

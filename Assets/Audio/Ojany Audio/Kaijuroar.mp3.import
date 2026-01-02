@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cg7jmw5868u0r"
+path="res://.godot/imported/Kaijuroar.mp3-3cc0b328560adf8228a61fcf1733fc1e.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Ojany Audio/Kaijuroar.mp3"
+dest_files=["res://.godot/imported/Kaijuroar.mp3-3cc0b328560adf8228a61fcf1733fc1e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

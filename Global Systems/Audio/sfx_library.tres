@@ -1,11 +1,23 @@
-[gd_resource type="Resource" script_class="SFX_Library" load_steps=4 format=3 uid="uid://bkutlas74x1li"]
+[gd_resource type="Resource" script_class="SFX_Library" load_steps=10 format=3 uid="uid://bkutlas74x1li"]
 
+[ext_resource type="AudioStream" uid="uid://cnwgb5aq3mpdx" path="res://Assets/Audio/Ojany Audio/placement.mp3" id="1_blqvi"]
 [ext_resource type="Script" uid="uid://lbq3lxmi4ic5" path="res://Global Systems/Audio/sfx_library.gd" id="1_eajn4"]
 [ext_resource type="AudioStream" uid="uid://tn4co5ckjhgj" path="res://Assets/Audio/Kenny/Button_press.ogg" id="1_wcw4o"]
 [ext_resource type="AudioStream" uid="uid://biy647kq5ludl" path="res://Assets/Audio/Kenny/back_004.ogg" id="2_qn5c5"]
+[ext_resource type="AudioStream" uid="uid://cueh67f3jchql" path="res://Assets/Audio/Ojany Audio/Buildingdestroyed.wav" id="3_4xtur"]
+[ext_resource type="AudioStream" uid="uid://saucxwwwn70c" path="res://Assets/Audio/Ojany Audio/clicksound.mp3" id="4_addrt"]
+[ext_resource type="AudioStream" uid="uid://cg7jmw5868u0r" path="res://Assets/Audio/Ojany Audio/Kaijuroar.mp3" id="6_v0vk3"]
+[ext_resource type="AudioStream" uid="uid://bb6s73mrvh0su" path="res://Assets/Audio/Ojany Audio/Kaijuroar2.mp3" id="7_w3ch0"]
+[ext_resource type="AudioStream" uid="uid://b375lnlva1dpu" path="res://Assets/Audio/Ojany Audio/Kaijuroar3.mp3" id="8_qccdi"]
 
 [resource]
 script = ExtResource("1_eajn4")
 button_click = ExtResource("1_wcw4o")
 illegal_input = ExtResource("2_qn5c5")
+city_destruction = ExtResource("3_4xtur")
+building_placement = ExtResource("1_blqvi")
+kaiju_roar_1 = ExtResource("6_v0vk3")
+kaiju_roar_2 = ExtResource("7_w3ch0")
+kaiju_roar_3 = ExtResource("8_qccdi")
+click_sound = ExtResource("4_addrt")
 metadata/_custom_type_script = "uid://lbq3lxmi4ic5"

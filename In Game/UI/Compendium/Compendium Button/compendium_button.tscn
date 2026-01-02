@@ -1,34 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://dq7cs4vswni1s"]
+[gd_scene load_steps=10 format=3 uid="uid://dq7cs4vswni1s"]
 
 [ext_resource type="Texture2D" uid="uid://ruypc08jjtn4" path="res://Assets/Affinity Work/compendium_base.png" id="1_wjiqr"]
 [ext_resource type="Texture2D" uid="uid://cjci4fo55j2t4" path="res://Assets/Affinity Work/compendium_hovered_clicked.png" id="2_8bqx8"]
 [ext_resource type="Texture2D" uid="uid://bv5m1opix1mxn" path="res://Assets/Affinity Work/compendium_hovered.png" id="3_uuuqm"]
 [ext_resource type="BitMap" uid="uid://bouf61ihlmlq1" path="res://Assets/Affinity Work/compendium_click_mask.png" id="4_a2wym"]
 [ext_resource type="Script" uid="uid://qjjawxucsgxb" path="res://In Game/UI/Compendium/Compendium Button/compendium_button.gd" id="5_8bqx8"]
+[ext_resource type="Texture2D" uid="uid://bqe51h211f0h4" path="res://Assets/Art/Resource Art/FoodCost.png" id="6_dobt1"]
+[ext_resource type="Texture2D" uid="uid://tp4y5blaa5a5" path="res://Assets/Art/Resource Art/FearCost.png" id="7_mjrq8"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yxnn3"]
-bg_color = Color(0.309804, 0.372549, 0.329412, 0.784314)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.243137, 0.529412, 0.337255, 1)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lojj2"]
+texture = ExtResource("6_dobt1")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e2pay"]
-bg_color = Color(0.485176, 0.297495, 0.25947, 0.784314)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.603922, 0.172549, 0.188235, 1)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lyhxs"]
+texture = ExtResource("7_mjrq8")
 
 [node name="CompendiumButton" type="TextureButton" node_paths=PackedStringArray("food_label", "fear_label")]
 clip_contents = true
@@ -74,7 +58,7 @@ clip_contents = true
 layout_mode = 1
 offset_right = 40.0
 offset_bottom = 40.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_yxnn3")
+theme_override_styles/panel = SubResource("StyleBoxTexture_lojj2")
 
 [node name="FoodCost" type="Label" parent="PanelContainer"]
 layout_mode = 2
@@ -92,7 +76,7 @@ anchor_right = 1.0
 offset_left = -40.0
 offset_bottom = 40.0
 grow_horizontal = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_e2pay")
+theme_override_styles/panel = SubResource("StyleBoxTexture_lyhxs")
 
 [node name="FearCost" type="Label" parent="PanelContainer2"]
 layout_mode = 2

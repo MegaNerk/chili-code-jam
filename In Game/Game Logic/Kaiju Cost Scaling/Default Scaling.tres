@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_jnc5w")
-set_kp_costs = Array[int]([10, 200, 300, 450, 600, 650])
+set_kp_costs = Array[int]([0, 200, 300, 450, 600, 650])
 metadata/_custom_type_script = "uid://ceb2yos3i8yga"

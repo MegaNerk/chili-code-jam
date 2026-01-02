@@ -13,6 +13,9 @@ class_name CityToken
 var my_city : City
 var label_size_x : float = 252.0
 
+func _process(delta):
+	pass
+
 func _ready():
 	super()
 	default_scale = Vector2(0.25,0.25)

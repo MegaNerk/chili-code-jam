@@ -323,7 +323,6 @@ func _update_selected_country(entering : bool, region_col, country):
 		for region in all_countries[country]:
 			region.polygon.color = rand_color
 
-
 func _on_static_body_2d_input_event(viewport, event : InputEvent, shape_idx):
 	#print(event.global_position)
 	var test = event

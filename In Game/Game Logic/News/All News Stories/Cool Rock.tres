@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="News_Res" load_steps=3 format=3 uid="uid://b6qeq3c6t8oje"]
+
+[ext_resource type="Script" uid="uid://bhi8xw3x7p82o" path="res://In Game/Game Logic/News/news_res.gd" id="1_c4utq"]
+[ext_resource type="Resource" uid="uid://cl0qglqeli6s8" path="res://In Game/Game Logic/News/All News Stories/Cool Rock 2.tres" id="1_s8lg6"]
+
+[resource]
+script = ExtResource("1_c4utq")
+name = "Cool Rock"
+news_reel = "A scientist from Madrid has found a very cool rock! It's shiny and everything! Stay with us as we cover this exciting event!"
+next_story = ExtResource("1_s8lg6")
+metadata/_custom_type_script = "uid://bhi8xw3x7p82o"

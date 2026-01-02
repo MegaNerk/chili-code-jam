@@ -63,7 +63,7 @@ func process_tick(tick_updates):
 	else:
 		var fatigue_effect = GameEffect.new()
 		fatigue_effect.type = GameEffect.EFFECT_TYPE.RESOURCE_DELTA
-		var fatigue_gain = randf_range(0.00001, 0.0001)
+		var fatigue_gain = 0.00015
 		fatigue_gain *= (population/base_pop)
 		fatigue_effect.payload = {
 			"fatigue" : fatigue_gain

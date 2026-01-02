@@ -10,6 +10,8 @@ signal kaiju_spawning_cancelled(kaiju_ref)
 
 @export var speed_toggle : TabBar
 
+@export var news_reel : Scrolling_Label
+
 @export var playspace : PlaySpace
 @export var hovered_country_label : Label
 @export var date_display : Label
@@ -24,6 +26,10 @@ signal kaiju_spawning_cancelled(kaiju_ref)
 @export var fear_stockpile : FearStockpile
 @export var kp_stockpile : KPStockpile
 @export var fatigue_stockpile : FatigueBar
+
+@export var invalid_color : Color
+@export var valid_color : Color
+var valid_spawning : bool = false
 
 var building_being_placed : Building = null
 var kaiju_being_spawned : Kaiju = null
@@ -41,6 +47,19 @@ func _ready():
 func _process(delta):
 	if compendium_popup.visible:
 		compendium_popup.position = get_local_mouse_position()-Vector2(compendium_popup.size.x,0)
+	if kaiju_being_spawned:
+		valid_spawning = false
+		var cur_region = playspace._get_position_nav_region(get_global_mouse_position())
+		if cur_region.navigation_layers & kaiju_being_spawned.kaiju_resource.navigation_layers == 0:
+			print("INVALID SPAWNING PLACEMENT")
+			mouse_hover_image.self_modulate = invalid_color
+			
+		else:
+			print("VALID SPAWNING PLACEMENT")
+			mouse_hover_image.self_modulate = valid_color
+			valid_spawning = true
+	if building_being_placed:
+		pass
 
 func _on_game_tick(delta, speed):
 	playspace._update_playspace(delta, speed)
@@ -107,7 +126,11 @@ func _on_playspace_left_clicked(coords):
 	if building_being_placed:
 		place_building(coords)
 	if kaiju_being_spawned:
-		spawn_kaiju(coords)
+		if valid_spawning:
+			spawn_kaiju(coords)
+			AUDIO.play_sfx_once(AUDIO.sfx_library.kaiju_roar_1)
+		else:
+			AUDIO.play_sfx_once(AUDIO.sfx_library.illegal_input)
 
 func _on_playspace_right_clicked(coords):
 	if building_being_placed:
@@ -155,3 +178,6 @@ func on_city_selected(city_ref):
 	var possible_attacker = playspace.selected_kaiju
 	if possible_attacker:
 		possible_attacker.begin_attacking_city(city_ref)
+
+func queue_news_story(story : String):
+	news_reel.queue_text(story)

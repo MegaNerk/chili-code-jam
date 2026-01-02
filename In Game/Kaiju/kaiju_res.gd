@@ -21,6 +21,7 @@ enum KAIJU_TYPE {LAND, WATER, AIR}
 @export var xp_per_level : float = 100
 @export var max_level : int = 15
 @export var attack_range : float = 100
+@export_flags_2d_navigation var navigation_layers = 3
 
 var has_first_kaiju_discount = true:
 	set(value):

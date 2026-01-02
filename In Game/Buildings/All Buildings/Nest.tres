@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Building_Res" load_steps=3 format=3 uid="uid://bv0u2460h7t1a"]
 
-[ext_resource type="Texture2D" uid="uid://cgmfkt0341vrx" path="res://Assets/Art/Buildings/NestingGrounds.png" id="1_wncpe"]
+[ext_resource type="Texture2D" uid="uid://bspnm1m88aygj" path="res://Assets/Art/Buildings/NestingGrounds.png" id="1_wncpe"]
 [ext_resource type="Script" uid="uid://cpt68otvwpoo7" path="res://In Game/Buildings/building_res.gd" id="2_3k1ui"]
 
 [resource]

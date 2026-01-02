@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Building_Res" load_steps=3 format=3 uid="uid://c7x48svkeoeko"]
 
-[ext_resource type="Texture2D" uid="uid://s0l0hmvct5r1" path="res://Assets/Art/Buildings/FeedingGroundsWater.png" id="1_cgul1"]
+[ext_resource type="Texture2D" uid="uid://s6vdlceopbtb" path="res://Assets/Art/Buildings/FeedingGroundsWater2.png" id="1_cgul1"]
 [ext_resource type="Script" uid="uid://cpt68otvwpoo7" path="res://In Game/Buildings/building_res.gd" id="2_w30hd"]
 
 [resource]

@@ -59,6 +59,7 @@ func _ready():
 	nav_agent.target_reached.connect(_on_target_reached)
 
 func _update_movement():
+	_update_region()
 	if nav_agent.is_navigation_finished():
 		velocity = Vector2.ZERO
 		return

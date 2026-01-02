@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="Kaiju_Res" load_steps=3 format=3 uid="uid://c4rwe3yf2axln"]
+[gd_resource type="Resource" script_class="Kaiju_Res" load_steps=3 format=3 uid="uid://coh31d1ghroin"]
 
 [ext_resource type="Texture2D" uid="uid://buotobdhyrrc3" path="res://Assets/Art/Kaiju/octopusseye.png" id="1_1bxc2"]
 [ext_resource type="Script" uid="uid://cdlyy6cua2bwp" path="res://In Game/Kaiju/kaiju_res.gd" id="1_ompnx"]
 
 [resource]
 script = ExtResource("1_ompnx")
-type = 1
+type = 0
 base_hp = 0
 max_hunger = 0
 base_damage = 0

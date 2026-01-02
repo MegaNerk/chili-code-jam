@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Building_Res" load_steps=3 format=3 uid="uid://bvnw454wfxe8y"]
+
+[ext_resource type="Texture2D" uid="uid://cgu5qsars7vhw" path="res://Assets/Art/Buildings/StompingGrounds.png" id="1_b2a38"]
+[ext_resource type="Script" uid="uid://cpt68otvwpoo7" path="res://In Game/Buildings/building_res.gd" id="2_1hlkn"]
+
+[resource]
+script = ExtResource("2_1hlkn")
+name = "Stomping Grounds"
+art = ExtResource("1_b2a38")
+metadata/_custom_type_script = "uid://cpt68otvwpoo7"

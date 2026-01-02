@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="City_Res" load_steps=3 format=3 uid="uid://c45h7aatlxx0b"]
+
+[ext_resource type="Texture2D" uid="uid://dtuuq0js3hwr6" path="res://Assets/Art/Buildings/City.png" id="1_6bs21"]
+[ext_resource type="Script" uid="uid://bm4tf77g77ys6" path="res://In Game/Game Logic/Cities/city_res.gd" id="2_p2ee7"]
+
+[resource]
+script = ExtResource("2_p2ee7")
+name = "Shanghai"
+country = "China"
+coordinates = Vector2(1057, -34)
+population = 24.9
+art = ExtResource("1_6bs21")
+metadata/_custom_type_script = "uid://bm4tf77g77ys6"

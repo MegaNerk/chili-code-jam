@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="City_Res" load_steps=3 format=3 uid="uid://wlefvfcahii8"]
+
+[ext_resource type="Texture2D" uid="uid://dtuuq0js3hwr6" path="res://Assets/Art/Buildings/City.png" id="1_k44ih"]
+[ext_resource type="Script" uid="uid://bm4tf77g77ys6" path="res://In Game/Game Logic/Cities/city_res.gd" id="2_085w8"]
+
+[resource]
+script = ExtResource("2_085w8")
+name = "Tokyo"
+country = "Japan"
+coordinates = Vector2(1124, -80)
+population = 14.2
+art = ExtResource("1_k44ih")
+metadata/_custom_type_script = "uid://bm4tf77g77ys6"

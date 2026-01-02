@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="City_Res" load_steps=3 format=3 uid="uid://b5cr7imeyqbee"]
+
+[ext_resource type="Texture2D" uid="uid://dtuuq0js3hwr6" path="res://Assets/Art/Buildings/City.png" id="1_f6hm4"]
+[ext_resource type="Script" uid="uid://bm4tf77g77ys6" path="res://In Game/Game Logic/Cities/city_res.gd" id="2_5myvh"]
+
+[resource]
+script = ExtResource("2_5myvh")
+name = "Johannesburg"
+country = "South Africa"
+coordinates = Vector2(670, 247)
+population = 6.2
+art = ExtResource("1_f6hm4")
+metadata/_custom_type_script = "uid://bm4tf77g77ys6"

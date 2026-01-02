@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="City_Res" load_steps=3 format=3 uid="uid://if3rlc87ax6s"]
+
+[ext_resource type="Texture2D" uid="uid://dtuuq0js3hwr6" path="res://Assets/Art/Buildings/City.png" id="1_yk7of"]
+[ext_resource type="Script" uid="uid://bm4tf77g77ys6" path="res://In Game/Game Logic/Cities/city_res.gd" id="2_qxd7a"]
+
+[resource]
+script = ExtResource("2_qxd7a")
+name = "Paris"
+country = "France"
+coordinates = Vector2(561, -107)
+population = 2.1
+art = ExtResource("1_yk7of")
+metadata/_custom_type_script = "uid://bm4tf77g77ys6"

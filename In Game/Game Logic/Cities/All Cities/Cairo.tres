@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="City_Res" load_steps=3 format=3 uid="uid://d2l76rq87qrok"]
+
+[ext_resource type="Texture2D" uid="uid://dtuuq0js3hwr6" path="res://Assets/Art/Buildings/City.png" id="1_3vlry"]
+[ext_resource type="Script" uid="uid://bm4tf77g77ys6" path="res://In Game/Game Logic/Cities/city_res.gd" id="2_dgvkh"]
+
+[resource]
+script = ExtResource("2_dgvkh")
+name = "Cairo"
+country = "Egypt"
+coordinates = Vector2(680, -9)
+population = 22.2
+art = ExtResource("1_3vlry")
+metadata/_custom_type_script = "uid://bm4tf77g77ys6"

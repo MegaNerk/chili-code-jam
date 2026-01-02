@@ -2,9 +2,6 @@ extends Control
 class_name InGameUI
 
 signal speed_toggled(new_speed)
-signal compendium_entry_selected(entry)
-signal building_placed(building_ref)
-signal building_placement_cancelled(building_ref)
 
 @export var speed_toggle : TabBar
 
@@ -19,8 +16,6 @@ signal building_placement_cancelled(building_ref)
 
 @export var food_stockpile : FoodStockpile
 @export var fear_stockpile : FearStockpile
-
-var placing_building : bool = false
 
 func _ready():
 	playspace.hovered_country.connect(change_hovered_country_name)
@@ -51,7 +46,8 @@ func on_buildings_button_pressed():
 	building_compendium.visible = !building_compendium.visible
 
 func on_compendium_entry_selected(selected_entry):
-	emit_signal("compendium_entry_selected", selected_entry)
+	mouse_hover_image.visible = true
+	mouse_hover_image.texture = selected_entry.art
 
 func prep_compendiums(kaiju_resources : Array[Kaiju_Res], building_resources : Array[Building_Res]):
 	kaiju_compendium.load_multiple_entries(kaiju_resources)
@@ -63,10 +59,4 @@ func update_resource_counts(food_count, fear_count):
 
 func spawn_cities(cities):
 	for city in cities:
-		pass
-		#playspace.spawn_city(city)
-
-func queue_place_building(building : Building):
-	placing_building = true
-	mouse_hover_image.visible = true
-	mouse_hover_image.texture = building.art
+		playspace.spawn_city(city)

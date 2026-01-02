@@ -45,19 +45,26 @@ func _gui_input(event):
 				_on_right_click(get_global_mouse_position())
 			if event.button_index == MOUSE_BUTTON_LEFT:
 				_on_left_click(get_global_mouse_position())
-				
+
+func _get_position_nav_region(_pos):
+	return _closest_map_region_to_position(NavigationServer2D.region_get_map(nav_region), _pos)
+	
+
 func _on_left_click(_pos):
+	print(_get_position_nav_region(_pos).navigation_layers)
 	print("Left Click")
 	left_clicked.emit(_pos)
+
+
 
 func _on_right_click(_pos):
 	right_clicked.emit(_pos)
 	if selected_kaiju:
+
 		selected_kaiju._target_location(_pos, selected_kaiju.movement_distance, _kaiju_arrived)
 		if selected_kaiju.attacking_city:
 			selected_kaiju.stop_attacking_city()
-
-
+			
 func _kaiju_arrived(kaiju):
 	pass
 
@@ -86,7 +93,6 @@ static func _get_global_distance(kaiju_ref : Kaiju, city_ref : City) -> float:
 	var c_pos = city_ref.my_token.global_position
 	var k_pos = kaiju_ref.global_position
 	var dist = c_pos.distance_to(k_pos)
-	print(dist)
 	return dist
 
 func spawn_city(city : City):
@@ -98,7 +104,6 @@ func spawn_city(city : City):
 	new_city.my_city.my_token = new_city
 	city_created.emit(new_city, new_city.position)
 	new_city.left_clicked.connect(left_click_city.bind(city))
-	#new_city.my_city.updating_kaiju_city_distance.connect(update_kaiju_attacking_city)
 	
 func spawn_building(building : Building, pos):
 	var token = ResourceLoader.load("res://In Game/Tokens/Building/building_token.tscn")
@@ -120,3 +125,12 @@ func destroy_kaiju(kaiju : Kaiju):
 	kaiju_to_be_destroyed.emit(kaiju)
 	deselect_all_kaiju()
 	kaiju.queue_free()
+
+static func _closest_agent_region_to_position(agent, target_position) -> NavigationRegion2D:
+	var map_rid = NavigationServer2D.agent_get_map(agent.get_rid())
+	var region_rid = NavigationServer2D.map_get_closest_point_owner(map_rid, target_position)
+	return instance_from_id(NavigationServer2D.region_get_owner_id(region_rid)) as NavigationRegion2D
+
+static func _closest_map_region_to_position(map_rid, target_position) -> NavigationRegion2D:
+	var region_rid = NavigationServer2D.map_get_closest_point_owner(map_rid, target_position)
+	return instance_from_id(NavigationServer2D.region_get_owner_id(region_rid)) as NavigationRegion2D

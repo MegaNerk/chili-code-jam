@@ -6,5 +6,6 @@ class_name CityToken
 var my_city : City
 
 func _ready():
+	super()
 	if my_city:
 		city_name_label.text = my_city.name

@@ -10,11 +10,13 @@ signal unselected
 
 @export var pin_click_mask : Texture2D
 var pin_click_mask_image : Image
+var mask_size : Vector2
 
 var currently_selected : bool = false
 
 func _ready():
 	pin_click_mask_image = pin_click_mask.get_image()
+	mask_size = pin_click_mask_image.get_size()
 
 func on_hovered():
 	self.scale = Vector2(1.1,1.1)
@@ -44,9 +46,6 @@ func _gui_input(event):
 func _has_point(point):
 	if pin_click_mask == null or pin_click_mask.get_size() == Vector2.ZERO:
 		return false
-	
-	var pin_click_mask_image = pin_click_mask.get_image()
-	var mask_size : Vector2 = pin_click_mask_image.get_size()
 	
 	var uv = point/size
 	var point_on_mask = (uv * mask_size).floor()

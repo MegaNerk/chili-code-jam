@@ -47,6 +47,8 @@ var xp : float = 0.0:
 		emit_signal("stats_changed")
 
 var attacking_city : City
+var attack_buffer : float = 6
+var movement_distance = 3
 
 func _ready():
 	if kaiju_resource:
@@ -61,7 +63,8 @@ func _ready():
 		pop_damage = kaiju_resource.pop_damage
 	
 	nav_agent.link_reached.connect(_on_link_reached)
-	nav_agent.target_reached.connect(_on_target_reached)
+	
+	
 	hp -= 20.0
 
 func _update_movement():
@@ -107,17 +110,21 @@ func _closest_region_to_position(agent, target_position) -> NavigationRegion2D:
 func _on_link_reached(details):
 	print("Kaiju {name} used the {waterway}".format({"name" : name, "waterway" : details.rid}))
 
-func _on_target_reached():
-	pass
-	
-func _on_navigation_finished():
+func _target_radius(loc, rad, callback):
 	pass
 
-func _target_location(new_location):
-	pass
+func _target_location(new_location, distance, callback : Callable):
+	_clear_order()
+	var valid_position = _closest_nav_position(new_location)
+	nav_agent.target_position = valid_position
+	nav_agent.target_desired_distance = distance
+	if callback:
+		nav_agent.target_reached.connect(callback)
+	
+	
 
 func is_in_range_of_city(city_ref) -> bool:
-	var distance_from_city = PlaySpace._get_global_distance(self, attacking_city)
+	var distance_from_city = PlaySpace._get_global_distance(self, city_ref)
 	if distance_from_city <= kaiju_resource.attack_range: 
 		return true
 	return false
@@ -155,12 +162,25 @@ func adjust_hp(adjustment : float):
 func adjust_hunger(adjustment : float):
 	hunger = max(0,min(hunger+adjustment,max_hunger))
 
+func _clear_order():
+	if nav_agent.target_reached.is_connected(enter_city_radius):
+		nav_agent.target_reached.disconnect(enter_city_radius)
+
+func enter_city_radius():
+	_clear_order()
+
 func begin_attacking_city(city : City):
 	if attacking_city:
 		stop_attacking_city()
-	attacking_city = city
-	attacking_city.being_attacked_by_kaiju.append(self)
-	AUDIO.play_sfx_once(AUDIO.sfx_library.country_hover)
+	else:
+		print("Try to attack : ", city)
+		if not is_in_range_of_city(city):
+			var city_pos = city.my_token.global_position + (city.my_token.pivot_offset * city.my_token.scale)
+			
+			_target_location(city_pos, kaiju_resource.attack_range / 2, enter_city_radius)
+		attacking_city = city
+		attacking_city.being_attacked_by_kaiju.append(self)
+		AUDIO.play_sfx_once(AUDIO.sfx_library.country_hover)
 
 func stop_attacking_city():
 	attacking_city.being_attacked_by_kaiju.erase(self)

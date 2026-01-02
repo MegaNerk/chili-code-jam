@@ -9,7 +9,7 @@
 script = ExtResource("1_04rsx")
 placement_type = 1
 tick_effects = Array[ExtResource("3_0q7ao")]([ExtResource("4_j8113")])
-placable_on_region = 3
+placable_on_region = 1
 name = "Whirlpool"
 art = ExtResource("1_khxk3")
 tooltip = "Generates Kaiju progress and a little food."

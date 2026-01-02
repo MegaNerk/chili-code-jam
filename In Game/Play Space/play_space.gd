@@ -33,6 +33,7 @@ signal selected_city(city_ref : City)
 func _ready():
 	world_map.hovered_region_changed.connect(hovered_region)
 	
+	
 func _init_kaiju_token(kaiju: Kaiju):
 	kaiju.token.left_clicked.connect(select_kaiju.bind(kaiju))
 	kaiju.token.right_clicked.connect(deselect_all_kaiju)
@@ -55,12 +56,9 @@ func _on_left_click(_pos):
 	print("Left Click")
 	left_clicked.emit(_pos)
 
-
-
 func _on_right_click(_pos):
 	right_clicked.emit(_pos)
 	if selected_kaiju:
-
 		selected_kaiju._target_location(_pos, selected_kaiju.movement_distance, _kaiju_arrived)
 		if selected_kaiju.attacking_city:
 			selected_kaiju.stop_attacking_city()

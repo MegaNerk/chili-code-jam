@@ -134,7 +134,9 @@ func queue_spawn_kaiju(new_kaiju : Kaiju):
 func _on_playspace_left_clicked(coords):
 	AUDIO.play_sfx_once(AUDIO.sfx_library.click_sound)
 	if building_being_placed:
-		place_building(coords)
+		if valid_spawning:
+			place_building(coords)
+			#AUDIO.play_sfx_once(AUDIO.sfx_library.building_placement)
 	if kaiju_being_spawned:
 		if valid_spawning:
 			spawn_kaiju(coords)

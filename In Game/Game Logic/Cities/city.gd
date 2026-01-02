@@ -9,8 +9,9 @@ var my_city_res : City_Res
 var name : String = "City Name"
 var devastation : float = 0.0:
 	set(value):
-		#value = modify_devastation_adjustment(value)
-		devastation = max(0.0,min(value,100.0))
+		var delta = value - devastation
+		delta = modify_devastation_adjustment(delta)
+		devastation = max(0.0,min(devastation+delta,100.0))
 		emit_signal("stats_changed")
 
 var base_pop : float = 0.0 #In millions
@@ -69,16 +70,9 @@ func get_destroyed():
 	is_destroyed = true
 	emit_signal("destroyed")
 
-#func modify_devastation_adjustment(adjustment : float) -> float:
-	#if adjustment > 0.0:
-		#adjustment *= (base_pop/population)
-	#elif adjustment < 0.0:
-		#adjustment *= (population/base_pop)
-	#return adjustment
-#
-#func modify_population_adjustment(adjustment : float) -> float:
-	#if adjustment > 0.0:
-		#adjustment *= (population/base_pop)
-	#elif adjustment < 0.0:
-		#adjustment *= (base_pop/population)
-	#return adjustment
+func modify_devastation_adjustment(adjustment : float) -> float:
+	if adjustment > 0.0:
+		adjustment *= (1.0+(base_pop-population)/base_pop)
+	elif adjustment < 0.0:
+		adjustment /= (1.0+(base_pop-population)/base_pop)
+	return adjustment

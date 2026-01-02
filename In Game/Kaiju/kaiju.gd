@@ -34,11 +34,16 @@ var pop_damage : float
 var level : int = 1
 var xp : float = 0.0:
 	set(value):
-		xp = value
-		if xp >= kaiju_resource.xp_per_level:
-			level_up()
-			var remainder = xp-kaiju_resource.xp_per_level
-			xp = remainder
+		if level < kaiju_resource.max_level:
+			xp = value
+			if xp >= kaiju_resource.xp_per_level:
+				level_up()
+				var remainder = xp-kaiju_resource.xp_per_level
+				if level < kaiju_resource.max_level:
+					xp = remainder
+				else: xp = 0.0
+		else:
+			xp = 0.0
 		emit_signal("stats_changed")
 
 var attacking_city : City

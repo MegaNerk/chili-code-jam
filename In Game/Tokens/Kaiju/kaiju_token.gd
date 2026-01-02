@@ -39,3 +39,5 @@ func on_kaiju_level_up():
 	if currently_hovered:
 		scale = default_hovered_scale
 	else: scale = default_scale
+	if my_kaiju.level == my_kaiju.kaiju_resource.max_level:
+		xp_bar.visible = false

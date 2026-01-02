@@ -18,6 +18,8 @@ var hunger : int
 var land_speed : float
 var water_speed : float
 
+var attacking_city : City
+
 func _ready():
 	if kaiju_resource:
 		name = kaiju_resource.name
@@ -83,6 +85,19 @@ func _target_location(new_location):
 	pass
 
 func process_tick(tick_updates : Array[GameEffect]) -> Array[GameEffect]:
+	if attacking_city:
+		var pop_effect = GameEffect.new()
+		pop_effect.type = GameEffect.EFFECT_TYPE.CITY_POP_DELTA
+		pop_effect.payload = {
+			attacking_city.id : randf_range(0.001, 0.005)
+		}
+		tick_updates.append(pop_effect)
+		var dev_effect = GameEffect.new()
+		pop_effect.type = GameEffect.EFFECT_TYPE.CITY_DEV_DELTA
+		pop_effect.payload = {
+			attacking_city.id : 1
+		}
+		tick_updates.append(pop_effect)
 	return tick_updates
 
 func adjust_hp(adjustment : int):

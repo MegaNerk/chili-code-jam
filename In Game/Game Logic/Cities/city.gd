@@ -8,18 +8,22 @@ var my_city_res : City_Res
 var name : String = "City Name"
 var devastation : int = 0:
 	set(value):
-		devastation = value
+		devastation = max(0,min(value,100))
 		emit_signal("stats_changed")
 
 var base_pop : float = 0.0 #In millions
 var population : float = 0.0: #In millions
 	set(value):
-		population = value
+		population = max(0,min(value,base_pop))
 		emit_signal("stats_changed")
 
 var coordinates : Vector2 = Vector2(0.0,0.0)
 var country : String = "None"
 var art : Texture2D = null
+
+var id : int #Unique ID given to active cities by City Director
+
+var being_attacked_by_kaiju : Array[Kaiju] = []
 
 func _init(city_res : City_Res):
 	if city_res:
@@ -30,3 +34,20 @@ func _init(city_res : City_Res):
 		coordinates = city_res.coordinates
 		country = city_res.country
 		art = city_res.art
+
+func process_tick(tick_updates):
+	if being_attacked_by_kaiju.size() > 0:
+		var new_effect = GameEffect.new()
+		new_effect.type = GameEffect.EFFECT_TYPE.KAIJU_HP_DELTA
+		new_effect.payload = {}
+		for attacking_kaiju in being_attacked_by_kaiju:
+			new_effect.payload[attacking_kaiju.id] = 1
+		tick_updates.append(new_effect)
+	else:
+		var new_effect = GameEffect.new()
+		new_effect.type = GameEffect.EFFECT_TYPE.CITY_POP_DELTA
+		new_effect.payload = {
+			1 : randf_range(0.0001, 0.001)
+		}
+		tick_updates.append(new_effect)
+	return tick_updates

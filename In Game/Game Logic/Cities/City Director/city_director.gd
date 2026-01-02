@@ -28,8 +28,14 @@ func activate_cities(num_cities : int):
 	var iterator : int = 0
 	while iterator < num_cities and iterator < city_library.size()-1:
 		var next_city = City.new(city_library[iterator])
+		next_city.id = iterator
 		active_cities.append(next_city)
 		iterator += 1
 
 func process_tick(tick_updates : Array[GameEffect]) -> Array[GameEffect]:
+	for city in active_cities:
+		tick_updates = city.process_tick(tick_updates)
 	return tick_updates
+
+func get_city_with_id(id : int) -> City:
+	return active_cities[id]

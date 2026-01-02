@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="News_Res" load_steps=2 format=3 uid="uid://b8dbr6n1si1yc"]
+
+[ext_resource type="Script" uid="uid://bhi8xw3x7p82o" path="res://In Game/Game Logic/News/news_res.gd" id="1_h51cv"]
+
+[resource]
+script = ExtResource("1_h51cv")
+name = "Cappybarra"
+news_reel = "Help, my farm has been overrun by little cappybarras and I dont know what to do"
+metadata/_custom_type_script = "uid://bhi8xw3x7p82o"

@@ -53,6 +53,8 @@ var movement_distance = 3
 
 
 func _ready():
+	if !token:
+		token = $KaijuToken
 	if kaiju_resource:
 		name = kaiju_resource.name
 		base_hp = kaiju_resource.base_hp
@@ -65,8 +67,6 @@ func _ready():
 		pop_damage = kaiju_resource.pop_damage
 	
 	nav_agent.link_reached.connect(_on_link_reached)
-	
-	hp -= 20.0
 
 func _update_movement():
 	_update_region()

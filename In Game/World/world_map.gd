@@ -297,8 +297,6 @@ func _ready():
 			region.add_child(new_nav_region2d)
 	map_setup_complete.emit()
 		#print(get_country_name(country[0])," ",country.size())
-	
-		
 
 func get_child_SBS2D(target = self) -> Array[ScalableVectorShape2D]:
 	var valid_shapes : Array[ScalableVectorShape2D] = []

@@ -83,9 +83,8 @@ func left_click_city(city_reference):
 	emit_signal("selected_city", city_reference)
 
 static func _get_global_distance(kaiju_ref : Kaiju, city_ref : City) -> float:
-	
 	var c_pos = city_ref.my_token.global_position
-	var k_pos = kaiju_ref.token.global_position 
+	var k_pos = kaiju_ref.global_position
 	var dist = c_pos.distance_to(k_pos)
 	print(dist)
 	return dist

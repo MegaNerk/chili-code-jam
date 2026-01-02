@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://ixnj2edc6kfm"]
+[gd_scene load_steps=4 format=3 uid="uid://ixnj2edc6kfm"]
 
 [ext_resource type="Script" uid="uid://csuafnah2ssgh" path="res://In Game/UI/Resource Stockpiles/Food Stockpile/food_stockpile.gd" id="1_8e8ec"]
-[ext_resource type="StyleBox" uid="uid://rk7eyuuo0kbb" path="res://In Game/UI/Resource Stockpiles/Food Stockpile/food_panel.tres" id="2_dfts7"]
+[ext_resource type="Texture2D" uid="uid://cd28y5es3qcf1" path="res://Assets/Art/Resource Art/FoodBar.png" id="2_dfts7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eli1l"]
+texture = ExtResource("2_dfts7")
 
 [node name="FoodStockpile" type="Control" node_paths=PackedStringArray("count_label")]
 custom_minimum_size = Vector2(300, 60)
@@ -29,7 +32,7 @@ vertical_alignment = 1
 [node name="Panel" type="Panel" parent="HBoxContainer"]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
-theme_override_styles/panel = ExtResource("2_dfts7")
+theme_override_styles/panel = SubResource("StyleBoxTexture_eli1l")
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Panel"]
 layout_mode = 1

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://s0l0hmvct5r1"
-path="res://.godot/imported/FeedingGroundsWater.png-fa8764fe045efd3da304a202b527366d.ctex"
+uid="uid://dhriuc2cdat6c"
+path="res://.godot/imported/StompingGrounds-export.png-1d788e6f0462802e2765c2d6b5527f5c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/Buildings/FeedingGroundsWater.png"
-dest_files=["res://.godot/imported/FeedingGroundsWater.png-fa8764fe045efd3da304a202b527366d.ctex"]
+source_file="res://Assets/Art/Buildings/StompingGrounds-export.png"
+dest_files=["res://.godot/imported/StompingGrounds-export.png-1d788e6f0462802e2765c2d6b5527f5c.ctex"]
 
 [params]
 

@@ -3,6 +3,11 @@ class_name CityToken
 
 @export var city_name_label : Label
 
+@export var pop_bar : ProgressBar
+@export var devastation_bar : ProgressBar
+@export var pop_label : Label
+@export var devastation_label : Label
+
 var my_city : City
 var label_size_x : float = 252.0
 
@@ -11,6 +16,7 @@ func _ready():
 	if my_city:
 		city_name_label.text = my_city.name
 		fit_text()
+		sync_city_stats()
 
 func fit_text():
 	var label_font = city_name_label.get_theme_font("font")
@@ -20,3 +26,9 @@ func fit_text():
 		font_size -= 1
 	
 	city_name_label.add_theme_font_size_override("font_size", font_size)
+
+func sync_city_stats():
+	pop_bar.value = my_city.population
+	pop_bar.max_value = my_city.base_pop
+	pop_label.text = str(my_city.population)+"m"
+	devastation_bar.value = my_city.devastation

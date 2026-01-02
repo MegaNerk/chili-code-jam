@@ -10,6 +10,7 @@ texture = ExtResource("2_dfts7")
 custom_minimum_size = Vector2(300, 60)
 layout_mode = 3
 anchors_preset = 0
+size_flags_vertical = 3
 script = ExtResource("1_8e8ec")
 count_label = NodePath("HBoxContainer/Panel/MarginContainer/CountLabel")
 

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="News_Res" load_steps=2 format=3 uid="uid://b2w741331o018"]
+
+[ext_resource type="Script" uid="uid://bhi8xw3x7p82o" path="res://In Game/Game Logic/News/news_res.gd" id="1_6jyky"]
+
+[resource]
+script = ExtResource("1_6jyky")
+name = "Great Day"
+news_reel = "A local man says it’s a lovely day today! More at 12..."
+metadata/_custom_type_script = "uid://bhi8xw3x7p82o"

@@ -24,9 +24,10 @@ UI_SCANNER="*res://Global Systems/UI/ui_scanner.gd"
 
 [display]
 
-window/size/viewport_width=1920
+window/size/viewport_width=2000
 window/size/viewport_height=1080
 window/size/mode=2
+window/stretch/mode="viewport"
 
 [editor_plugins]
 

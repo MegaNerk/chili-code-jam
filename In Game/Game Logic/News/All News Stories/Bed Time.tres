@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="News_Res" load_steps=2 format=3 uid="uid://brtjfpxj4cyw2"]
+
+[ext_resource type="Script" uid="uid://bhi8xw3x7p82o" path="res://In Game/Game Logic/News/news_res.gd" id="1_xceiw"]
+
+[resource]
+script = ExtResource("1_xceiw")
+name = "Bed Time"
+news_reel = "My mom said it’s past my bedtime, and now I’m pouty"
+metadata/_custom_type_script = "uid://bhi8xw3x7p82o"

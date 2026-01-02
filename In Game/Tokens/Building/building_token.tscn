@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3xsvqdr7wh2d"]
+
+[ext_resource type="Script" uid="uid://pnann0la3qe3" path="res://In Game/Tokens/Building/building_token.gd" id="1_sb65r"]
+[ext_resource type="Texture2D" uid="uid://cr3tcilxha45l" path="res://Assets/Affinity Work/Building Pin Click Mask.png" id="2_h2vo8"]
+
+[node name="BuildingToken" type="TextureRect"]
+custom_minimum_size = Vector2(50, 50)
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+scale = Vector2(0.25, 0.25)
+pivot_offset = Vector2(100, 100)
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("1_sb65r")
+pin_click_mask = ExtResource("2_h2vo8")

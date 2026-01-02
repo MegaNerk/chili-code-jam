@@ -78,21 +78,3 @@ func load_all_building_resources():
 				all_building_res.append(this_res)
 		next_file_name = building_dir.get_next()
 	building_dir.list_dir_end()
-
-func on_compendium_entry_selected(selected_entry):
-	if selected_entry is Building_Res:
-		attempt_place_building(selected_entry)
-
-func attempt_place_building(building : Building_Res):
-	if food >= building.food_cost and fear >= building.fear_cost:
-		food -= building.food_cost
-		fear -= building.fear_cost
-		game_ui.queue_place_building(Building.new(building))
-	else: AUDIO.play_sfx_once(AUDIO.sfx_library.illegal_input)
-
-func on_building_placed(building : Building):
-	active_buildings.append(building)
-
-func on_building_cancelled(building : Building):
-	food += building.my_building_res.food_cost
-	fear += building.my_building_res.fear_cost

@@ -85,6 +85,8 @@ func spawn_cities(cities):
 func queue_place_building(building : Building):
 	if kaiju_being_spawned:
 		cancel_kaiju()
+	if building_being_placed:
+		cancel_building()
 	building_being_placed = building
 	mouse_hover_image.visible = true
 	mouse_hover_image.texture = building.art
@@ -92,6 +94,8 @@ func queue_place_building(building : Building):
 func queue_spawn_kaiju(new_kaiju : Kaiju):
 	if building_being_placed:
 		cancel_building()
+	if kaiju_being_spawned:
+		cancel_kaiju()
 	kaiju_being_spawned = new_kaiju
 	mouse_hover_image.visible = true
 	mouse_hover_image.texture = new_kaiju.kaiju_resource.art

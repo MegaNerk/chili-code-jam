@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="News_Res" load_steps=2 format=3 uid="uid://7g27y03ndkrv"]
+
+[ext_resource type="Script" uid="uid://bhi8xw3x7p82o" path="res://In Game/Game Logic/News/news_res.gd" id="1_umkf2"]
+
+[resource]
+script = ExtResource("1_umkf2")
+name = "The bit of 87"
+news_reel = "Breaking news! Child gets face bitten off at pizza place during a show by one of the animatronics"
+metadata/_custom_type_script = "uid://bhi8xw3x7p82o"

@@ -106,30 +106,31 @@ func _get_current_region() -> NavigationRegion2D:
 func _on_link_reached(details):
 	print("Kaiju {name} used the {waterway}".format({"name" : name, "waterway" : details.rid}))
 
-func _target_radius(loc, rad, callback):
-	pass
 
 func _target_location(new_location, distance, callback : Callable):
-	_clear_order()
 	var valid_position = _closest_nav_position(new_location)
 	nav_agent.target_position = valid_position
 	nav_agent.target_desired_distance = distance
+	print("REACHED AREA")
+	if nav_agent.target_reached.is_connected(enter_city_radius):
+		nav_agent.target_reached.disconnect(enter_city_radius)
 	if callback:
 		nav_agent.target_reached.connect(callback)
 	
 	
 
 func is_in_range_of_city(city_ref) -> bool:
-	var distance_from_city = PlaySpace._get_global_distance(self, city_ref)
+	var distance_from_city = PlaySpace._get_global_distance(self, city_ref) as float
 	if distance_from_city <= kaiju_resource.attack_range: 
 		return true
 	return false
 
 func process_tick(tick_updates : Array[GameEffect]) -> Array[GameEffect]:
 	if attacking_city:
-		if is_in_range_of_city(attacking_city):
-			tick_updates.append_array(fight_city_tick_updates())
-	elif hunger > 0.0:
+		print(attacking_city)
+		tick_updates.append_array(fight_city_tick_updates())
+			
+	if hunger > 0.0:
 		var heal_effect = GameEffect.new()
 		heal_effect.type = GameEffect.EFFECT_TYPE.KAIJU_HP_DELTA
 		var hp_gain = 0.02
@@ -158,13 +159,14 @@ func adjust_hp(adjustment : float):
 func adjust_hunger(adjustment : float):
 	hunger = max(0,min(hunger+adjustment,max_hunger))
 
-func _clear_order():
-	if nav_agent.target_reached.is_connected(enter_city_radius):
-		nav_agent.target_reached.disconnect(enter_city_radius)
+func enter_city_radius(_city):
+	print("Entered Radius")
+	_start_attack(_city)
 
-func enter_city_radius():
-	_clear_order()
-	begin_attacking_city(attacking_city)
+func _start_attack(_city):
+	attacking_city = _city
+	attacking_city.being_attacked_by_kaiju.append(self)
+	AUDIO.play_sfx_once(AUDIO.sfx_library.country_hover)
 
 func begin_attacking_city(city : City):
 	if attacking_city:
@@ -174,11 +176,10 @@ func begin_attacking_city(city : City):
 		print("Try to attack : ", city)
 		if not is_in_range_of_city(city):
 			var city_pos = city.my_token.global_position + (city.my_token.pivot_offset * city.my_token.scale)
-			
-			_target_location(city_pos, kaiju_resource.attack_range / 2, enter_city_radius)
-		attacking_city = city
-		attacking_city.being_attacked_by_kaiju.append(self)
-		AUDIO.play_sfx_once(AUDIO.sfx_library.country_hover)
+			_target_location(city_pos, kaiju_resource.attack_range / 2, enter_city_radius.bind(city))
+		else:
+			_start_attack(city)
+
 
 func stop_attacking_city():
 	attacking_city.being_attacked_by_kaiju.erase(self)
@@ -194,7 +195,7 @@ func adjust_xp(adjustment : float):
 	xp += adjustment
 
 func level_up():
-	AUDIO.play_sfx_once(AUDIO.sfx_library.Levelup)
+	AUDIO.play_sfx_once(AUDIO.sfx_library.levelup)
 	if level < 15:
 		level += 1
 		base_hp += kaiju_resource.hp_scaling
@@ -207,6 +208,7 @@ func level_up():
 		emit_signal("leveled_up")
 
 func fight_city_tick_updates() -> Array[GameEffect]:
+	#
 	var tick_updates : Array[GameEffect] = []
 	var pop_effect = GameEffect.new()
 	pop_effect.type = GameEffect.EFFECT_TYPE.CITY_POP_DELTA

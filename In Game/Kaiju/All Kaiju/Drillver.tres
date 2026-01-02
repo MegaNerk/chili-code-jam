@@ -6,18 +6,18 @@
 [resource]
 script = ExtResource("1_t1qjo")
 type = 0
-base_hp = 100.0
+base_hp = 200.0
 hp_scaling = 25.0
 max_hunger = 100.0
 hunger_scaling = 25.0
-city_damage = 0.002
-city_damage_scaling = 0.0006
+city_damage = 0.025
+city_damage_scaling = 0.025
 pop_damage = -0.002
-pop_damage_scaling = -0.0005
-land_speed = 25.0
+pop_damage_scaling = -0.002
+land_speed = 30.0
 land_speed_scaling = 5.0
-water_speed = 3.0
-water_speed_scaling = 1.0
+water_speed = 10.0
+water_speed_scaling = 5.0
 xp_per_level = 600.0
 max_level = 15
 attack_range = 100.0

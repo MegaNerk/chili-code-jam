@@ -5,6 +5,9 @@
 
 [resource]
 script = ExtResource("2_3k1ui")
+food_cost = 250
+fear_cost = 15
+placement_type = 2
 name = "Nest"
 art = ExtResource("1_wncpe")
 metadata/_custom_type_script = "uid://cpt68otvwpoo7"

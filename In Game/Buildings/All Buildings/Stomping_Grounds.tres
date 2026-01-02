@@ -5,6 +5,9 @@
 
 [resource]
 script = ExtResource("2_1hlkn")
+food_cost = 150
+fear_cost = 25
+placement_type = 2
 name = "Stomping Grounds"
 art = ExtResource("1_b2a38")
 metadata/_custom_type_script = "uid://cpt68otvwpoo7"

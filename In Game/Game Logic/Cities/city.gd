@@ -62,6 +62,14 @@ func process_tick(tick_updates):
 			
 		tick_updates.append(new_effect)
 	else:
+		var fatigue_effect = GameEffect.new()
+		fatigue_effect.type = GameEffect.EFFECT_TYPE.RESOURCE_DELTA
+		var fatigue_gain = randf_range(0.00001, 0.0001)
+		fatigue_gain *= (population/base_pop)
+		fatigue_effect.payload = {
+			"fatigue" : fatigue_gain
+		}
+		tick_updates.append(fatigue_effect)
 		var new_effect = GameEffect.new()
 		new_effect.type = GameEffect.EFFECT_TYPE.CITY_POP_DELTA
 		var pop_growth = randf_range(0.0001, 0.0004)
@@ -71,7 +79,7 @@ func process_tick(tick_updates):
 		tick_updates.append(new_effect)
 		var dev_effect = GameEffect.new()
 		dev_effect.type = GameEffect.EFFECT_TYPE.CITY_DEV_DELTA
-		var dev_repair = randf_range(-0.0001, -0.00001)
+		var dev_repair = randf_range(-0.1, -0.001)
 		dev_effect.payload = {
 			id : dev_repair
 		}

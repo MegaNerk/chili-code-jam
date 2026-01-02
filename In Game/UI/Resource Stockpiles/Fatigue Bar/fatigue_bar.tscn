@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://qyb647mgrf4d"]
+
+[ext_resource type="Script" uid="uid://bqbbdlmajnfug" path="res://In Game/UI/Resource Stockpiles/Fatigue Bar/fatigue_bar.gd" id="1_pq5sg"]
+
+[node name="FatigueBar" type="Control" node_paths=PackedStringArray("fatigue_bar")]
+custom_minimum_size = Vector2(300, 120)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 300.0
+offset_bottom = 60.0
+script = ExtResource("1_pq5sg")
+fatigue_bar = NodePath("Panel/MarginContainer/VBoxContainer/ProgressBar")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Human Strength"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3

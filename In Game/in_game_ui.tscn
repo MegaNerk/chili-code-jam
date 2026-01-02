@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c8eek86ob1fl8"]
+[gd_scene load_steps=11 format=3 uid="uid://c8eek86ob1fl8"]
 
 [ext_resource type="PackedScene" uid="uid://28y2qjjidciy" path="res://UI/Scrolling Label/scrolling_label.tscn" id="1_7rmum"]
 [ext_resource type="Script" uid="uid://dxqyi75pkbmuv" path="res://In Game/in_game_ui.gd" id="1_8xadi"]
@@ -8,9 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://d3p866pbiifc5" path="res://In Game/UI/Resource Stockpiles/Fear Bar/fear_bar.tscn" id="5_vvcnh"]
 [ext_resource type="PackedScene" uid="uid://ixnj2edc6kfm" path="res://In Game/UI/Resource Stockpiles/Food Stockpile/food_stockpile.tscn" id="6_npoqe"]
 [ext_resource type="PackedScene" uid="uid://cmix3pm1nw16q" path="res://In Game/UI/Resource Stockpiles/Kaiju Points/kp_bar.tscn" id="7_npoqe"]
+[ext_resource type="PackedScene" uid="uid://qyb647mgrf4d" path="res://In Game/UI/Resource Stockpiles/Fatigue Bar/fatigue_bar.tscn" id="8_g581f"]
 [ext_resource type="PackedScene" uid="uid://dpogq825oa3ij" path="res://In Game/UI/Compendium/Compendium Popup/compendium_popup.tscn" id="9_dikp2"]
 
-[node name="InGameUI" type="Control" node_paths=PackedStringArray("speed_toggle", "playspace", "hovered_country_label", "date_display", "kaiju_compendium", "building_compendium", "mouse_hover_image", "compendium_popup", "food_stockpile", "fear_stockpile", "kp_stockpile")]
+[node name="InGameUI" type="Control" node_paths=PackedStringArray("speed_toggle", "playspace", "hovered_country_label", "date_display", "kaiju_compendium", "building_compendium", "mouse_hover_image", "compendium_popup", "food_stockpile", "fear_stockpile", "kp_stockpile", "fatigue_stockpile")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,6 +31,7 @@ compendium_popup = NodePath("CompendiumPopup")
 food_stockpile = NodePath("VBoxContainer/HBoxContainer3/Panel/MarginContainer/HBoxContainer/HBoxContainer/FoodStockpile")
 fear_stockpile = NodePath("VBoxContainer/HBoxContainer3/Panel/MarginContainer/HBoxContainer/HBoxContainer/FearBar")
 kp_stockpile = NodePath("VBoxContainer/HBoxContainer3/Panel/MarginContainer/HBoxContainer/HBoxContainer/KpBar")
+fatigue_stockpile = NodePath("VBoxContainer/HBoxContainer2/PlaySpace/FatigueBar")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -144,6 +146,17 @@ size_flags_vertical = 1
 text = "Country"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="FatigueBar" parent="VBoxContainer/HBoxContainer2/PlaySpace" instance=ExtResource("8_g581f")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = -220.35
+offset_right = 315.0
+offset_bottom = -100.35
+grow_vertical = 0
 
 [node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer2"]
 layout_mode = 2

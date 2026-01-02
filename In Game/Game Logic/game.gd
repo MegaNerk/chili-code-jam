@@ -62,7 +62,7 @@ func _ready():
 func _process(delta):
 	var float_progress : float = (100.0*(float(kaiju_points)/float(kp_for_next_kaiju)))
 	var kp_progress : int = int(float_progress)
-	game_ui.update_resource_counts(food,fear,kp_progress)
+	game_ui.update_resource_counts(food,fear,kp_progress,fatigue)
 
 func change_speed(new_speed):
 	time_coordinator.current_speed = new_speed
@@ -199,6 +199,9 @@ func resolve_game_effect(effect : GameEffect):
 						gained_fear += effect.payload["fear"]
 					"kp":
 						gained_kaiju_points += effect.payload["kp"]
+					"fatigue":
+						var temp_fatigue = effect.payload["fatigue"]
+						gained_fatigue += modify_fatigue_gain(temp_fatigue)
 		GameEffect.EFFECT_TYPE.KAIJU_HP_DELTA:
 			for kaiju_id in effect.payload.keys():
 				get_kaiju_with_id(kaiju_id).adjust_hp(effect.payload[kaiju_id])
@@ -251,6 +254,12 @@ func log_resource_delta():
 	while gained_kaiju_points >= 1.0:
 		gained_kaiju_points -= 1.0
 		kaiju_points += 1
+	while gained_fatigue >= 1.0:
+		gained_fatigue -= 1.0
+		fatigue += 1
 
 func on_end_game_button_pressed():
 	STATE.go_to_state(STATE.GAME_STATE.MAIN_MENU)
+
+func modify_fatigue_gain(fatigue_to_gain : float) -> float:
+	return fatigue_to_gain*((ticks_elapsed+1)/2920)

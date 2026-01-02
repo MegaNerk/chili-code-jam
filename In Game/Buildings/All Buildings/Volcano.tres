@@ -9,7 +9,7 @@
 script = ExtResource("1_v0rmr")
 placement_type = 0
 tick_effects = Array[ExtResource("3_gstm0")]([ExtResource("4_w21j3")])
-placable_on_region = 3
+placable_on_region = 2
 name = "Volcano"
 art = ExtResource("1_2wvfe")
 tooltip = "Generates Kaiju progress and a little fear."

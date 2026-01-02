@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="News_Res" load_steps=2 format=3 uid="uid://gtutcbtdjd17"]
+
+[ext_resource type="Script" uid="uid://bhi8xw3x7p82o" path="res://In Game/Game Logic/News/news_res.gd" id="1_bvpbu"]
+
+[resource]
+script = ExtResource("1_bvpbu")
+name = "Rick Rolled"
+news_reel = "Never gonna give you up Never gonna let you down Never gonna run around and desert you"
+metadata/_custom_type_script = "uid://bhi8xw3x7p82o"

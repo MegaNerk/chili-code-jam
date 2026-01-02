@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="News_Res" load_steps=2 format=3 uid="uid://djvqrkvffou6l"]
+
+[ext_resource type="Script" uid="uid://bhi8xw3x7p82o" path="res://In Game/Game Logic/News/news_res.gd" id="1_0vfgv"]
+
+[resource]
+script = ExtResource("1_0vfgv")
+name = "CVS"
+news_reel = "11 more CVS stores have been driven into, when will this brutality end!"
+metadata/_custom_type_script = "uid://bhi8xw3x7p82o"

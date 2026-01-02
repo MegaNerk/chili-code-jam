@@ -87,6 +87,7 @@ func on_tick_passed():
 	for this_kaiju in active_kaiju:
 		if this_kaiju.hp == 0.0:
 			this_kaiju.die()
+			fatigue += 5.0
 			unregister_kaiju(this_kaiju)
 	city_director.check_on_cities()
 	check_for_win_loss()

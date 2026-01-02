@@ -2,6 +2,7 @@ extends Node
 
 @export var menu_music_tracks : AudioStreamPlaylist
 @export var in_game_music_tracks : AudioStreamPlaylist
+@export var credits_music : AudioStream
 
 @export var sfx_library : SFX_Library
 

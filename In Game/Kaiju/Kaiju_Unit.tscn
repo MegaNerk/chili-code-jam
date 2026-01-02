@@ -7,13 +7,14 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_ii5wf"]
 radius = 4.55315
 
-[node name="Kaiju_Unit" type="CharacterBody2D"]
+[node name="Kaiju_Unit" type="CharacterBody2D" node_paths=PackedStringArray("token")]
 scale = Vector2(0.25, 0.25)
 input_pickable = true
 motion_mode = 1
 wall_min_slide_angle = 0.872665
 script = ExtResource("1_6tfu1")
 kaiju_resource = ExtResource("2_r43ka")
+token = NodePath("KaijuToken")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(4.04, 4.04)

@@ -7,8 +7,8 @@ signal leveled_up
 signal died
 
 @export var kaiju_resource : Kaiju_Res
+@export var token : KaijuToken
 
-@onready var token : KaijuToken = $KaijuToken
 @onready var nav_agent : NavigationAgent2D = $NavigationAgent2D
 var local_speed : int = 100
 var current_region : NavigationRegion2D
@@ -63,7 +63,6 @@ func _ready():
 		pop_damage = kaiju_resource.pop_damage
 	
 	nav_agent.link_reached.connect(_on_link_reached)
-	
 	
 	hp -= 20.0
 

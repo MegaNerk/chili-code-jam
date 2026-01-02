@@ -65,4 +65,5 @@ text = "Return to Menu"
 [connection signal="speed_toggled" from="InGameUI" to="." method="change_speed"]
 [connection signal="new_date_calculated" from="TimeCoordinator" to="." method="date_changed"]
 [connection signal="tick_passed" from="TimeCoordinator" to="." method="on_tick_passed"]
+[connection signal="news_story_queued" from="NewsReporter" to="." method="on_news_story_queued"]
 [connection signal="pressed" from="CanvasLayer/EndGameButton" to="." method="on_end_game_button_pressed"]

@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://qyb647mgrf4d" path="res://In Game/UI/Resource Stockpiles/Fatigue Bar/fatigue_bar.tscn" id="8_g581f"]
 [ext_resource type="PackedScene" uid="uid://dpogq825oa3ij" path="res://In Game/UI/Compendium/Compendium Popup/compendium_popup.tscn" id="9_dikp2"]
 
-[node name="InGameUI" type="Control" node_paths=PackedStringArray("speed_toggle", "playspace", "hovered_country_label", "date_display", "kaiju_compendium", "building_compendium", "mouse_hover_image", "compendium_popup", "food_stockpile", "fear_stockpile", "kp_stockpile", "fatigue_stockpile")]
+[node name="InGameUI" type="Control" node_paths=PackedStringArray("speed_toggle", "news_reel", "playspace", "hovered_country_label", "date_display", "kaiju_compendium", "building_compendium", "mouse_hover_image", "compendium_popup", "food_stockpile", "fear_stockpile", "kp_stockpile", "fatigue_stockpile")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,6 +21,7 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_8xadi")
 speed_toggle = NodePath("VBoxContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/SpeedToggle")
+news_reel = NodePath("VBoxContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/ScrollingLabel")
 playspace = NodePath("VBoxContainer/HBoxContainer2/PlaySpace")
 hovered_country_label = NodePath("VBoxContainer/HBoxContainer2/PlaySpace/Panel/MarginContainer/HoveredCountry")
 date_display = NodePath("VBoxContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/DateDisplay")

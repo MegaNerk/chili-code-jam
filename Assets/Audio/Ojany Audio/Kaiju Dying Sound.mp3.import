@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://rl2h66is3qo"
+path="res://.godot/imported/Kaiju Dying Sound.mp3-de48ed5df9cc6524464b077f71e20121.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Ojany Audio/Kaiju Dying Sound.mp3"
+dest_files=["res://.godot/imported/Kaiju Dying Sound.mp3-de48ed5df9cc6524464b077f71e20121.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

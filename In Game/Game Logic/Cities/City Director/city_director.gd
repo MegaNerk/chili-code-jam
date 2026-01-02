@@ -45,3 +45,4 @@ func check_on_cities():
 	for city in active_cities:
 		if city.devastation == 100.0:
 			city.get_destroyed()
+			emit_signal("city_destroyed")

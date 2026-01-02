@@ -23,4 +23,3 @@ func _physics_process(_delta: float) -> void:
 	velocity = current_agent_position.direction_to(next_path_position) * 600
 	navigation_agent.set_velocity_forced(velocity)
 	move_and_slide()
-

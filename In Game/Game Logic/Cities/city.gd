@@ -49,7 +49,6 @@ func is_in_range_of_kaiju(kaiju_ref) -> bool:
 
 func process_tick(tick_updates):
 	if being_attacked_by_kaiju.size() > 0:
-		
 		var new_effect = GameEffect.new()
 		new_effect.type = GameEffect.EFFECT_TYPE.KAIJU_HP_DELTA
 		new_effect.payload = {}

@@ -11,3 +11,4 @@ class_name SFX_Library
 @export var kaiju_roar_3 : AudioStream
 @export var click_sound : AudioStream
 @export var kaiju_death : AudioStream
+@export var levelup : AudioStream

@@ -10,8 +10,3 @@ var loss_graphic = preload("res://Assets/Art/Win State/LossScene.png")
 func activate_end_game(did_win : bool):
 		win_showcase.visible = did_win
 		loss_showcase.visible = !did_win
-		
-		if did_win:
-			AUDIO.play_sfx_once(AUDIO.sfx_library.VictorySong)
-		else:
-			AUDIO.play_sfx_once(AUDIO.sfx_library.FailureSong)

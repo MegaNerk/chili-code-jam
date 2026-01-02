@@ -5,23 +5,23 @@
 
 [resource]
 script = ExtResource("1_t06uv")
-food_cost = 150
-fear_cost = 80
 type = 0
-base_hp = 70
+base_hp = 100.0
 hp_scaling = 10.0
 max_hunger = 50.0
 hunger_scaling = 10.0
 city_damage = 0.0002
 city_damage_scaling = 5e-05
-pop_damage = 0.001
-pop_damage_scaling = 0.0005
+pop_damage = -0.001
+pop_damage_scaling = -0.0005
 land_speed = 35.0
 land_speed_scaling = 5.0
 water_speed = 25.0
 water_speed_scaling = 5.0
-xp_per_level = 80.0
+xp_per_level = 240.0
 name = "Puker"
 art = ExtResource("1_ga8qh")
 tooltip = "Not good at much aside from building. Gross and weird. Medium speed. Land or water."
+food_cost = 150
+fear_cost = 80
 metadata/_custom_type_script = "uid://cdlyy6cua2bwp"

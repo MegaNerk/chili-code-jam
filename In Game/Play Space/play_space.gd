@@ -120,13 +120,12 @@ func spawn_kaiju(new_kaiju : Kaiju, pos):
 	#new_kaiju.kaiju_resource = kaiju
 	nav_region.add_child(new_kaiju)
 	new_kaiju.global_position = pos
-	kaiju_tokens.append(new_kaiju)
 	_init_kaiju_token(new_kaiju)
 	kaiju_created.emit(new_kaiju)
 	select_kaiju(new_kaiju)
+	new_kaiju.died.connect(destroy_kaiju.bind(new_kaiju))
 	
 func destroy_kaiju(kaiju : Kaiju):
 	kaiju_to_be_destroyed.emit(kaiju)
-	kaiju_tokens.erase(kaiju)
 	deselect_all_kaiju()
 	kaiju.queue_free()

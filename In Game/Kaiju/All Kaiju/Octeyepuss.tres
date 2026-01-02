@@ -5,8 +5,6 @@
 
 [resource]
 script = ExtResource("1_ompnx")
-food_cost = 50
-fear_cost = 15
 type = 1
 base_hp = 80.0
 hp_scaling = 20.0
@@ -14,14 +12,16 @@ max_hunger = 75.0
 hunger_scaling = 15.0
 city_damage = 0.0002
 city_damage_scaling = 5e-05
-pop_damage = 2e-05
-pop_damage_scaling = 2e-05
+pop_damage = -2e-05
+pop_damage_scaling = -2e-05
 land_speed = 2.5
 land_speed_scaling = 0.5
 water_speed = 85.0
 water_speed_scaling = 15.0
-xp_per_level = 100.0
+xp_per_level = 300.0
 name = "Octeyepuss"
 art = ExtResource("1_1bxc2")
 tooltip = "Squishy but fearsome and resourceful. Fast speed. Waterbound."
+food_cost = 50
+fear_cost = 15
 metadata/_custom_type_script = "uid://cdlyy6cua2bwp"

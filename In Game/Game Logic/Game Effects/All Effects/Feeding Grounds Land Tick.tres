@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="GameEffect" load_steps=2 format=3 uid="uid://ubggjpa2inov"]
+
+[ext_resource type="Script" uid="uid://ba8u8vn6cjliw" path="res://In Game/Game Logic/Game Effects/game_effect.gd" id="1_vd87y"]
+
+[resource]
+script = ExtResource("1_vd87y")
+type = 0
+payload = {
+"food": 0.01
+}
+metadata/_custom_type_script = "uid://ba8u8vn6cjliw"

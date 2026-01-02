@@ -1,13 +1,14 @@
-[gd_resource type="Resource" script_class="Building_Res" load_steps=4 format=3 uid="uid://c7dy1fncseokk"]
+[gd_resource type="Resource" script_class="Building_Res" load_steps=5 format=3 uid="uid://c7dy1fncseokk"]
 
 [ext_resource type="Texture2D" uid="uid://ciccy36d0fvjv" path="res://Assets/Art/Buildings/FeedingGroundsLand2.png" id="1_n2gv7"]
 [ext_resource type="Script" uid="uid://cpt68otvwpoo7" path="res://In Game/Buildings/building_res.gd" id="2_tfme3"]
 [ext_resource type="Script" uid="uid://ba8u8vn6cjliw" path="res://In Game/Game Logic/Game Effects/game_effect.gd" id="3_tfme3"]
+[ext_resource type="Resource" uid="uid://ubggjpa2inov" path="res://In Game/Game Logic/Game Effects/All Effects/Feeding Grounds Land Tick.tres" id="4_pcd5m"]
 
 [resource]
 script = ExtResource("2_tfme3")
 placement_type = 0
-tick_effects = Array[ExtResource("3_tfme3")]([])
+tick_effects = Array[ExtResource("3_tfme3")]([ExtResource("4_pcd5m")])
 name = "Feeding Grounds"
 art = ExtResource("1_n2gv7")
 tooltip = ""

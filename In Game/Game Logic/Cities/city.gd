@@ -41,7 +41,7 @@ func process_tick(tick_updates):
 		new_effect.type = GameEffect.EFFECT_TYPE.KAIJU_HP_DELTA
 		new_effect.payload = {}
 		for attacking_kaiju in being_attacked_by_kaiju:
-			var damage : float = randf_range(-0.0002, -0.0001)
+			var damage : float = randf_range(-0.1, -0.01)
 			new_effect.payload[attacking_kaiju.id] = damage
 		tick_updates.append(new_effect)
 	else:

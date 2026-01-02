@@ -33,18 +33,11 @@ signal selected_city(city_ref : City)
 
 func _ready():
 	world_map.hovered_region_changed.connect(hovered_region)
-		
+	
 func _init_kaiju_token(kaiju: Kaiju):
 	kaiju.token.left_clicked.connect(select_kaiju.bind(kaiju))
 	kaiju.token.right_clicked.connect(deselect_all_kaiju)
 	kaiju.token._load_kaiju(kaiju)
-
-func _update_playspace(delta, speed):
-	_update_kaiju_locations(delta, speed)
-	
-func _update_kaiju_locations(delta, speed):
-	for kaiju in kaiju_tokens:
-		kaiju._update_speed()
 
 func _gui_input(event):
 	if event is InputEventMouseButton:
@@ -65,7 +58,6 @@ func _on_right_click(_pos):
 		selected_kaiju.nav_agent.target_position = valid_position
 		kaiju_target_position.emit(selected_kaiju,valid_position)
 
-
 #func _gui_input(event):
 	#if event is InputEventMouseButton:
 		#if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
@@ -75,7 +67,7 @@ func _on_right_click(_pos):
 				#print(selected_kaiju.global_position)
 				#print(get_global_mouse_position())
 				#selected_kaiju.nav_agent.target_position = get_global_mouse_position()
-				#
+				
 func hovered_region(region, country_name):
 	emit_signal("hovered_country", country_name)
 
@@ -97,14 +89,24 @@ func select_kaiju(kaiju_reference : Kaiju):
 func select_city(city_reference):
 	emit_signal("selected_city", city_reference)
 
+static func _get_global_distance(kaiju_ref : Kaiju, city_ref : City) -> float:
+	var c_pos = city_ref.my_token.global_position
+	var k_pos = kaiju_ref.token.global_position
+	var dist = c_pos.distance_to(k_pos)
+	#print("C", c_pos)
+	#print("K", k_pos, " - D : ", dist, "\n")
+	return dist
+
 func spawn_city(city : City):
 	var token = ResourceLoader.load("res://In Game/Tokens/City/city_token.tscn")
-	var new_city = token.instantiate()
-	new_city.my_city = city
+	var new_city = token.instantiate() as CityToken
+	new_city.my_city = city as City
 	add_child(new_city)
 	new_city.position = city.coordinates
+	new_city.my_city.my_token = new_city
 	city_created.emit(new_city, new_city.position)
 	new_city.left_clicked.connect(select_city.bind(city))
+	#new_city.my_city.updating_kaiju_city_distance.connect(update_kaiju_attacking_city)
 	
 func spawn_building(building : Building, pos):
 	var token = ResourceLoader.load("res://In Game/Tokens/Building/building_token.tscn")

@@ -7,3 +7,4 @@ class_name City_Res
 @export var population : float #In Millions
 @export var art : CompressedTexture2D = preload("res://Assets/Art/Buildings/City.png")
 @export var destroyed_art : CompressedTexture2D = preload("res://Assets/Art/Buildings/DestroyedCity.png")
+@export var defense_distance : float = 100

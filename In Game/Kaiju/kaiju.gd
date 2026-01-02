@@ -172,6 +172,10 @@ func process_tick(tick_updates : Array[GameEffect]) -> Array[GameEffect]:
 		print("NOT IN RANGE")
 		pass #Dont Deal Damage, and Move towards city
 	
+		else:
+			print("NOT IN RANGE")
+			pass #Dont Deal Damage, and Move towards city
+		
 	return tick_updates
 
 func adjust_hp(adjustment : float):

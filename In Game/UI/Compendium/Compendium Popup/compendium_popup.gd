@@ -12,3 +12,4 @@ func _ready():
 func update_text():
 	if $Panel/MarginContainer/Label:
 		$Panel/MarginContainer/Label.text = tooltip
+		

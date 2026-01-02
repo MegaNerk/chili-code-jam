@@ -5,6 +5,8 @@
 
 [resource]
 script = ExtResource("1_cneas")
+food_cost = 0
+fear_cost = 0
 type = 0
 base_hp = 0
 max_hunger = 0
@@ -13,4 +15,5 @@ land_speed = 100.0
 water_speed = 100.0
 name = "Dillo"
 art = ExtResource("1_si5wg")
+tooltip = "Large and rotund, good at fighting and taking damage. Medium speed. Landbound."
 metadata/_custom_type_script = "uid://cdlyy6cua2bwp"

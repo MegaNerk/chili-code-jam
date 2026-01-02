@@ -12,9 +12,13 @@ var current_region : NavigationRegion2D
 
 var id : int #A unique id handed to this Kaiju when it's registered with the Game manager
 var base_hp : int
-var hp : int
+var hp : int:
+	set(value):
+		hp = max(0,min(value,base_hp))
 var max_hunger : int
-var hunger : int
+var hunger : int:
+	set(value):
+		hunger = max(0,min(value,max_hunger))
 var land_speed : float
 var water_speed : float
 
@@ -88,16 +92,18 @@ func process_tick(tick_updates : Array[GameEffect]) -> Array[GameEffect]:
 	if attacking_city:
 		var pop_effect = GameEffect.new()
 		pop_effect.type = GameEffect.EFFECT_TYPE.CITY_POP_DELTA
+		var pop_damage : float = randf_range(-0.002,-0.001)
 		pop_effect.payload = {
-			attacking_city.id : randf_range(0.001, 0.005)
+			attacking_city.id : pop_damage,
 		}
 		tick_updates.append(pop_effect)
 		var dev_effect = GameEffect.new()
-		pop_effect.type = GameEffect.EFFECT_TYPE.CITY_DEV_DELTA
-		pop_effect.payload = {
-			attacking_city.id : 1
+		dev_effect.type = GameEffect.EFFECT_TYPE.CITY_DEV_DELTA
+		var dev_damage = randf_range(0.0001, 0.001)
+		dev_effect.payload = {
+			attacking_city.id : dev_damage
 		}
-		tick_updates.append(pop_effect)
+		tick_updates.append(dev_effect)
 	return tick_updates
 
 func adjust_hp(adjustment : int):
@@ -105,3 +111,17 @@ func adjust_hp(adjustment : int):
 
 func adjust_hunger(adjustment : int):
 	hunger = max(0,min(hunger+adjustment,max_hunger))
+
+func begin_attacking_city(city : City):
+	if attacking_city:
+		stop_attacking_city()
+	attacking_city = city
+	attacking_city.being_attacked_by_kaiju.append(self)
+	AUDIO.play_sfx_once(AUDIO.sfx_library.country_hover)
+
+func stop_attacking_city():
+	attacking_city.being_attacked_by_kaiju.erase(self)
+	attacking_city = null
+
+func die():
+	print("I died :(")

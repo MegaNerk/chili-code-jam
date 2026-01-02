@@ -6,7 +6,13 @@ class_name PlaySpace
 @export var world_map : WorldMap
 @export var kaiju_tokens : Array[Kaiju]
 @export var nav_region : NavigationRegion2D
-var selected_kaiju: Kaiju
+var selected_kaiju: Kaiju = null:
+	set(value):
+		if value != null:
+			emit_signal("selected_kaiju", value)
+		if selected_kaiju and selected_kaiju != value: 
+			emit_signal("unselected_kaiju", selected_kaiju)
+		selected_kaiju = value
 
 signal hovered_country(country_name)
 signal update_kaiju_location(delta, speed)
@@ -21,10 +27,12 @@ signal building_created(building, position)
 signal left_clicked(event_position)
 signal right_clicked(event_position)
 
+signal selected_new_kaiju(new_kaiju : Kaiju)
+signal unselected_kaiju(old_kaiju : Kaiju)
+signal selected_city(city_ref : City)
+
 func _ready():
 	world_map.hovered_region_changed.connect(hovered_region)
-	for kaiju in kaiju_tokens:
-		_init_kaiju_token(kaiju)
 		
 func _init_kaiju_token(kaiju: Kaiju):
 	kaiju.token.left_clicked.connect(select_kaiju.bind(kaiju))
@@ -77,15 +85,18 @@ func deselect_all_kaiju():
 		selected_kaiju.token.get_unselected()
 		selected_kaiju = null
 
-func select_kaiju(kaiju_refence : Kaiju):
-	if kaiju_refence == selected_kaiju:
-		print("Same as Selected", kaiju_refence, selected_kaiju)
+func select_kaiju(kaiju_reference : Kaiju):
+	if kaiju_reference == selected_kaiju:
+		print("Same as Selected", kaiju_reference, selected_kaiju)
 	else:
 		deselect_all_kaiju()
-		print("Now Selecting", kaiju_refence)
-		selected_kaiju = kaiju_refence
+		print("Now Selecting", kaiju_reference)
+		selected_kaiju = kaiju_reference
 		selected_kaiju.token.get_selected()
-		
+
+func select_city(city_reference):
+	emit_signal("selected_city", city_reference)
+
 func spawn_city(city : City):
 	var token = ResourceLoader.load("res://In Game/Tokens/City/city_token.tscn")
 	var new_city = token.instantiate()
@@ -93,6 +104,7 @@ func spawn_city(city : City):
 	add_child(new_city)
 	new_city.position = city.coordinates
 	city_created.emit(new_city, new_city.position)
+	new_city.left_clicked.connect(select_city.bind(city))
 	
 func spawn_building(building : Building, pos):
 	var token = ResourceLoader.load("res://In Game/Tokens/Building/building_token.tscn")

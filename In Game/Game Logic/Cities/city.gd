@@ -6,9 +6,9 @@ signal stats_changed
 var my_city_res : City_Res
 
 var name : String = "City Name"
-var devastation : int = 0:
+var devastation : float = 0.0:
 	set(value):
-		devastation = max(0,min(value,100))
+		devastation = max(0.0,min(value,100.0))
 		emit_signal("stats_changed")
 
 var base_pop : float = 0.0 #In millions
@@ -46,8 +46,16 @@ func process_tick(tick_updates):
 	else:
 		var new_effect = GameEffect.new()
 		new_effect.type = GameEffect.EFFECT_TYPE.CITY_POP_DELTA
+		var pop_growth = randf_range(0.0001, 0.0004)
 		new_effect.payload = {
-			1 : randf_range(0.0001, 0.001)
+			id : pop_growth
 		}
 		tick_updates.append(new_effect)
+		var dev_effect = GameEffect.new()
+		dev_effect.type = GameEffect.EFFECT_TYPE.CITY_DEV_DELTA
+		var dev_repair = randf_range(-0.0001, -0.00001)
+		dev_effect.payload = {
+			id : dev_repair
+		}
+		tick_updates.append(dev_effect)
 	return tick_updates

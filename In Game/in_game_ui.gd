@@ -142,3 +142,8 @@ func activate_compendium_popup(entry_ref):
 
 func deactivate_compendium_popup():
 	compendium_popup.visible = false
+
+func on_city_selected(city_ref):
+	var possible_attacker = playspace.selected_kaiju
+	if possible_attacker:
+		possible_attacker.begin_attacking_city(city_ref)

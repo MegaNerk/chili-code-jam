@@ -17,6 +17,7 @@ func _ready():
 		city_name_label.text = my_city.name
 		fit_text()
 		sync_city_stats()
+		my_city.stats_changed.connect(sync_city_stats)
 
 func fit_text():
 	var label_font = city_name_label.get_theme_font("font")
@@ -30,5 +31,6 @@ func fit_text():
 func sync_city_stats():
 	pop_bar.value = my_city.population
 	pop_bar.max_value = my_city.base_pop
-	pop_label.text = str(my_city.population)+"m"
+	pop_label.text = str(my_city.population).substr(0,3)+"m"
 	devastation_bar.value = my_city.devastation
+	devastation_label.text = str(my_city.devastation).substr(0,3)+"%"

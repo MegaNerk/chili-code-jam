@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="News_Res" load_steps=2 format=3 uid="uid://blxrh3i22edsr"]
+
+[ext_resource type="Script" uid="uid://bhi8xw3x7p82o" path="res://In Game/Game Logic/News/news_res.gd" id="1_kswij"]
+
+[resource]
+script = ExtResource("1_kswij")
+name = "Crazy"
+news_reel = "Crazy? I was crazy once. They put me in a room. A rubber room. A rubber room with rats. They put me in a rubber room with rubber rats. Rubber rats? I hate rubber rats. They make me crazy. Crazy? I was crazy once. They put me in a room…"
+metadata/_custom_type_script = "uid://bhi8xw3x7p82o"

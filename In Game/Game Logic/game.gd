@@ -27,7 +27,10 @@ func _ready():
 	load_all_kaiju_resources()
 	load_all_building_resources()
 	game_ui.prep_compendiums(all_kaiju_res, all_building_res)
-	active_kaiju = game_ui.playspace.kaiju_tokens
+	active_kaiju = game_ui.playspace.kaiju_tokens #This line is temporary, remove later
+	city_director.activate_cities(6)
+	for city in city_director.active_cities:
+		print(city.name)
 
 func _process(delta):
 	game_ui.update_resource_counts(food,fear)

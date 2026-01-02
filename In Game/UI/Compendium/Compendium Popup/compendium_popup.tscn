@@ -50,6 +50,7 @@ theme_override_constants/margin_bottom = 10
 custom_minimum_size = Vector2(330, 180)
 layout_mode = 2
 size_flags_vertical = 1
+theme_override_font_sizes/font_size = 24
 text = "Text goes here"
 autowrap_mode = 2
 justification_flags = 161

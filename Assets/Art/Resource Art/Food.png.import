@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bspnm1m88aygj"
-path="res://.godot/imported/NestingGrounds.png-3f215d836acb9af93687310bebf7def6.ctex"
+uid="uid://3ix5fioqirqi"
+path="res://.godot/imported/Food.png-b4169b4a2a7e0ba19c478539e8243b7b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/Buildings/NestingGrounds.png"
-dest_files=["res://.godot/imported/NestingGrounds.png-3f215d836acb9af93687310bebf7def6.ctex"]
+source_file="res://Assets/Art/Resource Art/Food.png"
+dest_files=["res://.godot/imported/Food.png-b4169b4a2a7e0ba19c478539e8243b7b.ctex"]
 
 [params]
 

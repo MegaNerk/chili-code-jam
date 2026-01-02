@@ -1,9 +1,13 @@
 extends TokenPin
 class_name KaijuToken
 
-var my_kaiju : Kaiju
-var my_info : Kaiju_Res
+@export var nav_agent : NavigationAgent2D
+@export var char_body : CharacterBody2D
+var speed = 100
+var water_speed = 150
+var land_speed = 70
+var target_position = Vector2.ZERO
+var game : Game
+var time_cordinator : TimeCoordinator
 
-func _init():
-	
-	pass
+var my_kaiju : Kaiju

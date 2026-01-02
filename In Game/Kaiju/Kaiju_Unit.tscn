@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://brdbv2c23pfxh" path="res://In Game/Kaiju/kaiju.gd" id="1_6tfu1"]
 [ext_resource type="PackedScene" uid="uid://cj7fg3iyi7kow" path="res://In Game/Tokens/Kaiju/kaiju_token.tscn" id="1_ebelv"]
-[ext_resource type="Resource" uid="uid://c4rwe3yf2axln" path="res://In Game/Kaiju/All Kaiju/Octeyepuss.tres" id="2_r43ka"]
+[ext_resource type="Resource" uid="uid://coh31d1ghroin" path="res://In Game/Kaiju/All Kaiju/Octeyepuss.tres" id="2_r43ka"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ii5wf"]
 radius = 4.55315
@@ -27,7 +27,5 @@ avoidance_enabled = true
 radius = 5.0
 debug_enabled = true
 
-[node name="KaijuToken" parent="." node_paths=PackedStringArray("nav_agent", "char_body") instance=ExtResource("1_ebelv")]
+[node name="KaijuToken" parent="." instance=ExtResource("1_ebelv")]
 scale = Vector2(1, 1)
-nav_agent = NodePath("../NavigationAgent2D")
-char_body = NodePath("..")

@@ -13,6 +13,8 @@ var label_size_x : float = 252.0
 
 func _ready():
 	super()
+	default_scale = Vector2(0.25,0.25)
+	default_hovered_scale = Vector2(0.3,0.3)
 	if my_city:
 		city_name_label.text = my_city.name
 		fit_text()

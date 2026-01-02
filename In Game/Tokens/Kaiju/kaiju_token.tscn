@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cj7fg3iyi7kow"]
+[gd_scene load_steps=11 format=3 uid="uid://cj7fg3iyi7kow"]
 
 [ext_resource type="Texture2D" uid="uid://c0rvare4c155p" path="res://Assets/Affinity Work/Kaiju Token Pin.png" id="1_2xsjq"]
 [ext_resource type="Script" uid="uid://c7bwuhns0858i" path="res://In Game/Tokens/Kaiju/kaiju_token.gd" id="1_22w8i"]
@@ -10,6 +10,22 @@ corner_radius_top_left = 200
 corner_radius_top_right = 200
 corner_radius_bottom_right = 200
 corner_radius_bottom_left = 200
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5pecy"]
+bg_color = Color(0.136826, 0.136826, 0.136826, 0.596078)
+corner_radius_top_left = 45
+corner_radius_top_right = 45
+corner_radius_bottom_right = 45
+corner_radius_bottom_left = 45
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5feyw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_svg81"]
+bg_color = Color(0.73403, 0.487841, 0.225086, 1)
+corner_radius_top_left = 45
+corner_radius_top_right = 45
+corner_radius_bottom_right = 45
+corner_radius_bottom_left = 45
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5feyw"]
 bg_color = Color(0.987615, 0.358908, 0.292305, 1)
@@ -37,7 +53,7 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="KaijuToken" type="Control" node_paths=PackedStringArray("health_bar", "health_label", "hunger_bar")]
+[node name="KaijuToken" type="Control" node_paths=PackedStringArray("health_bar", "health_label", "hunger_bar", "xp_bar", "level_label")]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -175.0
@@ -50,6 +66,8 @@ script = ExtResource("1_22w8i")
 health_bar = NodePath("VBoxContainer/HealthBar")
 health_label = NodePath("VBoxContainer/HealthBar/Label")
 hunger_bar = NodePath("VBoxContainer/HungerBar")
+xp_bar = NodePath("VBoxContainer/HBoxContainer/XPBar")
+level_label = NodePath("VBoxContainer/HBoxContainer/PanelContainer/Label")
 pin_click_mask = ExtResource("4_0plto")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
@@ -89,11 +107,40 @@ expand_mode = 1
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = -0.13229
+anchor_top = -0.24245
 anchor_right = 1.0
-anchor_bottom = 0.07171
+anchor_bottom = 0.06755
 grow_horizontal = 2
 metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(49, 49)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_5pecy")
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="XPBar" type="ProgressBar" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(25, 49)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxEmpty_5feyw")
+theme_override_styles/fill = SubResource("StyleBoxFlat_svg81")
+value = 100.0
+fill_mode = 3
+show_percentage = false
 
 [node name="HealthBar" type="ProgressBar" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 49)

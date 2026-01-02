@@ -3,6 +3,7 @@ class_name Kaiju
 
 signal changed_region
 signal stats_changed
+signal leveled_up
 
 @export var kaiju_resource : Kaiju_Res
 
@@ -24,6 +25,18 @@ var hunger : int:
 		emit_signal("stats_changed")
 var land_speed : float
 var water_speed : float
+var city_damage : float
+var pop_damage : float
+
+var level : int = 1
+var xp : float = 0.0:
+	set(value):
+		xp = value
+		if xp >= kaiju_resource.xp_per_level:
+			level_up()
+			var remainder = xp-kaiju_resource.xp_per_level
+			xp = remainder
+		emit_signal("stats_changed")
 
 var attacking_city : City
 
@@ -36,6 +49,8 @@ func _ready():
 		hunger = max_hunger
 		land_speed = kaiju_resource.land_speed
 		water_speed = kaiju_resource.water_speed
+		city_damage = kaiju_resource.city_damage
+		pop_damage = kaiju_resource.pop_damage
 	
 	nav_agent.link_reached.connect(_on_link_reached)
 	nav_agent.target_reached.connect(_on_target_reached)
@@ -95,24 +110,29 @@ func process_tick(tick_updates : Array[GameEffect]) -> Array[GameEffect]:
 	if attacking_city:
 		var pop_effect = GameEffect.new()
 		pop_effect.type = GameEffect.EFFECT_TYPE.CITY_POP_DELTA
-		var pop_damage : float = randf_range(-0.002,-0.001)
 		pop_effect.payload = {
 			attacking_city.id : pop_damage,
 		}
 		tick_updates.append(pop_effect)
 		var dev_effect = GameEffect.new()
 		dev_effect.type = GameEffect.EFFECT_TYPE.CITY_DEV_DELTA
-		var dev_damage = randf_range(0.0001, 0.001)
 		dev_effect.payload = {
-			attacking_city.id : dev_damage
+			attacking_city.id : city_damage
 		}
 		tick_updates.append(dev_effect)
+		var xp_effect = GameEffect.new()
+		xp_effect.type = GameEffect.EFFECT_TYPE.KAIJU_XP_DELTA
+		var xp_gain = randf_range(0.1, 0.2)
+		xp_effect.payload = {
+			id : xp_gain
+		}
+		tick_updates.append(xp_effect)
 	return tick_updates
 
-func adjust_hp(adjustment : int):
+func adjust_hp(adjustment : float):
 	hp = max(0,min(hp+adjustment,base_hp))
 
-func adjust_hunger(adjustment : int):
+func adjust_hunger(adjustment : float):
 	hunger = max(0,min(hunger+adjustment,max_hunger))
 
 func begin_attacking_city(city : City):
@@ -128,3 +148,17 @@ func stop_attacking_city():
 
 func die():
 	print("I died :(")
+
+func adjust_xp(adjustment : float):
+	xp += adjustment
+
+func level_up():
+	level += 1
+	base_hp += kaiju_resource.hp_scaling
+	hp += kaiju_resource.hp_scaling
+	max_hunger += kaiju_resource.hunger_scaling
+	hunger += kaiju_resource.hunger_scaling
+	land_speed += kaiju_resource.land_speed_scaling
+	water_speed += kaiju_resource.water_speed_scaling
+	emit_signal("stats_changed")
+	emit_signal("leveled_up")

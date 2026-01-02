@@ -178,9 +178,9 @@ func resolve_game_effect(effect : GameEffect):
 		GameEffect.EFFECT_TYPE.KAIJU_HUNGER_DELTA:
 			for kaiju_id in effect.payload.keys():
 				get_kaiju_with_id(kaiju_id).adjust_hunger(effect.payload[kaiju_id])
-		GameEffect.EFFECT_TYPE.KILL_KAIJU:
+		GameEffect.EFFECT_TYPE.KAIJU_XP_DELTA:
 			for kaiju_id in effect.payload.keys():
-				get_kaiju_with_id(kaiju_id).die()
+				get_kaiju_with_id(kaiju_id).adjust_xp(effect.payload[kaiju_id])
 		GameEffect.EFFECT_TYPE.CITY_POP_DELTA:
 			for city_id in effect.payload.keys():
 				city_director.get_city_with_id(city_id).population += effect.payload[city_id]

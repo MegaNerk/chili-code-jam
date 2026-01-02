@@ -13,7 +13,7 @@ func _ready():
 	load_news_library()
 
 func process_tick(tick_update):
-	if ready_stories.size() > 0 and randi_range(1,501) > 499:
+	if ready_stories.size() > 0 and randi_range(1,1001) > 999:
 		queue_new_news_clip()
 
 func queue_new_news_clip():

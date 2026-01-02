@@ -164,6 +164,7 @@ func _clear_order():
 
 func enter_city_radius():
 	_clear_order()
+	begin_attacking_city(attacking_city)
 
 func begin_attacking_city(city : City):
 	if attacking_city:

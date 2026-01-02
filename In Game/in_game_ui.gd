@@ -58,8 +58,18 @@ func _process(delta):
 			print("VALID SPAWNING PLACEMENT")
 			mouse_hover_image.self_modulate = valid_color
 			valid_spawning = true
+			
 	if building_being_placed:
-		pass
+		valid_spawning = false
+		var cur_region = playspace._get_position_nav_region(get_global_mouse_position())
+		if cur_region.navigation_layers & building_being_placed.my_building_res.placable_on_region == 0:
+			print("INVALID SPAWNING PLACEMENT")
+			mouse_hover_image.self_modulate = invalid_color
+			
+		else:
+			print("VALID SPAWNING PLACEMENT")
+			mouse_hover_image.self_modulate = valid_color
+			valid_spawning = true
 
 func _on_game_tick(delta, speed):
 	playspace._update_playspace(delta, speed)

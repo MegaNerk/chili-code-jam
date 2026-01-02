@@ -63,8 +63,7 @@ func update_resource_counts(food_count, fear_count):
 
 func spawn_cities(cities):
 	for city in cities:
-		pass
-		#playspace.spawn_city(city)
+		playspace.spawn_city(city)
 
 func queue_place_building(building : Building):
 	placing_building = true

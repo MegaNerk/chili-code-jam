@@ -12,6 +12,9 @@ signal hovered_country(country_name)
 signal update_kaiju_location(delta, speed)
 
 signal kaiju_target_position(kaiju, target_position)
+signal kaiju_created(kaiju)
+signal kaiju_to_be_destroyed(kaiju)
+
 signal left_clicked(event_position)
 signal right_clicked(event_position)
 
@@ -19,8 +22,11 @@ signal right_clicked(event_position)
 func _ready():
 	world_map.hovered_region_changed.connect(hovered_region)
 	for kaiju in kaiju_tokens:
-		kaiju.token.left_clicked.connect(select_kaiju.bind(kaiju))
-		kaiju.token.right_clicked.connect(deselect_all_kaiju)
+		_init_kaiju_token(kaiju)
+		
+func _init_kaiju_token(kaiju):
+	kaiju.token.left_clicked.connect(select_kaiju.bind(kaiju))
+	kaiju.token.right_clicked.connect(deselect_all_kaiju)
 
 func _update_playspace(delta, speed):
 	_update_kaiju_locations(delta, speed)
@@ -39,6 +45,7 @@ func _gui_input(event):
 				
 func _on_left_click(_pos):
 	left_clicked.emit(_pos)
+	spawn_kaiju(ResourceLoader.load("res://In Game/Kaiju/All Kaiju/Dillo.tres"),_pos)
 
 func _on_right_click(_pos):
 	right_clicked.emit(_pos)
@@ -77,15 +84,25 @@ func select_kaiju(kaiju_refence : Kaiju):
 		selected_kaiju.token.get_selected()
 		
 func spawn_city(city : City):
-	var token = preload("res://In Game/Tokens/City/city_token.tscn")
+	var token = ResourceLoader.load("res://In Game/Tokens/City/city_token.tscn")
 	var new_city = token.instantiate()
 	new_city.my_city = city
 	add_child(new_city)
 	new_city.position = city.coordinates
 	
-func spawn_kaiju(kaiju : Kaiju_Res, pos):
-	var kaiju_unit = preload("res://In Game/Kaiju/Kaiju_Unit.tscn")
+func spawn_kaiju(kaiju, pos):
+	var kaiju_unit = ResourceLoader.load("res://In Game/Kaiju/Kaiju_Unit.tscn")
 	var new_kaiju = kaiju_unit.instantiate()
-	new_kaiju.kaiju_resource = Kaiju_Res
-	new_kaiju.position = pos
+	new_kaiju.kaiju_resource = kaiju
 	nav_region.add_child(new_kaiju)
+	new_kaiju.global_position = pos
+	kaiju_tokens.append(new_kaiju)
+	_init_kaiju_token(new_kaiju)
+	kaiju_created.emit(new_kaiju)
+	select_kaiju(new_kaiju)
+	
+func destroy_kaiju(kaiju : Kaiju):
+	kaiju_to_be_destroyed.emit(kaiju)
+	kaiju_tokens.erase(kaiju)
+	deselect_all_kaiju()
+	kaiju.queue_free()

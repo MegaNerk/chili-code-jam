@@ -5,6 +5,8 @@
 
 [resource]
 script = ExtResource("1_t06uv")
+food_cost = 0
+fear_cost = 0
 type = 0
 base_hp = 0
 max_hunger = 0
@@ -13,4 +15,5 @@ land_speed = 100.0
 water_speed = 100.0
 name = "Puker"
 art = ExtResource("1_ga8qh")
+tooltip = "Not good at much aside from building. Gross and weird. Medium speed. Land or water."
 metadata/_custom_type_script = "uid://cdlyy6cua2bwp"

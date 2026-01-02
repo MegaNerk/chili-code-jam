@@ -1,10 +1,9 @@
 extends Unit_Res
 class_name Kaiju_Res
 
-enum KAIJU_TYPE {LAND, WATER, AIR}
+signal lost_discount
 
-@export var food_cost : int = 0
-@export var fear_cost : int = 0
+enum KAIJU_TYPE {LAND, WATER, AIR}
 
 @export var type : KAIJU_TYPE
 @export var base_hp : float = 100
@@ -20,3 +19,9 @@ enum KAIJU_TYPE {LAND, WATER, AIR}
 @export var water_speed : float = 100
 @export var water_speed_scaling : float = 1
 @export var xp_per_level : float = 100
+
+var has_first_kaiju_discount = true:
+	set(value):
+		has_first_kaiju_discount = value
+		if has_first_kaiju_discount == false:
+			emit_signal("lost_discount")

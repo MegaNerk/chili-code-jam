@@ -12,6 +12,8 @@ signal leveled_up
 var local_speed : int = 100
 var current_region : NavigationRegion2D
 
+var paid_for_with_discount : bool = false
+
 var id : int #A unique id handed to this Kaiju when it's registered with the Game manager
 var base_hp : int
 var hp : int:

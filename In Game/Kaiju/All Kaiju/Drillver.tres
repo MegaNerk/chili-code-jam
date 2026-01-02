@@ -5,14 +5,22 @@
 
 [resource]
 script = ExtResource("1_t1qjo")
-food_cost = 0
-fear_cost = 0
+food_cost = 300
+fear_cost = 50
 type = 0
 base_hp = 200
-max_hunger = 100
-base_damage = 0
-land_speed = 100.0
-water_speed = 100.0
+hp_scaling = 25.0
+max_hunger = 100.0
+hunger_scaling = 25.0
+city_damage = 0.0003
+city_damage_scaling = 0.0002
+pop_damage = 0.0002
+pop_damage_scaling = 0.0002
+land_speed = 25.0
+land_speed_scaling = 5.0
+water_speed = 3.0
+water_speed_scaling = 1.0
+xp_per_level = 200.0
 name = "Drillver"
 art = ExtResource("1_s1x3b")
 tooltip = "A destructive fella, good at taking hits and destroying cities. Slow speed. Landbound."

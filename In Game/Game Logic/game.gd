@@ -42,6 +42,8 @@ var max_fatigue : int = 100
 
 var kp_for_next_kaiju : int
 
+var has_first_kaiju_discount : bool = true
+
 func _ready():
 	load_all_kaiju_resources()
 	load_all_building_resources()
@@ -119,11 +121,14 @@ func attempt_place_building(building : Building_Res):
 	else: AUDIO.play_sfx_once(AUDIO.sfx_library.illegal_input)
 
 func attempt_spawn_kaiju(new_kaiju : Kaiju_Res):
-	if  food >= new_kaiju.food_cost and fear >= new_kaiju.fear_cost and kaiju_points == kp_for_next_kaiju:
-		food -= new_kaiju.food_cost
-		fear -= new_kaiju.fear_cost
+	if  (new_kaiju.has_first_kaiju_discount or (food >= new_kaiju.food_cost and fear >= new_kaiju.fear_cost)) and kaiju_points == kp_for_next_kaiju:
+		if !new_kaiju.has_first_kaiju_discount:
+			food -= new_kaiju.food_cost
+			fear -= new_kaiju.fear_cost
 		var the_kaiju = preload("res://In Game/Kaiju/Kaiju_Unit.tscn").instantiate()
 		the_kaiju.kaiju_resource = new_kaiju
+		if new_kaiju.has_first_kaiju_discount:
+			the_kaiju.paid_for_with_discount = true
 		game_ui.queue_spawn_kaiju(the_kaiju)
 	else: AUDIO.play_sfx_once(AUDIO.sfx_library.illegal_input)
 
@@ -131,16 +136,23 @@ func on_building_placed(building : Building):
 	register_building(building)
 
 func on_building_cancelled(building : Building):
-	pass
+	food += building.my_building_res.food_cost
+	fear += building.my_building_res.fear_cost
 
 func on_kaiju_spawned(this_kaiju : Kaiju):
 	register_kaiju(this_kaiju)
 	kaiju_cost_scaling.add_spawned_kaiju()
 	kp_for_next_kaiju = kaiju_cost_scaling.get_next_cost()
 	kaiju_points = 0
+	if has_first_kaiju_discount:
+		has_first_kaiju_discount = false
+		for res in all_kaiju_res:
+			res.has_first_kaiju_discount = false
 
-func on_kaiju_cancelled(building : Building):
-	pass
+func on_kaiju_cancelled(the_kaiju : Kaiju):
+	if the_kaiju.paid_for_with_discount == false:
+		food += the_kaiju.kaiju_resource.food_cost
+		fear += the_kaiju.kaiju_resource.fear_cost
 
 func check_for_win_loss():
 	var win_state : bool = true

@@ -5,14 +5,22 @@
 
 [resource]
 script = ExtResource("1_bv3il")
-food_cost = 0
-fear_cost = 0
+food_cost = 200
+fear_cost = 75
 type = 0
-base_hp = 100
+base_hp = 125.0
+hp_scaling = 25.0
 max_hunger = 75
-base_damage = 0
-land_speed = 100.0
-water_speed = 100.0
+hunger_scaling = 25.0
+city_damage = 0.0005
+city_damage_scaling = 0.00025
+pop_damage = 0.0002
+pop_damage_scaling = 0.0001
+land_speed = 50.0
+land_speed_scaling = 10.0
+water_speed = 25.0
+water_speed_scaling = 5.0
+xp_per_level = 150.0
 name = "Rex"
 art = ExtResource("1_pk4dg")
 tooltip = "A fearsome glass cannon, ready to blast your favourite city to nothing just like in the movies. Medium Speed. Land or water."

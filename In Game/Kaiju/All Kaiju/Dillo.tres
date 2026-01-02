@@ -5,14 +5,22 @@
 
 [resource]
 script = ExtResource("1_cneas")
-food_cost = 0
-fear_cost = 0
+food_cost = 250
+fear_cost = 30
 type = 0
-base_hp = 100
-max_hunger = 100
-base_damage = 0
-land_speed = 100.0
-water_speed = 100.0
+base_hp = 250.0
+hp_scaling = 50.0
+max_hunger = 50.0
+hunger_scaling = 10.0
+city_damage = 0.0002
+city_damage_scaling = 0.0001
+pop_damage = 0.0001
+pop_damage_scaling = 5e-05
+land_speed = 40.0
+land_speed_scaling = 5.0
+water_speed = 5.0
+water_speed_scaling = 2.5
+xp_per_level = 100.0
 name = "Dillo"
 art = ExtResource("1_si5wg")
 tooltip = "Large and rotund, good at fighting and taking damage. Medium speed. Landbound."

@@ -58,8 +58,18 @@ func _process(delta):
 			print("VALID SPAWNING PLACEMENT")
 			mouse_hover_image.self_modulate = valid_color
 			valid_spawning = true
+			
 	if building_being_placed:
-		pass
+		valid_spawning = false
+		var cur_region = playspace._get_position_nav_region(get_global_mouse_position())
+		if cur_region.navigation_layers & building_being_placed.my_building_res.placable_on_region == 0:
+			print("INVALID SPAWNING PLACEMENT")
+			mouse_hover_image.self_modulate = invalid_color
+			
+		else:
+			print("VALID SPAWNING PLACEMENT")
+			mouse_hover_image.self_modulate = valid_color
+			valid_spawning = true
 
 func _on_game_tick(delta, speed):
 	playspace._update_playspace(delta, speed)
@@ -122,6 +132,7 @@ func queue_spawn_kaiju(new_kaiju : Kaiju):
 	mouse_hover_image.texture = new_kaiju.kaiju_resource.art
 
 func _on_playspace_left_clicked(coords):
+	AUDIO.play_sfx_once(AUDIO.sfx_library.click_sound)
 	if building_being_placed:
 		place_building(coords)
 	if kaiju_being_spawned:
@@ -152,6 +163,7 @@ func place_building(coords):
 	playspace.spawn_building(building_being_placed, coords)
 	building_being_placed = null
 	mouse_hover_image.visible = false
+	AUDIO.play_sfx_once(AUDIO.sfx_library.building_placement)
 
 func spawn_kaiju(coords):
 	emit_signal("kaiju_spawned",kaiju_being_spawned)

@@ -164,9 +164,11 @@ func _clear_order():
 
 func enter_city_radius():
 	_clear_order()
+	begin_attacking_city(attacking_city)
 
 func begin_attacking_city(city : City):
 	if attacking_city:
+		AUDIO.play_sfx_once(AUDIO.sfx_library.city_destruction)
 		stop_attacking_city()
 	else:
 		print("Try to attack : ", city)
@@ -183,6 +185,7 @@ func stop_attacking_city():
 	attacking_city = null
 
 func die():
+	AUDIO.play_sfx_once(AUDIO.sfx_library.kaiju_death)
 	if attacking_city:
 		stop_attacking_city()
 	emit_signal("died")
@@ -191,6 +194,7 @@ func adjust_xp(adjustment : float):
 	xp += adjustment
 
 func level_up():
+	AUDIO.play_sfx_once(AUDIO.sfx_library.Levelup)
 	if level < 15:
 		level += 1
 		base_hp += kaiju_resource.hp_scaling

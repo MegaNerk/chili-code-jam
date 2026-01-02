@@ -36,6 +36,8 @@ ticks_per_day = 24
 
 [node name="NewsReporter" parent="." instance=ExtResource("6_m33vx")]
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
 [connection signal="building_placed" from="InGameUI" to="." method="on_building_placed"]
 [connection signal="building_placement_cancelled" from="InGameUI" to="." method="on_building_cancelled"]
 [connection signal="compendium_entry_selected" from="InGameUI" to="." method="on_compendium_entry_selected"]

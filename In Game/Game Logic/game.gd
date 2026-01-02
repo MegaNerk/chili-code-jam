@@ -34,6 +34,12 @@ var gained_kaiju_points : float = 0.0
 var gained_food : float = 0.0
 var gained_fear : float = 0.0
 
+var fatigue : int = 0:
+	set(value):
+		fatigue = max(0,min(value,max_fatigue))
+var gained_fatigue : float = 0.0
+var max_fatigue : int = 100
+
 var kp_for_next_kaiju : int
 
 func _ready():
@@ -137,7 +143,15 @@ func on_kaiju_cancelled(building : Building):
 	pass
 
 func check_for_win_loss():
-	pass
+	var win_state : bool = true
+	for city in city_director.active_cities:
+		if city.devastation < 100.0:
+			win_state = false
+			break
+	if win_state:
+		end_game(true)
+	elif fatigue == max_fatigue:
+		end_game(false)
 
 func end_game(win : bool):
 	pass

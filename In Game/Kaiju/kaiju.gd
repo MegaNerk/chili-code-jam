@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Kaiju
 
 signal changed_region
+signal stats_changed
 
 @export var kaiju_resource : Kaiju_Res
 
@@ -15,10 +16,12 @@ var base_hp : int
 var hp : int:
 	set(value):
 		hp = max(0,min(value,base_hp))
+		emit_signal("stats_changed")
 var max_hunger : int
 var hunger : int:
 	set(value):
 		hunger = max(0,min(value,max_hunger))
+		emit_signal("stats_changed")
 var land_speed : float
 var water_speed : float
 

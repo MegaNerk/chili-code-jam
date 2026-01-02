@@ -24,9 +24,10 @@ func _ready():
 	for kaiju in kaiju_tokens:
 		_init_kaiju_token(kaiju)
 		
-func _init_kaiju_token(kaiju):
+func _init_kaiju_token(kaiju: Kaiju):
 	kaiju.token.left_clicked.connect(select_kaiju.bind(kaiju))
 	kaiju.token.right_clicked.connect(deselect_all_kaiju)
+	kaiju.token._load_kaiju(kaiju)
 
 func _update_playspace(delta, speed):
 	_update_kaiju_locations(delta, speed)
@@ -91,7 +92,7 @@ func spawn_city(city : City):
 	add_child(new_city)
 	new_city.position = city.coordinates
 	
-func spawn_kaiju(kaiju, pos):
+func spawn_kaiju(kaiju : Kaiju_Res, pos):
 	var kaiju_unit = ResourceLoader.load("res://In Game/Kaiju/Kaiju_Unit.tscn")
 	var new_kaiju = kaiju_unit.instantiate()
 	new_kaiju.kaiju_resource = kaiju

@@ -15,7 +15,7 @@ var currently_selected : bool = false
 
 func _ready():
 	pin_click_mask_image = pin_click_mask.get_image()
-	
+
 func on_hovered():
 	self.scale = Vector2(1.1,1.1)
 	emit_signal("hovered")

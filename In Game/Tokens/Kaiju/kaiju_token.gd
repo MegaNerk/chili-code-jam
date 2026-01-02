@@ -1,13 +1,11 @@
 extends TokenPin
 class_name KaijuToken
 
-@export var nav_agent : NavigationAgent2D
-@export var char_body : CharacterBody2D
-var speed = 100
-var water_speed = 150
-var land_speed = 70
-var target_position = Vector2.ZERO
-var game : Game
-var time_cordinator : TimeCoordinator
-
 var my_kaiju : Kaiju
+
+func _load_kaiju(_kaiju):
+	my_kaiju = _kaiju
+	_change_image(my_kaiju.kaiju_resource.art)
+	
+func _change_image(new_img):
+	$PanelContainer/TextureRect.texture = new_img

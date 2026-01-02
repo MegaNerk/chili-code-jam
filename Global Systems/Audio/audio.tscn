@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bex6r2dxkgwsu"]
+[gd_scene load_steps=14 format=3 uid="uid://bex6r2dxkgwsu"]
 
 [ext_resource type="Script" uid="uid://civtlvobe7et8" path="res://Global Systems/Audio/audio.gd" id="1_eprsc"]
 [ext_resource type="AudioStream" uid="uid://c77ce65nt45j3" path="res://Assets/Audio/Nihilore/Drifting.mp3" id="2_m5u4h"]
@@ -8,6 +8,8 @@
 [ext_resource type="AudioStream" uid="uid://csjuheq8giyv4" path="res://Assets/Audio/Nihilore/B1-66ER.mp3" id="6_rj2ce"]
 [ext_resource type="AudioStream" uid="uid://drqo7enmauvye" path="res://Assets/Audio/Nihilore/We+Are+Already+Dead+(instrumental).mp3" id="7_76v72"]
 [ext_resource type="Resource" uid="uid://bkutlas74x1li" path="res://Global Systems/Audio/sfx_library.tres" id="8_rj2ce"]
+[ext_resource type="AudioStream" uid="uid://dkqhb7cmo1pv0" path="res://Assets/Audio/Ojany Audio/FailureSong.wav" id="9_u7ebp"]
+[ext_resource type="AudioStream" uid="uid://b8uljjgq2vs2y" path="res://Assets/Audio/Ojany Audio/VictorySong.wav" id="10_xsp5t"]
 
 [sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_u7ebp"]
 shuffle = true
@@ -46,3 +48,9 @@ bus = &"Music"
 [node name="SFXPlayer" type="AudioStreamPlayer" parent="."]
 max_polyphony = 99
 bus = &"Music"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_u7ebp")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="AudioStreamPlayer2D"]
+stream = ExtResource("10_xsp5t")

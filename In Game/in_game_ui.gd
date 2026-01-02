@@ -20,7 +20,7 @@ signal building_placement_cancelled(building_ref)
 @export var food_stockpile : FoodStockpile
 @export var fear_stockpile : FearStockpile
 
-var placing_building : bool = false
+var building_being_placed : Building = null
 
 func _ready():
 	playspace.hovered_country.connect(change_hovered_country_name)
@@ -66,6 +66,18 @@ func spawn_cities(cities):
 		playspace.spawn_city(city)
 
 func queue_place_building(building : Building):
-	placing_building = true
+	building_being_placed = building
 	mouse_hover_image.visible = true
 	mouse_hover_image.texture = building.art
+
+func _on_playspace_left_clicked(coords):
+	if building_being_placed:
+		emit_signal("building_placed",building_being_placed)
+		building_being_placed = null
+		mouse_hover_image.visible = false
+
+func _on_playspace_right_clicked(coords):
+	if building_being_placed:
+		building_being_placed = null
+		mouse_hover_image.visible = false
+		emit_signal("building_placement_cancelled")

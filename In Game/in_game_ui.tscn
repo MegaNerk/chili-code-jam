@@ -215,6 +215,8 @@ layout_mode = 0
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/Button" to="." method="settings_pressed"]
 [connection signal="tab_changed" from="VBoxContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/SpeedToggle" to="." method="on_speed_toggled"]
+[connection signal="left_clicked" from="VBoxContainer/HBoxContainer2/PlaySpace" to="." method="_on_playspace_left_clicked"]
+[connection signal="right_clicked" from="VBoxContainer/HBoxContainer2/PlaySpace" to="." method="_on_playspace_right_clicked"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer2/Panel/MarginContainer/VBoxContainer/KaijuButton" to="." method="on_kaiju_button_pressed"]
 [connection signal="entry_selected" from="VBoxContainer/HBoxContainer2/Panel/MarginContainer/VBoxContainer/KaijuComp" to="." method="on_compendium_entry_selected"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer2/Panel/MarginContainer/VBoxContainer/BuildingsButton" to="." method="on_buildings_button_pressed"]

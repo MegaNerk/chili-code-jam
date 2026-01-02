@@ -6,3 +6,4 @@ class_name FearStockpile
 
 func update_score(new_score):
 	fear_count_bar.value = new_score
+	fear_count.text = str(new_score)+"/100"

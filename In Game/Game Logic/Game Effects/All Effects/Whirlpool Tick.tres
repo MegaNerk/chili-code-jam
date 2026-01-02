@@ -6,6 +6,7 @@
 script = ExtResource("1_oyyrm")
 type = 0
 payload = {
+"food": 0.001,
 "kp": 0.005
 }
 metadata/_custom_type_script = "uid://ba8u8vn6cjliw"

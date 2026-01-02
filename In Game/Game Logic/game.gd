@@ -60,7 +60,8 @@ func _ready():
 	game_ui.spawn_cities(city_director.active_cities)
 
 func _process(delta):
-	var kp_progress : int = int(100.0*(float(kaiju_points)/float(kp_for_next_kaiju)))
+	var float_progress : float = (100.0*(float(kaiju_points)/float(kp_for_next_kaiju)))
+	var kp_progress : int = int(float_progress)
 	game_ui.update_resource_counts(food,fear,kp_progress)
 
 func change_speed(new_speed):

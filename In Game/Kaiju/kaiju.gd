@@ -122,61 +122,31 @@ func is_in_range_of_city(city_ref) -> bool:
 		return true
 	return false
 
-
 func process_tick(tick_updates : Array[GameEffect]) -> Array[GameEffect]:
 	if attacking_city:
 		if is_in_range_of_city(attacking_city):
-			var pop_effect = GameEffect.new()
-			pop_effect.type = GameEffect.EFFECT_TYPE.CITY_POP_DELTA
-			pop_effect.payload = {
-				attacking_city.id : pop_damage,
-			}
-			tick_updates.append(pop_effect)
-			var dev_effect = GameEffect.new()
-			dev_effect.type = GameEffect.EFFECT_TYPE.CITY_DEV_DELTA
-			dev_effect.payload = {
-				attacking_city.id : city_damage
-			}
-			tick_updates.append(dev_effect)
-			var xp_effect = GameEffect.new()
-			xp_effect.type = GameEffect.EFFECT_TYPE.KAIJU_XP_DELTA
-			var xp_gain = 5.1
-			xp_effect.payload = {
-				id : xp_gain
-			}
-			tick_updates.append(xp_effect)
-			var feed_effect = GameEffect.new()
-			feed_effect.type = GameEffect.EFFECT_TYPE.KAIJU_HUNGER_DELTA
-			var hunger_gain = 0.25
-			feed_effect.payload = {
-				id : hunger_gain
-			}
-			tick_updates.append(feed_effect)
-		elif hunger > 0.0:
-			var heal_effect = GameEffect.new()
-			heal_effect.type = GameEffect.EFFECT_TYPE.KAIJU_HP_DELTA
-			var hp_gain = 0.02
-			heal_effect.payload = {
-				id : hp_gain
-			}
-			tick_updates.append(heal_effect)
-			var hunger_effect = GameEffect.new()
-			hunger_effect.type = GameEffect.EFFECT_TYPE.KAIJU_HUNGER_DELTA
-			hunger_effect.payload = {
-				id : -0.1,
-			}
-			tick_updates.append(hunger_effect)
-		else:
-			var hunger_effect = GameEffect.new()
-			hunger_effect.type = GameEffect.EFFECT_TYPE.KAIJU_HP_DELTA
-			hunger_effect.payload = {
-				id : -0.1,
-			}
-			tick_updates.append(hunger_effect)
+			tick_updates.append_array(fight_city_tick_updates())
+	elif hunger > 0.0:
+		var heal_effect = GameEffect.new()
+		heal_effect.type = GameEffect.EFFECT_TYPE.KAIJU_HP_DELTA
+		var hp_gain = 0.02
+		heal_effect.payload = {
+			id : hp_gain
+		}
+		tick_updates.append(heal_effect)
+		var hunger_effect = GameEffect.new()
+		hunger_effect.type = GameEffect.EFFECT_TYPE.KAIJU_HUNGER_DELTA
+		hunger_effect.payload = {
+			id : -0.1,
+		}
+		tick_updates.append(hunger_effect)
 	else:
-		print("NOT IN RANGE")
-		pass #Dont Deal Damage, and Move towards city
-	
+		var hunger_effect = GameEffect.new()
+		hunger_effect.type = GameEffect.EFFECT_TYPE.KAIJU_HP_DELTA
+		hunger_effect.payload = {
+			id : -0.1,
+		}
+		tick_updates.append(hunger_effect)
 	return tick_updates
 
 func adjust_hp(adjustment : float):
@@ -215,3 +185,33 @@ func level_up():
 		water_speed += kaiju_resource.water_speed_scaling
 		emit_signal("stats_changed")
 		emit_signal("leveled_up")
+
+func fight_city_tick_updates() -> Array[GameEffect]:
+	var tick_updates : Array[GameEffect] = []
+	var pop_effect = GameEffect.new()
+	pop_effect.type = GameEffect.EFFECT_TYPE.CITY_POP_DELTA
+	pop_effect.payload = {
+		attacking_city.id : pop_damage,
+	}
+	tick_updates.append(pop_effect)
+	var dev_effect = GameEffect.new()
+	dev_effect.type = GameEffect.EFFECT_TYPE.CITY_DEV_DELTA
+	dev_effect.payload = {
+		attacking_city.id : city_damage
+	}
+	tick_updates.append(dev_effect)
+	var xp_effect = GameEffect.new()
+	xp_effect.type = GameEffect.EFFECT_TYPE.KAIJU_XP_DELTA
+	var xp_gain = 5.1
+	xp_effect.payload = {
+		id : xp_gain
+	}
+	tick_updates.append(xp_effect)
+	var feed_effect = GameEffect.new()
+	feed_effect.type = GameEffect.EFFECT_TYPE.KAIJU_HUNGER_DELTA
+	var hunger_gain = 0.25
+	feed_effect.payload = {
+		id : hunger_gain
+	}
+	tick_updates.append(feed_effect)
+	return tick_updates

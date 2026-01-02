@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://mav5vr5mxya7"]
+[gd_scene load_steps=9 format=3 uid="uid://mav5vr5mxya7"]
 
 [ext_resource type="PackedScene" uid="uid://c8eek86ob1fl8" path="res://In Game/in_game_ui.tscn" id="1_6gr50"]
 [ext_resource type="Script" uid="uid://bdeqd6lha3yn8" path="res://In Game/Game Logic/game.gd" id="1_dji84"]
@@ -7,8 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://bl4r6wfexlbo3" path="res://In Game/Game Logic/Cities/City Director/city_director.tscn" id="4_61akc"]
 [ext_resource type="PackedScene" uid="uid://cdf2lxywh6b8o" path="res://In Game/Game Logic/Time/time_coordinator.tscn" id="5_yyf0g"]
 [ext_resource type="PackedScene" uid="uid://dp3feowf0ysof" path="res://In Game/Game Logic/News/News Reporter/news_reporter.tscn" id="6_m33vx"]
+[ext_resource type="PackedScene" uid="uid://chplhww8i3b01" path="res://Out of Game/End Game/end_game.tscn" id="8_0cgdq"]
 
-[node name="Game" type="Control" node_paths=PackedStringArray("game_ui", "event_director", "city_director", "time_coordinator", "news_reporter")]
+[node name="Game" type="Control" node_paths=PackedStringArray("game_ui", "event_director", "city_director", "time_coordinator", "news_reporter", "end_game_graphics", "end_game_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,6 +24,8 @@ city_director = NodePath("CityDirector")
 time_coordinator = NodePath("TimeCoordinator")
 news_reporter = NodePath("NewsReporter")
 kaiju_cost_scaling = ExtResource("2_wbag2")
+end_game_graphics = NodePath("CanvasLayer/EndGame")
+end_game_button = NodePath("CanvasLayer/EndGameButton")
 
 [node name="InGameUI" parent="." instance=ExtResource("1_6gr50")]
 layout_mode = 1
@@ -38,6 +41,22 @@ ticks_per_day = 24
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="EndGame" parent="CanvasLayer" instance=ExtResource("8_0cgdq")]
+visible = false
+
+[node name="EndGameButton" type="Button" parent="CanvasLayer"]
+visible = false
+custom_minimum_size = Vector2(275, 100)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = -125.0
+offset_right = 300.0
+offset_bottom = -25.0
+grow_vertical = 0
+text = "Return to Menu"
+
 [connection signal="building_placed" from="InGameUI" to="." method="on_building_placed"]
 [connection signal="building_placement_cancelled" from="InGameUI" to="." method="on_building_cancelled"]
 [connection signal="compendium_entry_selected" from="InGameUI" to="." method="on_compendium_entry_selected"]
@@ -46,3 +65,4 @@ ticks_per_day = 24
 [connection signal="speed_toggled" from="InGameUI" to="." method="change_speed"]
 [connection signal="new_date_calculated" from="TimeCoordinator" to="." method="date_changed"]
 [connection signal="tick_passed" from="TimeCoordinator" to="." method="on_tick_passed"]
+[connection signal="pressed" from="CanvasLayer/EndGameButton" to="." method="on_end_game_button_pressed"]

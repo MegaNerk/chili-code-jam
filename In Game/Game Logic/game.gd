@@ -15,6 +15,9 @@ var all_building_res : Array[Building_Res] = []
 
 @export var kaiju_cost_scaling : KaijuCostScaling
 
+@export var end_game_graphics : EndGame
+@export var end_game_button : Button
+
 var ticks_elapsed : int
 
 var next_available_kaiju_id : int = 0
@@ -84,6 +87,7 @@ func on_tick_passed():
 			this_kaiju.die()
 			unregister_kaiju(this_kaiju)
 	city_director.check_on_cities()
+	check_for_win_loss()
 
 func load_all_kaiju_resources():
 	var kaiju_dir : DirAccess = DirAccess.open(kaiju_res_path)
@@ -172,7 +176,11 @@ func check_for_win_loss():
 		end_game(false)
 
 func end_game(win : bool):
-	pass
+	time_coordinator.current_speed = 0
+	game_ui.visible = false
+	end_game_graphics.visible = true
+	end_game_graphics.activate_end_game(win)
+	end_game_button.visible = true
 
 func process_tick_updates(tick_updates : Array[GameEffect]):
 	for effect in tick_updates:
@@ -242,3 +250,6 @@ func log_resource_delta():
 	while gained_kaiju_points >= 1.0:
 		gained_kaiju_points -= 1.0
 		kaiju_points += 1
+
+func on_end_game_button_pressed():
+	STATE.go_to_state(STATE.GAME_STATE.MAIN_MENU)

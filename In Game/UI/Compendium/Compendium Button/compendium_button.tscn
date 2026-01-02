@@ -16,7 +16,7 @@ texture = ExtResource("7_mjrq8")
 
 [node name="CompendiumButton" type="TextureButton" node_paths=PackedStringArray("food_label", "fear_label")]
 clip_contents = true
-custom_minimum_size = Vector2(140, 140)
+custom_minimum_size = Vector2(180, 180)
 offset_right = 140.0
 offset_bottom = 140.0
 texture_normal = ExtResource("1_wjiqr")
@@ -51,6 +51,7 @@ offset_bottom = -0.314995
 theme_override_font_sizes/font_size = 16
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="PanelContainer" type="PanelContainer" parent="."]

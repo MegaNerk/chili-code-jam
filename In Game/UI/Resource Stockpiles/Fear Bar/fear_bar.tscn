@@ -9,6 +9,7 @@
 custom_minimum_size = Vector2(300, 60)
 layout_mode = 3
 anchors_preset = 0
+size_flags_vertical = 4
 script = ExtResource("1_0ojg4")
 fear_count_bar = NodePath("HBoxContainer/FearCountBar")
 fear_count = NodePath("HBoxContainer/FearCountBar/FearCount")
@@ -32,6 +33,7 @@ vertical_alignment = 1
 [node name="FearCountBar" type="TextureProgressBar" parent="HBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 rounded = true
 texture_under = ExtResource("2_0ro3q")

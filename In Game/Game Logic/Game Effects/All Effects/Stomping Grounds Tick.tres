@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="GameEffect" load_steps=2 format=3 uid="uid://dvyw62h8rvpd1"]
+
+[ext_resource type="Script" uid="uid://ba8u8vn6cjliw" path="res://In Game/Game Logic/Game Effects/game_effect.gd" id="1_xkph4"]
+
+[resource]
+script = ExtResource("1_xkph4")
+type = 0
+payload = {
+"fear": 0.01
+}
+metadata/_custom_type_script = "uid://ba8u8vn6cjliw"

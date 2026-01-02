@@ -9,9 +9,10 @@
 script = ExtResource("2_w30hd")
 placement_type = 1
 tick_effects = Array[ExtResource("3_3y8is")]([ExtResource("4_h604h")])
+placable_on_region = 3
 name = "Feeding Grounds"
 art = ExtResource("1_cgul1")
-tooltip = ""
-food_cost = 0
-fear_cost = 15
+tooltip = "Generates some food and some fear."
+food_cost = 50
+fear_cost = 10
 metadata/_custom_type_script = "uid://cpt68otvwpoo7"

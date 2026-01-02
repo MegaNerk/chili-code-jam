@@ -8,9 +8,10 @@
 script = ExtResource("2_1hlkn")
 placement_type = 2
 tick_effects = Array[ExtResource("3_ba381")]([])
+placable_on_region = 3
 name = "Stomping Grounds"
 art = ExtResource("1_b2a38")
-tooltip = ""
+tooltip = "Generates a lot of fear"
 food_cost = 150
-fear_cost = 75
+fear_cost = 85
 metadata/_custom_type_script = "uid://cpt68otvwpoo7"

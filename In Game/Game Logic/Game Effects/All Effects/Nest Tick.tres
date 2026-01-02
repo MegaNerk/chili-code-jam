@@ -6,6 +6,7 @@
 script = ExtResource("1_1ywpd")
 type = 0
 payload = {
-"fear": 0.003
+"fear": 0.003,
+"kp": "0.05"
 }
 metadata/_custom_type_script = "uid://ba8u8vn6cjliw"

@@ -1,16 +1,18 @@
-[gd_resource type="Resource" script_class="Building_Res" load_steps=4 format=3 uid="uid://bv0u2460h7t1a"]
+[gd_resource type="Resource" script_class="Building_Res" load_steps=5 format=3 uid="uid://bv0u2460h7t1a"]
 
 [ext_resource type="Texture2D" uid="uid://bspnm1m88aygj" path="res://Assets/Art/Buildings/NestingGrounds.png" id="1_wncpe"]
 [ext_resource type="Script" uid="uid://cpt68otvwpoo7" path="res://In Game/Buildings/building_res.gd" id="2_3k1ui"]
 [ext_resource type="Script" uid="uid://ba8u8vn6cjliw" path="res://In Game/Game Logic/Game Effects/game_effect.gd" id="3_3k1ui"]
+[ext_resource type="Resource" uid="uid://cyxsd2h7jxsa1" path="res://In Game/Game Logic/Game Effects/All Effects/Nest Tick.tres" id="4_q3h1g"]
 
 [resource]
 script = ExtResource("2_3k1ui")
 placement_type = 2
-tick_effects = Array[ExtResource("3_3k1ui")]([])
+tick_effects = Array[ExtResource("3_3k1ui")]([ExtResource("4_q3h1g")])
+placable_on_region = 3
 name = "Nest"
 art = ExtResource("1_wncpe")
-tooltip = ""
+tooltip = "Generates a lot of Kaiju progress and some fear."
 food_cost = 250
-fear_cost = 50
+fear_cost = 75
 metadata/_custom_type_script = "uid://cpt68otvwpoo7"

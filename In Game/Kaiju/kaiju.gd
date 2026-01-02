@@ -140,7 +140,7 @@ func process_tick(tick_updates : Array[GameEffect]) -> Array[GameEffect]:
 		var hunger_effect = GameEffect.new()
 		hunger_effect.type = GameEffect.EFFECT_TYPE.KAIJU_HUNGER_DELTA
 		hunger_effect.payload = {
-			id : -0.1,
+			id : -0.025,
 		}
 		tick_updates.append(hunger_effect)
 	else:
@@ -218,7 +218,7 @@ func fight_city_tick_updates() -> Array[GameEffect]:
 	tick_updates.append(dev_effect)
 	var xp_effect = GameEffect.new()
 	xp_effect.type = GameEffect.EFFECT_TYPE.KAIJU_XP_DELTA
-	var xp_gain = 5.1
+	var xp_gain = 0.1
 	xp_effect.payload = {
 		id : xp_gain
 	}

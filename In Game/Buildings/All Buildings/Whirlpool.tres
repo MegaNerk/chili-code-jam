@@ -7,11 +7,12 @@
 
 [resource]
 script = ExtResource("1_04rsx")
-food_cost = 50
-fear_cost = 0
 placement_type = 1
 tick_effects = Array[ExtResource("3_0q7ao")]([ExtResource("4_j8113")])
+placable_on_region = 3
 name = "Whirlpool"
 art = ExtResource("1_khxk3")
-tooltip = "Generates a little food, and some progress towards your next Kaiju."
+tooltip = "Generates Kaiju progress and a little food."
+food_cost = 50
+fear_cost = 0
 metadata/_custom_type_script = "uid://cpt68otvwpoo7"

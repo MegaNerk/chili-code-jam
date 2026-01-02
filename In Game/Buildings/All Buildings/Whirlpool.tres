@@ -1,13 +1,16 @@
-[gd_resource type="Resource" script_class="Building_Res" load_steps=3 format=3 uid="uid://1o3c70oik55a"]
+[gd_resource type="Resource" script_class="Building_Res" load_steps=5 format=3 uid="uid://1o3c70oik55a"]
 
 [ext_resource type="Script" uid="uid://cpt68otvwpoo7" path="res://In Game/Buildings/building_res.gd" id="1_04rsx"]
 [ext_resource type="Texture2D" uid="uid://dp11gv5mtfkg8" path="res://Assets/Art/Buildings/WaterBuilding.png" id="1_khxk3"]
+[ext_resource type="Script" uid="uid://ba8u8vn6cjliw" path="res://In Game/Game Logic/Game Effects/game_effect.gd" id="3_0q7ao"]
+[ext_resource type="Resource" uid="uid://1k3pefvnsdmy" path="res://In Game/Game Logic/Game Effects/All Effects/Whirlpool Tick.tres" id="4_j8113"]
 
 [resource]
 script = ExtResource("1_04rsx")
 food_cost = 50
 fear_cost = 0
 placement_type = 1
+tick_effects = Array[ExtResource("3_0q7ao")]([ExtResource("4_j8113")])
 name = "Whirlpool"
 art = ExtResource("1_khxk3")
 metadata/_custom_type_script = "uid://cpt68otvwpoo7"

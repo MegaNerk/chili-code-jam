@@ -30,3 +30,6 @@ func activate_cities(num_cities : int):
 		var next_city = City.new(city_library[iterator])
 		active_cities.append(next_city)
 		iterator += 1
+
+func process_tick(tick_updates : Array[GameEffect]) -> Array[GameEffect]:
+	return tick_updates

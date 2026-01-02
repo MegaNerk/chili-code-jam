@@ -15,13 +15,18 @@ var all_building_res : Array[Building_Res] = []
 
 var ticks_elapsed : int
 
+var next_available_kaiju_id : int = 0
 var active_kaiju : Array[Kaiju]
+var next_available_building_id : int = 0
 var active_buildings : Array[Building]
 
-var food : int
-var fear : int:
+var food : int = 100
+var fear : int = 0:
 	set(value):
 		fear = min(value, 100)
+
+var gained_food : float = 0.0
+var gained_fear : float = 0.0
 
 func _ready():
 	load_all_kaiju_resources()
@@ -44,13 +49,17 @@ func date_changed(new_date_string):
 
 func on_tick_passed():
 	ticks_elapsed += 1
-	food += 1
-	fear += 1
+	var tick_updates : Array[GameEffect] = []
 	for kaiju in active_kaiju:
 		kaiju._update_movement()
+		tick_updates = kaiju.process_tick(tick_updates)
 		
 	for building in active_buildings:
-		pass
+		tick_updates = building.process_tick(tick_updates)
+	
+	tick_updates = city_director.process_tick(tick_updates)
+	tick_updates = event_director.process_tick(tick_updates)
+	process_tick_updates(tick_updates)
 
 func load_all_kaiju_resources():
 	var kaiju_dir : DirAccess = DirAccess.open(kaiju_res_path)
@@ -92,8 +101,69 @@ func attempt_place_building(building : Building_Res):
 	else: AUDIO.play_sfx_once(AUDIO.sfx_library.illegal_input)
 
 func on_building_placed(building : Building):
-	active_buildings.append(building)
+	register_building(building)
 
 func on_building_cancelled(building : Building):
 	food += building.my_building_res.food_cost
 	fear += building.my_building_res.fear_cost
+
+func check_for_win_loss():
+	pass
+
+func end_game(win : bool):
+	pass
+
+func process_tick_updates(tick_updates : Array[GameEffect]):
+	for effect in tick_updates:
+		resolve_game_effect(effect)
+	log_resource_delta()
+
+func resolve_game_effect(effect : GameEffect):
+	match effect.type:
+		GameEffect.EFFECT_TYPE.RESOURCE_DELTA:
+			for resource_type in effect.payload.keys():
+				match resource_type:
+					"food":
+						gained_food += effect.payload["food"]
+					"fear":
+						gained_fear += effect.payload["fear"]
+		GameEffect.EFFECT_TYPE.KAIJU_HP_DELTA:
+			for kaiju_id in effect.payload.keys():
+				get_kaiju_with_id(kaiju_id).adjust_hp(effect.payload[kaiju_id])
+		GameEffect.EFFECT_TYPE.KAIJU_HUNGER_DELTA:
+			for kaiju_id in effect.payload.keys():
+				get_kaiju_with_id(kaiju_id).adjust_hunger(effect.payload[kaiju_id])
+
+func get_kaiju_with_id(id : int) -> Kaiju:
+	for this_kaiju in active_kaiju:
+		if this_kaiju.id == id:
+			return this_kaiju
+	return null
+
+func get_building_with_id(id : int) -> Building:
+	for this_building in active_buildings:
+		if this_building.id == id:
+			return this_building
+	return null
+
+func register_building(new_building : Building):
+	active_buildings.append(new_building)
+	new_building.id = next_available_building_id
+	next_available_building_id += 1
+
+func register_kaiju(new_kaiju : Kaiju):
+	active_kaiju.append(new_kaiju)
+	new_kaiju.id = next_available_kaiju_id
+	next_available_kaiju_id += 1
+
+func log_resource_delta():
+	var temp_food : int = 0
+	while gained_food >= 1.0:
+		gained_food -= 1.0
+		temp_food += 1
+	food += temp_food
+	var temp_fear : int = 0
+	while gained_fear >= 1.0:
+		gained_fear -= 1.0
+		temp_fear += 1
+	fear += temp_fear

@@ -18,9 +18,10 @@ var all_building_res : Array[Building_Res] = []
 var ticks_elapsed : int
 
 var next_available_kaiju_id : int = 0
-var active_kaiju : Array[Kaiju]
+var active_kaiju : Array[Kaiju] = []
+
 var next_available_building_id : int = 0
-var active_buildings : Array[Building]
+var active_buildings : Array[Building] = []
 
 var kaiju_points : int = 0:
 	set(value):
@@ -78,6 +79,10 @@ func on_tick_passed():
 	tick_updates = city_director.process_tick(tick_updates)
 	tick_updates = event_director.process_tick(tick_updates)
 	process_tick_updates(tick_updates)
+	for this_kaiju in active_kaiju:
+		if this_kaiju.hp == 0.0:
+			this_kaiju.die()
+			unregister_kaiju(this_kaiju)
 
 func load_all_kaiju_resources():
 	var kaiju_dir : DirAccess = DirAccess.open(kaiju_res_path)
@@ -219,8 +224,12 @@ func register_building(new_building : Building):
 
 func register_kaiju(new_kaiju : Kaiju):
 	active_kaiju.append(new_kaiju)
+	print(active_kaiju)
 	new_kaiju.id = next_available_kaiju_id
 	next_available_kaiju_id += 1
+
+func unregister_kaiju(old_kaiju : Kaiju):
+	active_kaiju.erase(old_kaiju)
 
 func log_resource_delta():
 	while gained_food >= 1.0:

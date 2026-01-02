@@ -26,7 +26,7 @@ func _change_image(new_img):
 func sync_kaiju_stats():
 	health_bar.max_value = my_kaiju.base_hp
 	health_bar.value = my_kaiju.hp
-	health_label.text = str(my_kaiju.hp)+"/"+str(my_kaiju.base_hp)
+	health_label.text = str(int(my_kaiju.hp))+"/"+str(int(my_kaiju.base_hp))
 	hunger_bar.value = my_kaiju.hunger
 	hunger_bar.max_value = my_kaiju.max_hunger
 	level_label.text = str(my_kaiju.level)

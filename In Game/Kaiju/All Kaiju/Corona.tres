@@ -5,8 +5,6 @@
 
 [resource]
 script = ExtResource("1_vd3o4")
-food_cost = 100
-fear_cost = 50
 type = 2
 base_hp = 75.0
 hp_scaling = 15.0
@@ -14,14 +12,16 @@ max_hunger = 100.0
 hunger_scaling = 15.0
 city_damage = 2e-05
 city_damage_scaling = 1e-05
-pop_damage = 2e-05
-pop_damage_scaling = 2e-05
+pop_damage = -2e-05
+pop_damage_scaling = -2e-05
 land_speed = 75.0
 land_speed_scaling = 10.0
 water_speed = 75.0
 water_speed_scaling = 10.0
-xp_per_level = 75.0
+xp_per_level = 225.0
 name = "Corona"
 art = ExtResource("1_552cr")
 tooltip = "Kind of good at everything, at least a little. Actually flies. Fast speed. Flying."
+food_cost = 100
+fear_cost = 50
 metadata/_custom_type_script = "uid://cdlyy6cua2bwp"

@@ -4,6 +4,7 @@ class_name Kaiju
 signal changed_region
 signal stats_changed
 signal leveled_up
+signal died
 
 @export var kaiju_resource : Kaiju_Res
 
@@ -15,13 +16,13 @@ var current_region : NavigationRegion2D
 var paid_for_with_discount : bool = false
 
 var id : int #A unique id handed to this Kaiju when it's registered with the Game manager
-var base_hp : int
-var hp : int:
+var base_hp : float
+var hp : float:
 	set(value):
 		hp = max(0,min(value,base_hp))
 		emit_signal("stats_changed")
-var max_hunger : int
-var hunger : int:
+var max_hunger : float
+var hunger : float:
 	set(value):
 		hunger = max(0,min(value,max_hunger))
 		emit_signal("stats_changed")
@@ -124,7 +125,7 @@ func process_tick(tick_updates : Array[GameEffect]) -> Array[GameEffect]:
 		tick_updates.append(dev_effect)
 		var xp_effect = GameEffect.new()
 		xp_effect.type = GameEffect.EFFECT_TYPE.KAIJU_XP_DELTA
-		var xp_gain = randf_range(0.1, 0.2)
+		var xp_gain = 0.01
 		xp_effect.payload = {
 			id : xp_gain
 		}
@@ -150,6 +151,9 @@ func stop_attacking_city():
 
 func die():
 	print("I died :(")
+	if attacking_city:
+		stop_attacking_city()
+	emit_signal("died")
 
 func adjust_xp(adjustment : float):
 	xp += adjustment

@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://mav5vr5mxya7"]
+[gd_scene load_steps=8 format=3 uid="uid://mav5vr5mxya7"]
 
 [ext_resource type="PackedScene" uid="uid://c8eek86ob1fl8" path="res://In Game/in_game_ui.tscn" id="1_6gr50"]
 [ext_resource type="Script" uid="uid://bdeqd6lha3yn8" path="res://In Game/Game Logic/game.gd" id="1_dji84"]
+[ext_resource type="Resource" uid="uid://gh87e80sax8s" path="res://In Game/Game Logic/Kaiju Cost Scaling/Default Scaling.tres" id="2_wbag2"]
 [ext_resource type="PackedScene" uid="uid://cifgpieydxhmj" path="res://In Game/Game Logic/Events/Event Director/event_director.tscn" id="3_7teoi"]
 [ext_resource type="PackedScene" uid="uid://bl4r6wfexlbo3" path="res://In Game/Game Logic/Cities/City Director/city_director.tscn" id="4_61akc"]
 [ext_resource type="PackedScene" uid="uid://cdf2lxywh6b8o" path="res://In Game/Game Logic/Time/time_coordinator.tscn" id="5_yyf0g"]
@@ -21,6 +22,7 @@ event_director = NodePath("EventDirector")
 city_director = NodePath("CityDirector")
 time_coordinator = NodePath("TimeCoordinator")
 news_reporter = NodePath("NewsReporter")
+kaiju_cost_scaling = ExtResource("2_wbag2")
 
 [node name="InGameUI" parent="." instance=ExtResource("1_6gr50")]
 layout_mode = 1
@@ -37,6 +39,8 @@ ticks_per_day = 24
 [connection signal="building_placed" from="InGameUI" to="." method="on_building_placed"]
 [connection signal="building_placement_cancelled" from="InGameUI" to="." method="on_building_cancelled"]
 [connection signal="compendium_entry_selected" from="InGameUI" to="." method="on_compendium_entry_selected"]
+[connection signal="kaiju_spawned" from="InGameUI" to="." method="on_kaiju_spawned"]
+[connection signal="kaiju_spawning_cancelled" from="InGameUI" to="." method="on_kaiju_cancelled"]
 [connection signal="speed_toggled" from="InGameUI" to="." method="change_speed"]
 [connection signal="new_date_calculated" from="TimeCoordinator" to="." method="date_changed"]
 [connection signal="tick_passed" from="TimeCoordinator" to="." method="on_tick_passed"]

@@ -73,7 +73,7 @@ func _process(delta):
 func tick_up_day():
 	if cur_day == get_days_in_month(cur_month):
 		tick_up_month()
-		cur_day = 0
+		cur_day = 1
 	else:
 		cur_day += 1
 

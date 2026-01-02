@@ -13,6 +13,8 @@ var all_building_res : Array[Building_Res] = []
 @export var time_coordinator : TimeCoordinator
 @export var news_reporter : NewsReporter
 
+@export var kaiju_cost_scaling : KaijuCostScaling
+
 var ticks_elapsed : int
 
 var next_available_kaiju_id : int = 0
@@ -32,12 +34,13 @@ var gained_kaiju_points : float = 0.0
 var gained_food : float = 0.0
 var gained_fear : float = 0.0
 
-var kp_for_next_kaiju : int = 25
+var kp_for_next_kaiju : int
 
 func _ready():
 	load_all_kaiju_resources()
 	load_all_building_resources()
 	game_ui.prep_compendiums(all_kaiju_res, all_building_res)
+	kp_for_next_kaiju = kaiju_cost_scaling.get_next_cost()
 	active_kaiju = game_ui.playspace.kaiju_tokens #This line is temporary, remove later
 	city_director.activate_cities(6)
 	for city in city_director.active_cities:
@@ -99,6 +102,8 @@ func load_all_building_resources():
 func on_compendium_entry_selected(selected_entry):
 	if selected_entry is Building_Res:
 		attempt_place_building(selected_entry)
+	if selected_entry is Kaiju_Res:
+		attempt_spawn_kaiju(selected_entry)
 
 func attempt_place_building(building : Building_Res):
 	if food >= building.food_cost and fear >= building.fear_cost:
@@ -107,12 +112,29 @@ func attempt_place_building(building : Building_Res):
 		game_ui.queue_place_building(Building.new(building))
 	else: AUDIO.play_sfx_once(AUDIO.sfx_library.illegal_input)
 
+func attempt_spawn_kaiju(new_kaiju : Kaiju_Res):
+	if  food >= new_kaiju.food_cost and fear >= new_kaiju.fear_cost and kaiju_points == kp_for_next_kaiju:
+		food -= new_kaiju.food_cost
+		fear -= new_kaiju.fear_cost
+		var the_kaiju = preload("res://In Game/Kaiju/Kaiju_Unit.tscn").instantiate()
+		the_kaiju.kaiju_resource = new_kaiju
+		game_ui.queue_spawn_kaiju(the_kaiju)
+	else: AUDIO.play_sfx_once(AUDIO.sfx_library.illegal_input)
+
 func on_building_placed(building : Building):
 	register_building(building)
 
 func on_building_cancelled(building : Building):
-	food += building.my_building_res.food_cost
-	fear += building.my_building_res.fear_cost
+	pass
+
+func on_kaiju_spawned(this_kaiju : Kaiju):
+	register_kaiju(this_kaiju)
+	kaiju_cost_scaling.add_spawned_kaiju()
+	kp_for_next_kaiju = kaiju_cost_scaling.get_next_cost()
+	kaiju_points = 0
+
+func on_kaiju_cancelled(building : Building):
+	pass
 
 func check_for_win_loss():
 	pass

@@ -3,6 +3,9 @@ class_name Kaiju_Res
 
 enum KAIJU_TYPE {LAND, WATER, AIR}
 
+@export var food_cost : int = 0
+@export var fear_cost : int = 0
+
 @export var type : KAIJU_TYPE
 @export var base_hp : int
 @export var max_hunger : int

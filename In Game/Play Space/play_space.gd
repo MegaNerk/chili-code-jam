@@ -103,10 +103,10 @@ func spawn_building(building : Building, pos):
 	new_building.global_position = pos - Vector2(25,25)
 	building_created.emit(new_building, pos)
 	
-func spawn_kaiju(kaiju : Kaiju_Res, pos):
-	var kaiju_unit = ResourceLoader.load("res://In Game/Kaiju/Kaiju_Unit.tscn")
-	var new_kaiju = kaiju_unit.instantiate()
-	new_kaiju.kaiju_resource = kaiju
+func spawn_kaiju(new_kaiju : Kaiju, pos):
+	#var kaiju_unit = ResourceLoader.load("res://In Game/Kaiju/Kaiju_Unit.tscn")
+	#var new_kaiju = kaiju_unit.instantiate()
+	#new_kaiju.kaiju_resource = kaiju
 	nav_region.add_child(new_kaiju)
 	new_kaiju.global_position = pos
 	kaiju_tokens.append(new_kaiju)

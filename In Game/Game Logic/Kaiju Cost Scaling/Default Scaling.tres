@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="KaijuCostScaling" load_steps=2 format=3 uid="uid://gh87e80sax8s"]
+
+[ext_resource type="Script" uid="uid://ceb2yos3i8yga" path="res://In Game/Game Logic/Kaiju Cost Scaling/kaiju_cost_scaling.gd" id="1_jnc5w"]
+
+[resource]
+script = ExtResource("1_jnc5w")
+set_kp_costs = Array[int]([10, 200, 300, 450, 600, 650])
+metadata/_custom_type_script = "uid://ceb2yos3i8yga"

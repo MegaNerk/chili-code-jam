@@ -5,6 +5,8 @@ signal speed_toggled(new_speed)
 signal compendium_entry_selected(entry)
 signal building_placed(building_ref)
 signal building_placement_cancelled(building_ref)
+signal kaiju_spawned(kaiju_ref)
+signal kaiju_spawning_cancelled(kaiju_ref)
 
 @export var speed_toggle : TabBar
 
@@ -22,6 +24,7 @@ signal building_placement_cancelled(building_ref)
 @export var kp_stockpile : KPStockpile
 
 var building_being_placed : Building = null
+var kaiju_being_spawned : Kaiju = null
 
 func _ready():
 	playspace.hovered_country.connect(change_hovered_country_name)
@@ -68,19 +71,49 @@ func spawn_cities(cities):
 		playspace.spawn_city(city)
 
 func queue_place_building(building : Building):
+	if kaiju_being_spawned:
+		cancel_kaiju()
 	building_being_placed = building
 	mouse_hover_image.visible = true
 	mouse_hover_image.texture = building.art
 
+func queue_spawn_kaiju(new_kaiju : Kaiju):
+	if building_being_placed:
+		cancel_building()
+	kaiju_being_spawned = new_kaiju
+	mouse_hover_image.visible = true
+	mouse_hover_image.texture = new_kaiju.kaiju_resource.art
+
 func _on_playspace_left_clicked(coords):
 	if building_being_placed:
-		emit_signal("building_placed",building_being_placed)
-		playspace.spawn_building(building_being_placed, coords)
-		building_being_placed = null
-		mouse_hover_image.visible = false
+		place_building(coords)
+	if kaiju_being_spawned:
+		spawn_kaiju(coords)
 
 func _on_playspace_right_clicked(coords):
 	if building_being_placed:
-		building_being_placed = null
-		mouse_hover_image.visible = false
-		emit_signal("building_placement_cancelled")
+		cancel_building()
+	if kaiju_being_spawned:
+		cancel_kaiju()
+
+func cancel_building():
+	emit_signal("building_placement_cancelled", building_being_placed)
+	building_being_placed = null
+	mouse_hover_image.visible = false
+
+func cancel_kaiju():
+	emit_signal("kaiju_spawning_cancelled", kaiju_being_spawned)
+	kaiju_being_spawned = null
+	mouse_hover_image.visible = false
+
+func place_building(coords):
+	emit_signal("building_placed",building_being_placed)
+	playspace.spawn_building(building_being_placed, coords)
+	building_being_placed = null
+	mouse_hover_image.visible = false
+
+func spawn_kaiju(coords):
+	emit_signal("kaiju_spawned",kaiju_being_spawned)
+	playspace.spawn_kaiju(kaiju_being_spawned, coords)
+	kaiju_being_spawned = null
+	mouse_hover_image.visible = false

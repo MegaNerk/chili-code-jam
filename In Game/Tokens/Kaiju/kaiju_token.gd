@@ -3,6 +3,10 @@ class_name KaijuToken
 
 var my_kaiju : Kaiju
 
+func _ready():
+	super()
+	default_draw_prio = 1
+
 func _load_kaiju(_kaiju):
 	my_kaiju = _kaiju
 	_change_image(my_kaiju.kaiju_resource.art)

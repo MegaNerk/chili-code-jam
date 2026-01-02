@@ -13,18 +13,20 @@ var pin_click_mask_image : Image
 var mask_size : Vector2
 
 var currently_selected : bool = false
+var default_draw_prio : int = 0
 
 func _ready():
 	pin_click_mask_image = pin_click_mask.get_image()
 	mask_size = pin_click_mask_image.get_size()
 
 func on_hovered():
-	self.scale = Vector2(1.1,1.1)
+	self.z_index = 100
+	self.scale += Vector2(0.1,0.1)
 	emit_signal("hovered")
 
 func on_stop_hovered():
-	if currently_selected == false:
-		self.scale = Vector2(1,1)
+	self.scale -= Vector2(0.1,0.1)
+	self.z_index = default_draw_prio
 	emit_signal("hover_stopped")
 
 func get_selected():

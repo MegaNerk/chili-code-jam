@@ -73,6 +73,7 @@ func queue_place_building(building : Building):
 func _on_playspace_left_clicked(coords):
 	if building_being_placed:
 		emit_signal("building_placed",building_being_placed)
+		playspace.spawn_building(building_being_placed, coords)
 		building_being_placed = null
 		mouse_hover_image.visible = false
 

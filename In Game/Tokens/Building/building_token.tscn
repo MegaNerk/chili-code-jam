@@ -11,6 +11,7 @@ offset_right = 100.0
 offset_bottom = 100.0
 scale = Vector2(0.25, 0.25)
 pivot_offset = Vector2(100, 100)
+mouse_filter = 0
 expand_mode = 1
 stretch_mode = 5
 script = ExtResource("1_sb65r")

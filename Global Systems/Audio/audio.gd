@@ -12,7 +12,6 @@ func _ready():
 	STATE.state_changed.connect(on_state_changed)
 	SETTINGS.settings_updated.connect(sync_to_audio_settings)
 	sync_to_audio_settings()
-	
 
 func on_state_changed(old_state, new_state):
 	if new_state == old_state:

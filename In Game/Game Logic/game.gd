@@ -73,6 +73,7 @@ func date_changed(new_date_string):
 func on_tick_passed():
 	ticks_elapsed += 1
 	var tick_updates : Array[GameEffect] = []
+	news_reporter.process_tick(tick_updates)
 	for kaiju in active_kaiju:
 		kaiju._update_movement()
 		tick_updates = kaiju.process_tick(tick_updates)
@@ -262,4 +263,10 @@ func on_end_game_button_pressed():
 	STATE.go_to_state(STATE.GAME_STATE.MAIN_MENU)
 
 func modify_fatigue_gain(fatigue_to_gain : float) -> float:
-	return fatigue_to_gain*((ticks_elapsed+1)/2920)
+	return fatigue_to_gain*max(0.5,min(3.0,((ticks_elapsed+1)/29200)))
+
+func on_city_destroyed():
+	fatigue -= 15.0
+
+func on_news_story_queued(news):
+	game_ui.queue_news_story(news.news_reel)

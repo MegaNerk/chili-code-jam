@@ -10,6 +10,8 @@ signal kaiju_spawning_cancelled(kaiju_ref)
 
 @export var speed_toggle : TabBar
 
+@export var news_reel : Scrolling_Label
+
 @export var playspace : PlaySpace
 @export var hovered_country_label : Label
 @export var date_display : Label
@@ -153,3 +155,6 @@ func on_city_selected(city_ref):
 	var possible_attacker = playspace.selected_kaiju
 	if possible_attacker:
 		possible_attacker.begin_attacking_city(city_ref)
+
+func queue_news_story(story : String):
+	news_reel.queue_text(story)

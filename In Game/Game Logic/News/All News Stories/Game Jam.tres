@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="News_Res" load_steps=2 format=3 uid="uid://cr3usbrndfxm8"]
+
+[ext_resource type="Script" uid="uid://bhi8xw3x7p82o" path="res://In Game/Game Logic/News/news_res.gd" id="2_3fhh3"]
+
+[resource]
+script = ExtResource("2_3fhh3")
+name = "Game Jam"
+news_reel = "Turns out Game Jams are pretty hard! We didn't end up having much time to put news stories into the game, so you get this trash instead. Enjoy!"
+metadata/_custom_type_script = "uid://bhi8xw3x7p82o"

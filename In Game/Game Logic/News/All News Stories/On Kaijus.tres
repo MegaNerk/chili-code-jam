@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="News_Res" load_steps=2 format=3 uid="uid://vc3d0gv2vckw"]
+
+[ext_resource type="Script" uid="uid://bhi8xw3x7p82o" path="res://In Game/Game Logic/News/news_res.gd" id="1_rsm4n"]
+
+[resource]
+script = ExtResource("1_rsm4n")
+name = "On Kaijus"
+news_reel = "A new poll shows that when asked about their thoughts on Kaiju, 69% of respondents say... \"Would...\" Up next, we'll break down these shocking results with our team of anlysts."
+metadata/_custom_type_script = "uid://bhi8xw3x7p82o"

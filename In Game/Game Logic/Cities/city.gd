@@ -20,11 +20,13 @@ var population : float = 0.0: #In millions
 		population = max(0,min(value,base_pop))
 		emit_signal("stats_changed")
 
+var my_token : CityToken
 var coordinates : Vector2 = Vector2(0.0,0.0)
 var country : String = "None"
 var art : Texture2D = null
 
 var id : int #Unique ID given to active cities by City Director
+
 
 var being_attacked_by_kaiju : Array[Kaiju] = []
 var is_destroyed : bool = false
@@ -39,14 +41,25 @@ func _init(city_res : City_Res):
 		country = city_res.country
 		art = city_res.art
 
+func is_in_range_of_kaiju(kaiju_ref) -> bool:
+	var distance_from_kaiju = PlaySpace._get_global_distance(kaiju_ref, self)
+	if distance_from_kaiju <= my_city_res.defense_distance: 
+		return true
+	return false
+
 func process_tick(tick_updates):
 	if being_attacked_by_kaiju.size() > 0:
+		
 		var new_effect = GameEffect.new()
 		new_effect.type = GameEffect.EFFECT_TYPE.KAIJU_HP_DELTA
 		new_effect.payload = {}
+		
 		for attacking_kaiju in being_attacked_by_kaiju:
-			var damage : float = randf_range(-0.1, -0.01)
-			new_effect.payload[attacking_kaiju.id] = damage
+			if is_in_range_of_kaiju(attacking_kaiju):
+				var damage : float = randf_range(-0.1, -0.01)
+				new_effect.payload[attacking_kaiju.id] = damage
+
+			
 		tick_updates.append(new_effect)
 	else:
 		var new_effect = GameEffect.new()

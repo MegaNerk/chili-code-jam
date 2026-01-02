@@ -20,6 +20,7 @@ enum KAIJU_TYPE {LAND, WATER, AIR}
 @export var water_speed_scaling : float = 1
 @export var xp_per_level : float = 100
 @export var max_level : int = 15
+@export var attack_range : float = 100
 
 var has_first_kaiju_discount = true:
 	set(value):

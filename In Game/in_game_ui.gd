@@ -56,3 +56,7 @@ func prep_compendiums(kaiju_resources : Array[Kaiju_Res], building_resources : A
 func update_resource_counts(food_count, fear_count):
 	food_stockpile.update_count(food_count)
 	fear_stockpile.update_score(fear_count)
+
+func spawn_cities(cities):
+	for city in cities:
+		playspace.spawn_city(city)

@@ -31,6 +31,7 @@ func _ready():
 	city_director.activate_cities(6)
 	for city in city_director.active_cities:
 		print(city.name)
+	game_ui.spawn_cities(city_director.active_cities)
 
 func _process(delta):
 	game_ui.update_resource_counts(food,fear)

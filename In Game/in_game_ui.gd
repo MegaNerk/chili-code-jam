@@ -19,6 +19,7 @@ signal building_placement_cancelled(building_ref)
 
 @export var food_stockpile : FoodStockpile
 @export var fear_stockpile : FearStockpile
+@export var kp_stockpile : KPStockpile
 
 var building_being_placed : Building = null
 
@@ -57,9 +58,10 @@ func prep_compendiums(kaiju_resources : Array[Kaiju_Res], building_resources : A
 	kaiju_compendium.load_multiple_entries(kaiju_resources)
 	building_compendium.load_multiple_entries(building_resources)
 
-func update_resource_counts(food_count, fear_count):
+func update_resource_counts(food_count, fear_count, kp_progress):
 	food_stockpile.update_count(food_count)
 	fear_stockpile.update_score(fear_count)
+	kp_stockpile.update_progress(kp_progress)
 
 func spawn_cities(cities):
 	for city in cities:

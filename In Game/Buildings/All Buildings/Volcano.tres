@@ -1,13 +1,16 @@
-[gd_resource type="Resource" script_class="Building_Res" load_steps=3 format=3 uid="uid://chxhhh2t72de"]
+[gd_resource type="Resource" script_class="Building_Res" load_steps=5 format=3 uid="uid://chxhhh2t72de"]
 
 [ext_resource type="Texture2D" uid="uid://dds163upgev54" path="res://Assets/Art/Buildings/LandBuilding.png" id="1_2wvfe"]
 [ext_resource type="Script" uid="uid://cpt68otvwpoo7" path="res://In Game/Buildings/building_res.gd" id="1_v0rmr"]
+[ext_resource type="Script" uid="uid://ba8u8vn6cjliw" path="res://In Game/Game Logic/Game Effects/game_effect.gd" id="3_gstm0"]
+[ext_resource type="Resource" uid="uid://dvosdkxfgewjc" path="res://In Game/Game Logic/Game Effects/All Effects/Volcano Tick.tres" id="4_w21j3"]
 
 [resource]
 script = ExtResource("1_v0rmr")
 food_cost = 50
 fear_cost = 0
 placement_type = 0
+tick_effects = Array[ExtResource("3_gstm0")]([ExtResource("4_w21j3")])
 name = "Volcano"
 art = ExtResource("1_2wvfe")
 metadata/_custom_type_script = "uid://cpt68otvwpoo7"

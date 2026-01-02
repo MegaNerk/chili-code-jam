@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c8eek86ob1fl8"]
+[gd_scene load_steps=9 format=3 uid="uid://c8eek86ob1fl8"]
 
 [ext_resource type="PackedScene" uid="uid://28y2qjjidciy" path="res://UI/Scrolling Label/scrolling_label.tscn" id="1_7rmum"]
 [ext_resource type="Script" uid="uid://dxqyi75pkbmuv" path="res://In Game/in_game_ui.gd" id="1_8xadi"]
@@ -7,8 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://pkdog64fb5ml" path="res://In Game/UI/Mouse UX/mouse_hover_image.tscn" id="5_mqyot"]
 [ext_resource type="PackedScene" uid="uid://d3p866pbiifc5" path="res://In Game/UI/Resource Stockpiles/Fear Bar/fear_bar.tscn" id="5_vvcnh"]
 [ext_resource type="PackedScene" uid="uid://ixnj2edc6kfm" path="res://In Game/UI/Resource Stockpiles/Food Stockpile/food_stockpile.tscn" id="6_npoqe"]
+[ext_resource type="PackedScene" uid="uid://cmix3pm1nw16q" path="res://In Game/UI/Resource Stockpiles/Kaiju Points/kp_bar.tscn" id="7_npoqe"]
 
-[node name="InGameUI" type="Control" node_paths=PackedStringArray("speed_toggle", "playspace", "hovered_country_label", "date_display", "kaiju_compendium", "building_compendium", "mouse_hover_image", "food_stockpile", "fear_stockpile")]
+[node name="InGameUI" type="Control" node_paths=PackedStringArray("speed_toggle", "playspace", "hovered_country_label", "date_display", "kaiju_compendium", "building_compendium", "mouse_hover_image", "food_stockpile", "fear_stockpile", "kp_stockpile")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,6 +27,7 @@ building_compendium = NodePath("VBoxContainer/HBoxContainer2/Panel/MarginContain
 mouse_hover_image = NodePath("MouseHoverImage")
 food_stockpile = NodePath("VBoxContainer/HBoxContainer3/Panel/MarginContainer/HBoxContainer/HBoxContainer/FoodStockpile")
 fear_stockpile = NodePath("VBoxContainer/HBoxContainer3/Panel/MarginContainer/HBoxContainer/HBoxContainer/FearBar")
+kp_stockpile = NodePath("VBoxContainer/HBoxContainer3/Panel/MarginContainer/HBoxContainer/HBoxContainer/KpBar")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -207,6 +209,9 @@ alignment = 1
 layout_mode = 2
 
 [node name="FearBar" parent="VBoxContainer/HBoxContainer3/Panel/MarginContainer/HBoxContainer/HBoxContainer" instance=ExtResource("5_vvcnh")]
+layout_mode = 2
+
+[node name="KpBar" parent="VBoxContainer/HBoxContainer3/Panel/MarginContainer/HBoxContainer/HBoxContainer" instance=ExtResource("7_npoqe")]
 layout_mode = 2
 
 [node name="MouseHoverImage" parent="." instance=ExtResource("5_mqyot")]

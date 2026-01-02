@@ -20,13 +20,19 @@ var active_kaiju : Array[Kaiju]
 var next_available_building_id : int = 0
 var active_buildings : Array[Building]
 
+var kaiju_points : int = 0:
+	set(value):
+		kaiju_points = min(value, kp_for_next_kaiju)
 var food : int = 100
 var fear : int = 0:
 	set(value):
 		fear = min(value, 100)
 
+var gained_kaiju_points : float = 0.0
 var gained_food : float = 0.0
 var gained_fear : float = 0.0
+
+var kp_for_next_kaiju : int = 25
 
 func _ready():
 	load_all_kaiju_resources()
@@ -39,7 +45,8 @@ func _ready():
 	game_ui.spawn_cities(city_director.active_cities)
 
 func _process(delta):
-	game_ui.update_resource_counts(food,fear)
+	var kp_progress : int = int(100.0*(float(kaiju_points)/float(kp_for_next_kaiju)))
+	game_ui.update_resource_counts(food,fear,kp_progress)
 
 func change_speed(new_speed):
 	time_coordinator.current_speed = new_speed
@@ -127,6 +134,8 @@ func resolve_game_effect(effect : GameEffect):
 						gained_food += effect.payload["food"]
 					"fear":
 						gained_fear += effect.payload["fear"]
+					"kp":
+						gained_kaiju_points += effect.payload["kp"]
 		GameEffect.EFFECT_TYPE.KAIJU_HP_DELTA:
 			for kaiju_id in effect.payload.keys():
 				get_kaiju_with_id(kaiju_id).adjust_hp(effect.payload[kaiju_id])
@@ -157,13 +166,12 @@ func register_kaiju(new_kaiju : Kaiju):
 	next_available_kaiju_id += 1
 
 func log_resource_delta():
-	var temp_food : int = 0
 	while gained_food >= 1.0:
 		gained_food -= 1.0
-		temp_food += 1
-	food += temp_food
-	var temp_fear : int = 0
+		food += 1
 	while gained_fear >= 1.0:
 		gained_fear -= 1.0
-		temp_fear += 1
-	fear += temp_fear
+		fear += 1
+	while gained_kaiju_points >= 1.0:
+		gained_kaiju_points -= 1.0
+		kaiju_points += 1

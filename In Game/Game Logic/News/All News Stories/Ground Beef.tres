@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="News_Res" load_steps=2 format=3 uid="uid://c0o1xc3dj31dw"]
+
+[ext_resource type="Script" uid="uid://bhi8xw3x7p82o" path="res://In Game/Game Logic/News/news_res.gd" id="1_ygstk"]
+
+[resource]
+script = ExtResource("1_ygstk")
+name = "Ground Beef"
+news_reel = "18,000 tons of ground beef has been dumped into the ocean, environmentalists are in total panic."
+metadata/_custom_type_script = "uid://bhi8xw3x7p82o"

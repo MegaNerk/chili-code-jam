@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="News_Res" load_steps=2 format=3 uid="uid://b7e75hmag72ix"]
+
+[ext_resource type="Script" uid="uid://bhi8xw3x7p82o" path="res://In Game/Game Logic/News/news_res.gd" id="1_5ivuq"]
+
+[resource]
+script = ExtResource("1_5ivuq")
+name = "First Thanksgiving"
+news_reel = "Breaking News! Scientists are going back in time to the first Thanksgiving to get turkeys off the menu. That’s right, scientists are going back in time to the first Thanksgiving to get turkeys off the menu."
+metadata/_custom_type_script = "uid://bhi8xw3x7p82o"

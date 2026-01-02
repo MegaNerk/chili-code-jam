@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="News_Res" load_steps=2 format=3 uid="uid://cq8j0nrc1kycv"]
+
+[ext_resource type="Script" uid="uid://bhi8xw3x7p82o" path="res://In Game/Game Logic/News/news_res.gd" id="1_qeqdc"]
+
+[resource]
+script = ExtResource("1_qeqdc")
+name = "Brainrot Hacker"
+news_reel = "Hackers have breached our ser- 67 67 67 67 67 67 67 67 meow 67 67 67 67 67 meow"
+metadata/_custom_type_script = "uid://bhi8xw3x7p82o"

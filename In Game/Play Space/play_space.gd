@@ -15,6 +15,9 @@ signal kaiju_target_position(kaiju, target_position)
 signal kaiju_created(kaiju)
 signal kaiju_to_be_destroyed(kaiju)
 
+signal city_created(city, postion)
+signal building_created(building, position)
+
 signal left_clicked(event_position)
 signal right_clicked(event_position)
 
@@ -91,6 +94,15 @@ func spawn_city(city : City):
 	new_city.my_city = city
 	add_child(new_city)
 	new_city.position = city.coordinates
+	city_created.emit(new_city, new_city.position)
+	
+func spawn_building(buidling : Building_Res, pos):
+	var token = ResourceLoader.load("res://In Game/Tokens/Building/building_token.tscn")
+	var new_building = token.instantiate() as BuildingPin
+	new_building.my_building = Building_Res
+	add_child(new_building)
+	new_building.position = pos
+	building_created.emit(new_building, pos)
 	
 func spawn_kaiju(kaiju : Kaiju_Res, pos):
 	var kaiju_unit = ResourceLoader.load("res://In Game/Kaiju/Kaiju_Unit.tscn")

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c7x3dnttnfyj1"
+path="res://.godot/imported/Credits.wav-0ac57c0031c66f3d4dc8e0afe587cd15.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Ojany Audio/Credits.wav"
+dest_files=["res://.godot/imported/Credits.wav-0ac57c0031c66f3d4dc8e0afe587cd15.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

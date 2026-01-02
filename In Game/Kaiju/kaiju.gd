@@ -47,9 +47,9 @@ func _ready():
 	if kaiju_resource:
 		name = kaiju_resource.name
 		base_hp = kaiju_resource.base_hp
-		hp = base_hp
-		max_hunger = max_hunger
-		hunger = max_hunger
+		hp = kaiju_resource.base_hp
+		max_hunger = kaiju_resource.max_hunger
+		hunger = kaiju_resource.max_hunger
 		land_speed = kaiju_resource.land_speed
 		water_speed = kaiju_resource.water_speed
 		city_damage = kaiju_resource.city_damage
@@ -57,6 +57,7 @@ func _ready():
 	
 	nav_agent.link_reached.connect(_on_link_reached)
 	nav_agent.target_reached.connect(_on_target_reached)
+	hp -= 20.0
 
 func _update_movement():
 	_update_region()
@@ -126,11 +127,39 @@ func process_tick(tick_updates : Array[GameEffect]) -> Array[GameEffect]:
 		tick_updates.append(dev_effect)
 		var xp_effect = GameEffect.new()
 		xp_effect.type = GameEffect.EFFECT_TYPE.KAIJU_XP_DELTA
-		var xp_gain = 0.01
+		var xp_gain = 5.1
 		xp_effect.payload = {
 			id : xp_gain
 		}
 		tick_updates.append(xp_effect)
+		var feed_effect = GameEffect.new()
+		feed_effect.type = GameEffect.EFFECT_TYPE.KAIJU_HUNGER_DELTA
+		var hunger_gain = 0.25
+		feed_effect.payload = {
+			id : hunger_gain
+		}
+		tick_updates.append(feed_effect)
+	elif hunger > 0.0:
+		var heal_effect = GameEffect.new()
+		heal_effect.type = GameEffect.EFFECT_TYPE.KAIJU_HP_DELTA
+		var hp_gain = 0.02
+		heal_effect.payload = {
+			id : hp_gain
+		}
+		tick_updates.append(heal_effect)
+		var hunger_effect = GameEffect.new()
+		hunger_effect.type = GameEffect.EFFECT_TYPE.KAIJU_HUNGER_DELTA
+		hunger_effect.payload = {
+			id : -0.1,
+		}
+		tick_updates.append(hunger_effect)
+	else:
+		var hunger_effect = GameEffect.new()
+		hunger_effect.type = GameEffect.EFFECT_TYPE.KAIJU_HP_DELTA
+		hunger_effect.payload = {
+			id : -0.1,
+		}
+		tick_updates.append(hunger_effect)
 	return tick_updates
 
 func adjust_hp(adjustment : float):
@@ -151,7 +180,6 @@ func stop_attacking_city():
 	attacking_city = null
 
 func die():
-	print("I died :(")
 	if attacking_city:
 		stop_attacking_city()
 	emit_signal("died")
@@ -160,12 +188,13 @@ func adjust_xp(adjustment : float):
 	xp += adjustment
 
 func level_up():
-	level += 1
-	base_hp += kaiju_resource.hp_scaling
-	hp += kaiju_resource.hp_scaling
-	max_hunger += kaiju_resource.hunger_scaling
-	hunger += kaiju_resource.hunger_scaling
-	land_speed += kaiju_resource.land_speed_scaling
-	water_speed += kaiju_resource.water_speed_scaling
-	emit_signal("stats_changed")
-	emit_signal("leveled_up")
+	if level < 15:
+		level += 1
+		base_hp += kaiju_resource.hp_scaling
+		hp += kaiju_resource.hp_scaling
+		max_hunger += kaiju_resource.hunger_scaling
+		hunger += kaiju_resource.hunger_scaling
+		land_speed += kaiju_resource.land_speed_scaling
+		water_speed += kaiju_resource.water_speed_scaling
+		emit_signal("stats_changed")
+		emit_signal("leveled_up")

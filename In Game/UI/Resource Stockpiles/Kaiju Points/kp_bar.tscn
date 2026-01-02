@@ -1,15 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://cmix3pm1nw16q"]
+[gd_scene load_steps=4 format=3 uid="uid://cmix3pm1nw16q"]
 
 [ext_resource type="Script" uid="uid://bsketd14kspsn" path="res://In Game/UI/Resource Stockpiles/Kaiju Points/kp_bar.gd" id="1_wiysm"]
+[ext_resource type="Texture2D" uid="uid://cbxwwwegc3wat" path="res://Assets/Art/Resource Art/FearResourceBorder.png" id="2_pvxj0"]
+[ext_resource type="Texture2D" uid="uid://eevimp81wxu1" path="res://Assets/Art/Ui Stuff/KaijuProgressFill.png" id="3_tuxte"]
 
-[node name="KpBar" type="Control" node_paths=PackedStringArray("kp_count_bar")]
+[node name="KpBar" type="Control" node_paths=PackedStringArray("kp_count_bar", "progress")]
 custom_minimum_size = Vector2(350, 60)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 300.0
 offset_bottom = 60.0
 script = ExtResource("1_wiysm")
-kp_count_bar = NodePath("HBoxContainer/ProgressBar")
+kp_count_bar = NodePath("HBoxContainer/TextureProgressBar")
+progress = NodePath("HBoxContainer/TextureProgressBar/Progress")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -23,8 +26,19 @@ grow_vertical = 2
 layout_mode = 2
 text = "New Kaiju"
 
-[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer"]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 1
-step = 1.0
+texture_over = ExtResource("2_pvxj0")
+texture_progress = ExtResource("3_tuxte")
+
+[node name="Progress" type="Label" parent="HBoxContainer/TextureProgressBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0%"
+horizontal_alignment = 1
+vertical_alignment = 1

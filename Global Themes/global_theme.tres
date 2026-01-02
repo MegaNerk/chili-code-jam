@@ -1,11 +1,21 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://clkbrsie48nvs"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://clkbrsie48nvs"]
 
+[ext_resource type="Texture2D" uid="uid://c6r10tlbpbf7m" path="res://Assets/Art/Ui Stuff/MenuButton.png" id="1_5ap3m"]
 [ext_resource type="StyleBox" uid="uid://b4pke1bu5iid1" path="res://Global Themes/Global Style Boxes/global_panel.tres" id="1_634u8"]
 [ext_resource type="FontFile" uid="uid://81glmmvrnx64" path="res://Assets/Fonts/Arena-rvwaK.ttf" id="2_k3kbp"]
+[ext_resource type="Texture2D" uid="uid://bdwyifylsv32e" path="res://Assets/Art/Ui Stuff/MenuButtonPress.png" id="2_kohdj"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5ap3m"]
+texture = ExtResource("2_kohdj")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_il266"]
+texture = ExtResource("1_5ap3m")
 
 [resource]
 default_font = ExtResource("2_k3kbp")
 default_font_size = 32
+Button/styles/hover = SubResource("StyleBoxTexture_5ap3m")
+Button/styles/normal = SubResource("StyleBoxTexture_il266")
 MarginContainer/constants/margin_bottom = 15
 MarginContainer/constants/margin_left = 15
 MarginContainer/constants/margin_right = 15

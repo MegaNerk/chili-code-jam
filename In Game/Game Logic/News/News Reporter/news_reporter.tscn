@@ -1,6 +1,33 @@
-[gd_scene load_steps=2 format=3 uid="uid://dp3feowf0ysof"]
+[gd_scene load_steps=24 format=3 uid="uid://dp3feowf0ysof"]
 
 [ext_resource type="Script" uid="uid://dq8wltpr0j8jt" path="res://In Game/Game Logic/News/News Reporter/news_reporter.gd" id="1_6dybj"]
+[ext_resource type="Script" uid="uid://bhi8xw3x7p82o" path="res://In Game/Game Logic/News/news_res.gd" id="2_dr14s"]
+[ext_resource type="Script" uid="uid://btc3dl6dsudbl" path="res://In Game/Game Logic/News/news_library.gd" id="3_6tkkr"]
+[ext_resource type="Resource" uid="uid://bia7p5cnhhlua" path="res://In Game/Game Logic/News/All News Stories/67.tres" id="3_wjo44"]
+[ext_resource type="Resource" uid="uid://y7u1lklumleh" path="res://In Game/Game Logic/News/All News Stories/Australia.tres" id="4_2f8ld"]
+[ext_resource type="Resource" uid="uid://brtjfpxj4cyw2" path="res://In Game/Game Logic/News/All News Stories/Bed Time.tres" id="5_jhyoh"]
+[ext_resource type="Resource" uid="uid://cq8j0nrc1kycv" path="res://In Game/Game Logic/News/All News Stories/Brainrot Hacker.tres" id="6_vanl6"]
+[ext_resource type="Resource" uid="uid://b8dbr6n1si1yc" path="res://In Game/Game Logic/News/All News Stories/Cappybarra.tres" id="7_gb6md"]
+[ext_resource type="Resource" uid="uid://cx8hmexjlmg1e" path="res://In Game/Game Logic/News/All News Stories/Chili Code Jam.tres" id="8_v16lq"]
+[ext_resource type="Resource" uid="uid://cl0qglqeli6s8" path="res://In Game/Game Logic/News/All News Stories/Cool Rock 2.tres" id="9_bavqr"]
+[ext_resource type="Resource" uid="uid://b6qeq3c6t8oje" path="res://In Game/Game Logic/News/All News Stories/Cool Rock.tres" id="10_ijqtx"]
+[ext_resource type="Resource" uid="uid://blxrh3i22edsr" path="res://In Game/Game Logic/News/All News Stories/Crazy.tres" id="11_o25pj"]
+[ext_resource type="Resource" uid="uid://djvqrkvffou6l" path="res://In Game/Game Logic/News/All News Stories/CVS.tres" id="12_h30lt"]
+[ext_resource type="Resource" uid="uid://b7e75hmag72ix" path="res://In Game/Game Logic/News/All News Stories/First Thanksgiving.tres" id="13_j7cww"]
+[ext_resource type="Resource" uid="uid://7g27y03ndkrv" path="res://In Game/Game Logic/News/All News Stories/Fnaf.tres" id="14_sbfsv"]
+[ext_resource type="Resource" uid="uid://cr3usbrndfxm8" path="res://In Game/Game Logic/News/All News Stories/Game Jam.tres" id="15_c8iq3"]
+[ext_resource type="Resource" uid="uid://c0o1xc3dj31dw" path="res://In Game/Game Logic/News/All News Stories/Ground Beef.tres" id="16_h3e2j"]
+[ext_resource type="Resource" uid="uid://c1eijop2gmgmg" path="res://In Game/Game Logic/News/All News Stories/I Dont Know What Im Doing.tres" id="17_hmh2t"]
+[ext_resource type="Resource" uid="uid://b2w741331o018" path="res://In Game/Game Logic/News/All News Stories/Local Having A Great Day.tres" id="18_ia8ci"]
+[ext_resource type="Resource" uid="uid://vc3d0gv2vckw" path="res://In Game/Game Logic/News/All News Stories/On Kaijus.tres" id="19_e6o4t"]
+[ext_resource type="Resource" uid="uid://gtutcbtdjd17" path="res://In Game/Game Logic/News/All News Stories/Rick Rolled.tres" id="20_k3wdq"]
+[ext_resource type="Resource" uid="uid://bw6djobdt2jm6" path="res://In Game/Game Logic/News/All News Stories/Why Oven.tres" id="21_i5c2u"]
+
+[sub_resource type="Resource" id="Resource_dgas4"]
+script = ExtResource("3_6tkkr")
+news_library = Array[ExtResource("2_dr14s")]([ExtResource("3_wjo44"), ExtResource("4_2f8ld"), ExtResource("5_jhyoh"), ExtResource("6_vanl6"), ExtResource("7_gb6md"), ExtResource("8_v16lq"), ExtResource("9_bavqr"), ExtResource("10_ijqtx"), ExtResource("11_o25pj"), ExtResource("12_h30lt"), ExtResource("13_j7cww"), ExtResource("14_sbfsv"), ExtResource("15_c8iq3"), ExtResource("16_h3e2j"), ExtResource("17_hmh2t"), ExtResource("18_ia8ci"), ExtResource("19_e6o4t"), ExtResource("20_k3wdq"), ExtResource("21_i5c2u")])
+metadata/_custom_type_script = "uid://btc3dl6dsudbl"
 
 [node name="NewsReporter" type="Node"]
 script = ExtResource("1_6dybj")
+news_library_res = SubResource("Resource_dgas4")

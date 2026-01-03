@@ -1,6 +1,34 @@
-[gd_scene load_steps=2 format=3 uid="uid://bl4r6wfexlbo3"]
+[gd_scene load_steps=25 format=3 uid="uid://bl4r6wfexlbo3"]
 
 [ext_resource type="Script" uid="uid://24mfyv4gk5hu" path="res://In Game/Game Logic/Cities/City Director/city_director.gd" id="1_d6mif"]
+[ext_resource type="Script" uid="uid://bm4tf77g77ys6" path="res://In Game/Game Logic/Cities/city_res.gd" id="2_esmh5"]
+[ext_resource type="Script" uid="uid://c0xm6ckkt05cr" path="res://In Game/Buildings/Game Logic/Cities/city_library.gd" id="2_tgqu0"]
+[ext_resource type="Resource" uid="uid://sji8cdqix1j3" path="res://In Game/Game Logic/Cities/All Cities/Buenos Aires.tres" id="3_6llck"]
+[ext_resource type="Resource" uid="uid://d2l76rq87qrok" path="res://In Game/Game Logic/Cities/All Cities/Cairo.tres" id="4_ll8pb"]
+[ext_resource type="Resource" uid="uid://dgd7f4crv75pa" path="res://In Game/Game Logic/Cities/All Cities/Delhi.tres" id="5_no4ku"]
+[ext_resource type="Resource" uid="uid://cuqrq7bjehbp" path="res://In Game/Game Logic/Cities/All Cities/Dubai.tres" id="6_7mhpv"]
+[ext_resource type="Resource" uid="uid://dmy71a2emrcve" path="res://In Game/Game Logic/Cities/All Cities/Jakarta.tres" id="7_q0i2t"]
+[ext_resource type="Resource" uid="uid://b5cr7imeyqbee" path="res://In Game/Game Logic/Cities/All Cities/Johannesburg.tres" id="8_fmxmf"]
+[ext_resource type="Resource" uid="uid://b6teljlsjhdjy" path="res://In Game/Game Logic/Cities/All Cities/LA.tres" id="9_73egh"]
+[ext_resource type="Resource" uid="uid://owry8bq5k5ow" path="res://In Game/Game Logic/Cities/All Cities/Lagos.tres" id="10_dveaq"]
+[ext_resource type="Resource" uid="uid://bjyxwsowi5osn" path="res://In Game/Game Logic/Cities/All Cities/London.tres" id="11_uga5g"]
+[ext_resource type="Resource" uid="uid://nvynps26ti1b" path="res://In Game/Game Logic/Cities/All Cities/Melbourne.tres" id="12_58eme"]
+[ext_resource type="Resource" uid="uid://bh3ie108tmev2" path="res://In Game/Game Logic/Cities/All Cities/Mexico City.tres" id="13_5tare"]
+[ext_resource type="Resource" uid="uid://dlpjvxaiivfxk" path="res://In Game/Game Logic/Cities/All Cities/Moscow.tres" id="14_k1j5i"]
+[ext_resource type="Resource" uid="uid://cfo3lcicaruo4" path="res://In Game/Game Logic/Cities/All Cities/NYC.tres" id="15_obqwr"]
+[ext_resource type="Resource" uid="uid://if3rlc87ax6s" path="res://In Game/Game Logic/Cities/All Cities/Paris.tres" id="16_ault1"]
+[ext_resource type="Resource" uid="uid://d37rqf2b84y3c" path="res://In Game/Game Logic/Cities/All Cities/Sao Paulo.tres" id="17_pvfuy"]
+[ext_resource type="Resource" uid="uid://c45h7aatlxx0b" path="res://In Game/Game Logic/Cities/All Cities/Shanghai.tres" id="18_mqibp"]
+[ext_resource type="Resource" uid="uid://bdmm7ceoi3fed" path="res://In Game/Game Logic/Cities/All Cities/Singapore.tres" id="19_05fy8"]
+[ext_resource type="Resource" uid="uid://b7ac70nexdwv6" path="res://In Game/Game Logic/Cities/All Cities/Stockholm.tres" id="20_htirj"]
+[ext_resource type="Resource" uid="uid://wlefvfcahii8" path="res://In Game/Game Logic/Cities/All Cities/Tokyo.tres" id="21_32gno"]
+[ext_resource type="Resource" uid="uid://crxm7ufhkunsq" path="res://In Game/Game Logic/Cities/All Cities/Toronto.tres" id="22_shwjg"]
+
+[sub_resource type="Resource" id="Resource_vrrpu"]
+script = ExtResource("2_tgqu0")
+city_library = Array[ExtResource("2_esmh5")]([ExtResource("3_6llck"), ExtResource("4_ll8pb"), ExtResource("5_no4ku"), ExtResource("6_7mhpv"), ExtResource("7_q0i2t"), ExtResource("8_fmxmf"), ExtResource("9_73egh"), ExtResource("10_dveaq"), ExtResource("11_uga5g"), ExtResource("12_58eme"), ExtResource("13_5tare"), ExtResource("14_k1j5i"), ExtResource("15_obqwr"), ExtResource("16_ault1"), ExtResource("17_pvfuy"), ExtResource("18_mqibp"), ExtResource("19_05fy8"), ExtResource("20_htirj"), ExtResource("21_32gno"), ExtResource("22_shwjg")])
+metadata/_custom_type_script = "uid://c0xm6ckkt05cr"
 
 [node name="CityDirector" type="Node"]
 script = ExtResource("1_d6mif")
+city_res_library = SubResource("Resource_vrrpu")

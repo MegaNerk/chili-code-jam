@@ -1,13 +1,34 @@
-[gd_scene load_steps=9 format=3 uid="uid://mav5vr5mxya7"]
+[gd_scene load_steps=25 format=3 uid="uid://mav5vr5mxya7"]
 
 [ext_resource type="PackedScene" uid="uid://c8eek86ob1fl8" path="res://In Game/in_game_ui.tscn" id="1_6gr50"]
 [ext_resource type="Script" uid="uid://bdeqd6lha3yn8" path="res://In Game/Game Logic/game.gd" id="1_dji84"]
+[ext_resource type="Script" uid="uid://cpt68otvwpoo7" path="res://In Game/Buildings/building_res.gd" id="2_2kjfc"]
 [ext_resource type="Resource" uid="uid://gh87e80sax8s" path="res://In Game/Game Logic/Kaiju Cost Scaling/Default Scaling.tres" id="2_wbag2"]
 [ext_resource type="PackedScene" uid="uid://cifgpieydxhmj" path="res://In Game/Game Logic/Events/Event Director/event_director.tscn" id="3_7teoi"]
+[ext_resource type="Resource" uid="uid://1o3c70oik55a" path="res://In Game/Buildings/All Buildings/Whirlpool.tres" id="3_qycxk"]
+[ext_resource type="Script" uid="uid://cdlyy6cua2bwp" path="res://In Game/Kaiju/kaiju_res.gd" id="3_vg2t0"]
 [ext_resource type="PackedScene" uid="uid://bl4r6wfexlbo3" path="res://In Game/Game Logic/Cities/City Director/city_director.tscn" id="4_61akc"]
+[ext_resource type="Resource" uid="uid://cycsfiqx4afuc" path="res://In Game/Kaiju/All Kaiju/Corona.tres" id="4_krerx"]
+[ext_resource type="Resource" uid="uid://chxhhh2t72de" path="res://In Game/Buildings/All Buildings/Volcano.tres" id="4_qyqm6"]
+[ext_resource type="Resource" uid="uid://c7x48svkeoeko" path="res://In Game/Buildings/All Buildings/Feeding_Grounds_Water.tres" id="5_s8aod"]
+[ext_resource type="Resource" uid="uid://dvtet6bx1o47f" path="res://In Game/Kaiju/All Kaiju/Dillo.tres" id="5_v7003"]
 [ext_resource type="PackedScene" uid="uid://cdf2lxywh6b8o" path="res://In Game/Game Logic/Time/time_coordinator.tscn" id="5_yyf0g"]
 [ext_resource type="PackedScene" uid="uid://dp3feowf0ysof" path="res://In Game/Game Logic/News/News Reporter/news_reporter.tscn" id="6_m33vx"]
+[ext_resource type="Resource" uid="uid://c7dy1fncseokk" path="res://In Game/Buildings/All Buildings/Feeding_Grounds_Land.tres" id="6_qb760"]
+[ext_resource type="Resource" uid="uid://d14ocefsypruy" path="res://In Game/Kaiju/All Kaiju/Drillver.tres" id="6_s8a5y"]
+[ext_resource type="Resource" uid="uid://bv0u2460h7t1a" path="res://In Game/Buildings/All Buildings/Nest.tres" id="7_3n683"]
+[ext_resource type="Resource" uid="uid://c4rwe3yf2axln" path="res://In Game/Kaiju/All Kaiju/Octeyepuss.tres" id="7_uxwpx"]
 [ext_resource type="PackedScene" uid="uid://chplhww8i3b01" path="res://Out of Game/End Game/end_game.tscn" id="8_0cgdq"]
+[ext_resource type="Resource" uid="uid://diygsy4vklm7d" path="res://In Game/Kaiju/All Kaiju/Puker.tres" id="8_qycxk"]
+[ext_resource type="Resource" uid="uid://bvnw454wfxe8y" path="res://In Game/Buildings/All Buildings/Stomping_Grounds.tres" id="8_w8aws"]
+[ext_resource type="Resource" uid="uid://d3mynnrafvu6s" path="res://In Game/Kaiju/All Kaiju/Rex.tres" id="9_qyqm6"]
+[ext_resource type="Script" uid="uid://cri1ilfabpc5g" path="res://In Game/game_object_library.gd" id="10_s8aod"]
+
+[sub_resource type="Resource" id="Resource_qb760"]
+script = ExtResource("10_s8aod")
+kaiju_res_library = Array[ExtResource("3_vg2t0")]([ExtResource("4_krerx"), ExtResource("5_v7003"), ExtResource("6_s8a5y"), ExtResource("7_uxwpx"), ExtResource("8_qycxk"), ExtResource("9_qyqm6")])
+building_res_library = Array[ExtResource("2_2kjfc")]([ExtResource("3_qycxk"), ExtResource("4_qyqm6"), ExtResource("5_s8aod"), ExtResource("6_qb760"), ExtResource("7_3n683"), ExtResource("8_w8aws")])
+metadata/_custom_type_script = "uid://cri1ilfabpc5g"
 
 [node name="Game" type="Control" node_paths=PackedStringArray("game_ui", "event_director", "city_director", "time_coordinator", "news_reporter", "end_game_graphics", "end_game_button")]
 layout_mode = 3
@@ -18,6 +39,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_dji84")
+game_object_library_res = SubResource("Resource_qb760")
 game_ui = NodePath("InGameUI")
 event_director = NodePath("EventDirector")
 city_director = NodePath("CityDirector")

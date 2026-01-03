@@ -54,9 +54,9 @@ func process_tick(tick_updates):
 		new_effect.payload = {}
 		
 		for attacking_kaiju in being_attacked_by_kaiju:
-			if is_in_range_of_kaiju(attacking_kaiju):
-				var damage : float = -0.1
-				new_effect.payload[attacking_kaiju.id] = damage
+			#if is_in_range_of_kaiju(attacking_kaiju):
+			var damage : float = -0.1
+			new_effect.payload[attacking_kaiju.id] = damage
 		tick_updates.append(new_effect)
 	else:
 		var fatigue_effect = GameEffect.new()

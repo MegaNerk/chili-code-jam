@@ -38,6 +38,8 @@ script = ExtResource("1_eprsc")
 menu_music_tracks = SubResource("AudioStreamPlaylist_u7ebp")
 in_game_music_tracks = SubResource("AudioStreamPlaylist_xsp5t")
 credits_music = ExtResource("11_xsp5t")
+win_music = ExtResource("10_xsp5t")
+loss_music = ExtResource("9_u7ebp")
 sfx_library = ExtResource("8_rj2ce")
 music_player = NodePath("MusicPlayer")
 sfx_player = NodePath("SFXPlayer")
@@ -50,12 +52,3 @@ bus = &"Music"
 [node name="SFXPlayer" type="AudioStreamPlayer" parent="."]
 max_polyphony = 99
 bus = &"Music"
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("9_u7ebp")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="AudioStreamPlayer2D"]
-stream = ExtResource("10_xsp5t")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="AudioStreamPlayer2D/AudioStreamPlayer2D"]
-stream = ExtResource("11_xsp5t")

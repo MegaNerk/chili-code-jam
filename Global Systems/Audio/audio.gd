@@ -4,6 +4,9 @@ extends Node
 @export var in_game_music_tracks : AudioStreamPlaylist
 @export var credits_music : AudioStream
 
+@export var win_music : AudioStream
+@export var loss_music : AudioStream
+
 @export var sfx_library : SFX_Library
 
 @export var music_player : AudioStreamPlayer
@@ -41,3 +44,16 @@ func play_sfx_once(sfx_to_play : AudioStream):
 	temp_sfx_player.stream = sfx_to_play
 	temp_sfx_player.play()
 	temp_sfx_player.finished.connect(temp_sfx_player.queue_free)
+
+func play_end_game_music(win_state : bool):
+	match win_state:
+		true:
+			music_player.stream = win_music
+		false:
+			music_player.stream  = loss_music
+	music_player.play()
+	music_player.finished.connect(resume_music)
+
+func resume_music():
+	music_player.stream = in_game_music_tracks
+	music_player.play()

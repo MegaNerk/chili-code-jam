@@ -85,6 +85,7 @@ text = "Return to Menu"
 [connection signal="kaiju_spawned" from="InGameUI" to="." method="on_kaiju_spawned"]
 [connection signal="kaiju_spawning_cancelled" from="InGameUI" to="." method="on_kaiju_cancelled"]
 [connection signal="speed_toggled" from="InGameUI" to="." method="change_speed"]
+[connection signal="city_destroyed" from="CityDirector" to="." method="on_city_destroyed"]
 [connection signal="new_date_calculated" from="TimeCoordinator" to="." method="date_changed"]
 [connection signal="tick_passed" from="TimeCoordinator" to="." method="on_tick_passed"]
 [connection signal="news_story_queued" from="NewsReporter" to="." method="on_news_story_queued"]

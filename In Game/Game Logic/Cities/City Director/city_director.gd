@@ -1,6 +1,8 @@
 extends Node
 class_name CityDirector
 
+signal city_destroyed
+
 var city_res_path : String = "res://In Game/Game Logic/Cities/All Cities/"
 @export var city_res_library : CityLibrary
 
@@ -32,6 +34,7 @@ func activate_cities(num_cities : int):
 		var next_city = City.new(city_library[iterator])
 		next_city.id = iterator
 		active_cities.append(next_city)
+		next_city.destroyed.connect(func(): emit_signal("city_destroyed"))
 		iterator += 1
 
 func process_tick(tick_updates : Array[GameEffect]) -> Array[GameEffect]:

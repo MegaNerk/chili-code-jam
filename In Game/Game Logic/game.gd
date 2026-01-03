@@ -270,7 +270,7 @@ func modify_fatigue_gain(fatigue_to_gain : float) -> float:
 	return fatigue_to_gain*max(0.5,min(3.0,((ticks_elapsed+1)/29200)))
 
 func on_city_destroyed():
-	fatigue -= 15.0
+	fatigue -= 5.0 
 
 func on_news_story_queued(news):
 	game_ui.queue_news_story(news.news_reel)
